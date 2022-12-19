@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>accountCalculator</title>
+  <meta name="generator" content="Google Web Designer 15.0.0.0913">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
+  <script src="https://unpkg.com/read-excel-file@4.0.2/bundle/read-excel-file.min.js"></script>
+  <script src="https://jsuites.net/v4/jsuites.js"></script>
+  <script src="./horsey-master/dist/horsey.js"></script>
+  <link rel="stylesheet" href="./NewDatePicker/dist/mc-calendar.min.css">
+  <script src="./NewDatePicker/dist/mc-calendar.min.js"></script>
+  <link rel="stylesheet" href="./horsey-master/dist/horsey.css" type="text/css">
+  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    function read(el) {
+      console.log("merebhai")
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+        console.log(workbook);
+        workbook.SheetNames.forEach(sheet => {
+          let rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+          console.log(rowObject);
+          document.getElementById("view").innerHTML = JSON.stringify(rowObject, undefined, 4)
+        });
+
+      }
+    }
+  </script>
+  <script integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
+  <script integrity="sha512-JDgkxcdf7oYN/lR29Dzzw17b5Rv42eJ4Vj8aysjr+YpqwaURHrcR1/wGmyIBlsXK55Wsq3TW9tWoDzIou2q3qw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.5/vivus.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script integrity="sha512-W8V8RYNShyt84VKeFKgazx4KHzAWPflpH/GrRwEoDHRSdfVbHkyzE2xaYaEXmLsphgJTb2jr+UkCWp4PkynF2w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.min.js"></script>
+  <script integrity="sha512-T6fjpdTSkxwH7loJyfnVNyhJ7beJcXISAKW0f1Oze8yIF98JQnyxZflkZTFv3UYjnQq8z527wrHbLcwdDTyw3g==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.magellan.min.js"></script>
+  <script integrity="sha512-1jPYNTA2w4UFpGxDsTf8Jllbw5tpaMZIX0Gz7XzXQvNHX2DPfuNMiIJ/mtfg9Q1NLsL7Sag9ETlPTFUdbpb+cw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.smoothScroll.min.js"></script>
+  <script integrity="sha512-q0TFQvtnmcGPU5aA+70Vz0PjvRts1UrnytwLcU8glYKdlGS8zIcCSkHxbAL304U8biAvQQnGa8/G7kNw+A54+w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.triggers.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.css" integrity="sha512-IqEa1KBwTHGVlNBIkEabXbnF4iBG0cszlxjkJT8o+BjCE2NDtGVBd/sxkhttTZAGaL2JbLaLSBJvlWlmSDWbcw==" crossorigin="anonymous">
+  <script integrity="sha512-jAdSZ4O7LeDt+iCgVQ2/hMFtF1qyUGWMe/+KEIfhC09n+Tv5IbcTwBxLwU5XQnoo5v6WpEnktk5tFpju1xfSWA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.responsiveAccordionTabs.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script integrity="sha512-1Os/JhgaZ2EpT5JNZ2ovG3QcTtFZt+oiniVLRAdLKsm9oIgVJg8JHzcu2McMdAkFpMgpqLN0saS+SAgv1JZfUQ==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.toggler.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css" integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  <style type="text/css" id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+  </style>
+  <style type="text/css">
+    #gwd-svg-definitions {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+    }
+    body * {
+      transform-style: preserve-3d;
+    }
+    .gwd-div-1in7 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(2, 7, 5) 0%, rgb(200, 223, 220) 100%);
+      left: -11.89%;
+      top: -7.04%;
+      width: 112.06%;
+      height: 177.76%;
+    }
+    .gwd-div-e9a6 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      border-style: ridge;
+      background-image: -webkit-linear-gradient(left, rgb(220, 69, 182) 0%, rgb(0, 0, 0) 47%, rgb(19, 213, 220) 85%);
+      border-radius: 35px;
+      top: 1.8%;
+      height: 20.58%;
+      left: 1.68%;
+      width: 98.32%;
+    }
+    .gwd-button-m2hn {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(116, 114, 39) 0%, rgb(195, 190, 20) 47%, rgb(210, 220, 19) 85%);
+      margin: 0px;
+      border-width: 10px;
+      border-style: groove;
+      color: rgb(60, 74, 4);
+      border-radius: 30px;
+      font-size: 19px;
+      width: 22.11%;
+      height: 11.29%;
+      left: 5.03%;
+      top: 6.22%;
+    }
+    .gwd-div-140o {
+      position: absolute;
+      left: 11px;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(17, 77, 71) 0%, rgb(0, 0, 0) 100%);
+      border-width: 10px;
+      border-style: ridge;
+      top: 174px;
+      width: 769px;
+      height: 677px;
+    }
+    .gwd-div-1cvy {
+      position: absolute;
+      left: 56px;
+      top: 211px;
+      width: 234px;
+      height: 71px;
+      background-color: rgb(153, 31, 31);
+    }
+    .gwd-div-fy11 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(30, 61, 109) 0%, rgb(177, 204, 243) 100%);
+      border-width: 5px;
+      border-radius: 20px;
+      border-style: groove;
+      font-size: 10px;
+      height: 11.05%;
+      width: 26.72%;
+      left: 69.35%;
+      top: 6.63%;
+    }
+    #file-input {
+      display: none;
+    }
+    .gwd-div-1vk2 {
+      position: absolute;
+      background-image: -webkit-linear-gradient(left, rgb(54, 79, 118) 0%, rgb(177, 204, 243) 100%);
+      transform-origin: 50% 50% 0px;
+      border-style: ridge;
+      border-width: 10px;
+      border-radius: 30px;
+      top: 24.31%;
+      width: 98.32%;
+      height: 39.23%;
+      left: 1.51%;
+    }
+    .gwd-line-z2zp {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      stroke-width: 10px;
+      stroke: url("#grad804o");
+      top: 0%;
+      left: 45.23%;
+      width: 9.97849px;
+      height: 163.996px;
+    }
+    .gwd-p-1peu {
+      position: absolute;
+      left: 75px;
+      top: 211px;
+      width: 300px;
+      height: 23px;
+    }
+    .gwd-span-18j7 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      color: rgb(105, 119, 134);
+      text-align: center;
+      left: 13.6%;
+      top: -1.38%;
+      width: 19.02%;
+      height: 10%;
+      font-size: 10px;
+    }
+    .gwd-span-kl8b {
+      left: 0px;
+      top: 0px;
+      color: rgb(16, 15, 15);
+      font-size: 25px;
+      font-family: Oswald;
+    }
+    .gwd-span-oyao {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 59.6977px 0px 0px;
+      text-align: center;
+      left: 59.07%;
+      top: -1.72%;
+      width: 19.02%;
+      height: 10.35%;
+      font-size: 16px;
+    }
+    .gwd-span-1pf9 {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      left: 1.51%;
+      top: 13.11%;
+      width: 13.1%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-14bh {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      left: 29.47%;
+      top: 13.11%;
+      width: 13.1%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-z948 {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      left: 1.39%;
+      top: 39.66%;
+      width: 13.1%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-1hf8 {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      text-align: center;
+      left: 29.47%;
+      top: 39.66%;
+      width: 12.34%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-1n8c {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      text-align: center;
+      left: 48.87%;
+      top: 13.11%;
+      width: 12.34%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-1nxt {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 75px 14px 0px;
+      text-align: center;
+      left: 78.84%;
+      top: 13.11%;
+      width: 13.1%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-bzv4 {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      text-align: center;
+      left: 48.61%;
+      top: 39.66%;
+      width: 12.59%;
+      height: 8.62%;
+      font-size: 18px;
+    }
+    .gwd-span-75dh {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      left: 78.09%;
+      top: 39.66%;
+      width: 13.1%;
+      height: 8.62%;
+      font-size: 19px;
+    }
+    .gwd-input-b5s2 {
+      position: absolute;
+      transform-origin: 63.9167px 15px 0px;
+      left: 1.39%;
+      top: 53.8%;
+      width: 14.86%;
+      height: 8.28%;
+    }
+    .gwd-input-1116 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      left: 29.22%;
+      top: 53.8%;
+      width: 14.74%;
+      height: 8.28%;
+    }
+    .gwd-input-9wck {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      left: 47.61%;
+      top: 53.8%;
+      width: 14.48%;
+      height: 8.28%;
+    }
+    .gwd-input-1jjj {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      left: 78.09%;
+      top: 53.8%;
+      width: 14.48%;
+      height: 8.28%;
+    }
+    .gwd-h3-2onu {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(174, 243, 164);
+      transform-origin: 59px 11.5px 0px;
+      left: 1.39%;
+      top: 26.21%;
+      width: 14.86%;
+      height: 7.93%;
+    }
+    .gwd-h3-1a5a {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(174, 243, 164);
+      transform-origin: 50% 50% 0px;
+      left: 29.47%;
+      top: 26.21%;
+      width: 14.48%;
+      height: 7.93%;
+    }
+    .gwd-h3-10d6 {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(174, 243, 164);
+      transform-origin: 50% 50% 0px;
+      left: 47.61%;
+      top: 26.21%;
+      width: 14.48%;
+      height: 7.93%;
+    }
+    .gwd-h3-snoy {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(174, 243, 164);
+      transform-origin: 50% 50% 0px;
+      left: 78.09%;
+      top: 26.21%;
+      width: 14.48%;
+      height: 7.93%;
+    }
+    .gwd-span-jn38 {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      transform-origin: 35.5px 15px 0px;
+      font-size: 18px;
+      left: 18.14%;
+      top: 26.21%;
+      width: 8.94%;
+      height: 10.35%;
+    }
+    .gwd-input-ykwm {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      left: 18.64%;
+      top: 38.63%;
+      width: 7.93%;
+      height: 7.93%;
+    }
+    .gwd-input-9mzh {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      left: 65.87%;
+      top: 39.66%;
+      width: 7.93%;
+      height: 7.93%;
+    }
+    .gwd-span-xz21 {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      transform-origin: 55px 0px 0px;
+      left: 64.86%;
+      top: 26.21%;
+      width: 8.94%;
+      height: 7.93%;
+      font-size: 18px;
+    }
+    .gwd-input-8say {
+      position: absolute;
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(42, 128, 119) 0%, rgb(0, 0, 0) 100%);
+      border-width: 6px;
+      border-style: ridge;
+      transform-origin: 50% 50% 0px;
+      border-radius: 18px;
+      width: 96.31%;
+      height: 107.04%;
+      left: 3.52%;
+      top: 63.54%;
+    }
+    .gwd-span-1vil {
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+      color: rgb(121, 248, 234);
+      background-image: none;
+      background-color: rgba(255, 255, 255, 0);
+      width: 13.65%;
+      height: 3.73%;
+      font-size: 15px;
+      left: 6.37%;
+      top: 1.85%;
+    }
+    .gwd-span-1gd3 {
+      position: absolute;
+      font-weight: bold;
+      color: rgb(108, 241, 207);
+      transform-style: preserve-3d;
+      transform-origin: 96.478px 33px 0px;
+      text-align: center;
+      left: 1.84%;
+      top: 79.7%;
+      width: 16.26%;
+      height: 4.56%;
+      font-size: 15px;
+      transform: translate3d(73px, 0px, 0px) rotateZ(0.506698deg);
+    }
+    .gwd-span-vlnk {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      color: rgb(128, 243, 215);
+      text-align: center;
+      width: 13.65%;
+      font-size: 15px;
+      height: 4.56%;
+      left: 9.3%;
+      top: 93.78%;
+    }
+    .gwd-span-fqz8 {
+      position: absolute;
+      width: 185px;
+      font-size: 25px;
+      font-weight: bold;
+      color: rgb(140, 241, 216);
+      left: 22px;
+      transform-origin: 50% 50% 0px;
+      top: 723px;
+      height: 33px;
+    }
+    .gwd-input-pge5 {
+      position: absolute;
+      height: 29px;
+      transform-origin: 50% 50% 0px;
+      width: 182px;
+      left: -10px;
+      top: 353px;
+      border-style: solid;
+      z-index: 2;
+    }
+    .gwd-input-1ha2 {
+      top: 425px;
+    }
+    .gwd-input-1hs8 {
+      top: 497px;
+    }
+    .gwd-input-euxm {
+      top: 569px;
+    }
+    .gwd-input-ul2j {
+      height: 9.56%;
+      width: 20.36%;
+      left: 4.43%;
+      top: 130.97%;
+    }
+    .gwd-line-1t5d {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      opacity: 1;
+      stroke-width: 6px;
+      transform-style: preserve-3d;
+      stroke: url("#grads8j7");
+      transform: translate3d(-7.06351px, 32.9914px, 0px) rotateZ(-0.10331deg);
+      left: 27.58%;
+      top: 90.26%;
+      width: 9.0516px;
+      height: 509.418px;
+      z-index: 3;
+    }
+    .gwd-input-5wyq {
+      position: absolute;
+      left: 290px;
+      height: 21px;
+      transform-origin: 50% 50% 0px;
+      width: 212px;
+      top: 540px;
+    }
+    .gwd-input-nc0o {
+      left: 4.34%;
+      top: 209.84%;
+      width: 20.02%;
+      height: 9.86%;
+    }
+    .gwd-input-1v9c {
+      left: 484px;
+      width: 177px;
+    }
+    .gwd-input-x9xl {
+      width: 155px;
+    }
+    .gwd-span-3r13 {
+      position: absolute;
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      color: rgb(234, 219, 219);
+      text-align: center;
+      font-size: 17px;
+      height: 5.66%;
+      top: 69.2%;
+      width: 6.11%;
+      left: 38.94%;
+    }
+    .gwd-span-fcez {
+      position: absolute;
+      font-weight: bold;
+      color: rgb(234, 219, 219);
+      text-align: center;
+      transform-origin: 50% 50% 0px;
+      font-size: 17px;
+      height: 5.39%;
+      top: 69.34%;
+      width: 6.11%;
+      left: 46.98%;
+    }
+    .gwd-div-mmax {
+      position: absolute;
+      height: 33px;
+      color: rgb(232, 224, 224);
+      top: 511px;
+      left: 638px;
+      width: 85px;
+      transform-origin: 42.5px 16px 0px;
+    }
+    .gwd-button-zogw {
+      position: absolute;
+      height: 48px;
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(91, 220, 49) 0%, rgb(0, 0, 0) 100%);
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(118, 199, 128);
+      border-width: 6px;
+      font-size: 20px;
+      color: rgb(227, 241, 241);
+      font-weight: bold;
+      font-family: Times;
+      left: 252px;
+      top: 639px;
+      width: 168px;
+      transform-origin: 50% 50% 0px;
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .gwd-div-qvgl {
+      left: -28px;
+      top: 420px;
+    }
+    .gwd-input-1qp9 {
+      top: 582px;
+    }
+    .gwd-input-llta {
+      top: 582px;
+    }
+    .gwd-table-1rjw {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      opacity: 0.4;
+      pointer-events: none;
+      cursor: not-allowed;
+      border-width: 0px;
+      margin-right: 15px;
+      height: 4.28%;
+      width: 21.11%;
+      left: 33.17%;
+      top: 76.52%;
+    }
+    .gwd-tbody-2nst {
+      top: 0px;
+      left: -1px;
+    }
+    .gwd-button-3g4k {
+      position: absolute;
+      background-image: -webkit-linear-gradient(left, rgb(10, 22, 46) 0%, rgb(3, 12, 25) 100%);
+      border-width: 5px;
+      border-style: outset;
+      color: rgb(228, 230, 152);
+      font-size: 23px;
+      font-weight: bold;
+      font-family: "Bebas Neue";
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(119, 223, 110);
+      width: 13.65%;
+      height: 4.89%;
+      top: 59.67%;
+      transform-origin: 67.7693px 17.5708px 0px;
+      left: 40.28%;
+    }
+    .gwd-label-o9c3 {
+      left: -63.75%;
+      top: 94.16%;
+      width: 0%;
+      height: 0%;
+    }
+    .gwd-div-1y80 {
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      position: absolute;
+      z-index: 5;
+      background-color: rgba(84, 86, 90, 0.64);
+      width: 98.32%;
+      left: 1.84%;
+      top: 64.5%;
+      height: 106.08%;
+    }
+    .gwd-div-3p42 {
+      color: rgb(241, 98, 98);
+      text-align: center;
+      width: 7.12%;
+      height: 4.42%;
+      transform-origin: 42.5px 16px 0px;
+      left: 62.23%;
+      top: 70.3%;
+    }
+    .gwd-div-v6ms {
+      color: rgb(148, 248, 89);
+      text-align: center;
+      width: 7.12%;
+      height: 4.42%;
+      transform-origin: 64px 16.6788px 0px;
+      left: 53.52%;
+      top: 70.3%;
+    }
+    .gwd-span-r9xr {
+      font-size: 25px;
+    }
+    .gwd-div-1p0u {
+      position: absolute;
+      left: 863px;
+      background-image: none;
+      background-color: rgb(198, 206, 195);
+      transform-origin: 50% 50% 0px;
+      top: 223px;
+      width: 605px;
+      height: 127px;
+    }
+    .gwd-span-ldsy {
+      font-size: 30px;
+    }
+    .gwd-span-12ak {
+      font-size: 30px;
+    }
+    .gwd-table-1lwi {
+      left: -23px;
+      top: 36px;
+    }
+    .gwd-span-1moc {
+      font-size: 40px;
+      color: rgb(20, 121, 223);
+    }
+    .gwd-span-1d5m {
+      text-align: center;
+      width: 15.49%;
+      font-size: 15px;
+      height: 4.56%;
+      top: 123.34%;
+      left: 8.38%;
+    }
+    .gwd-input-p7zo {
+      left: 4.26%;
+      top: 296.1%;
+      width: 20.1%;
+      height: 9.86%;
+    }
+    .gwd-input-1ee4 {
+      left: 39px;
+    }
+    .gwd-input-1gt6 {
+      left: 4.43%;
+      top: 171.11%;
+      width: 20.1%;
+      height: 9.51%;
+    }
+    .gwd-p-jkjn {
+      position: absolute;
+      height: 30px;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      color: rgb(43, 95, 146);
+      width: 96px;
+      transform-origin: 50% 50% 0px;
+      left: 108px;
+      top: 220px;
+      background-image: -webkit-linear-gradient(left, rgb(230, 175, 230) 0%, rgb(177, 204, 243) 100%);
+    }
+    .gwd-span-1259 {
+      color: rgb(2, 9, 16);
+    }
+    .gwd-textarea-1ez6 {
+      position: absolute;
+      left: 232px;
+      top: 220px;
+      width: 98px;
+      height: 25px;
+    }
+    .gwd-p-mdzj {
+      left: 48.24%;
+      top: 72.42%;
+      width: 12.85%;
+      height: 10.35%;
+      font-size: 12px;
+      text-align: center;
+    }
+    .gwd-span-1q76 {
+      color: rgb(2, 9, 16);
+    }
+    .gwd-textarea-1yks {
+      transform-origin: 50% 50% 0px;
+      width: 12.34%;
+      height: 0%;
+      left: 64.86%;
+      top: 68.28%;
+    }
+    .gwd-td-10aa {
+      left: 0px;
+      top: -1px;
+    }
+    .gwd-div-17zs {
+      left: 4px;
+      top: 7px;
+    }
+    .gwd-div-9otg {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      background-color: rgb(216, 176, 176);
+      width: 430px;
+      height: 176px;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      left: 52.18%;
+      top: -3.59%;
+    }
+    .gwd-div-3hs8 {
+      position: absolute;
+      background-image: -webkit-linear-gradient(left, rgb(86, 6, 22) 0%, rgb(236, 88, 117) 100%);
+      transform-origin: 50% 50% 0px;
+      border-style: ridge;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(169, 197, 224);
+      border-radius: 10%;
+      width: 25.7%;
+      height: 31.8%;
+      top: 26.8%;
+      left: 20.44%;
+    }
+    .gwd-div-d7c7 {
+      position: absolute;
+      background-image: -webkit-linear-gradient(left, rgb(87, 111, 87) 0%, rgb(88, 236, 100) 100%);
+      transform-origin: 50% 50% 0px;
+      border-style: ridge;
+      border-radius: 15%;
+      border-width: 9px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(128, 219, 128);
+      width: 32.8%;
+      top: 28.6%;
+      height: 30%;
+      left: 55.2%;
+    }
+    .gwd-p-16tc {
+      position: absolute;
+      color: rgb(229, 235, 241);
+      font-weight: bold;
+      font-style: italic;
+      font-family: Quicksand;
+      border-style: ridge;
+      border-radius: 10%;
+      transform-origin: 50% 50% 0px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(192, 61, 105);
+      border-width: 9px;
+      left: 5.14%;
+      top: 5.81%;
+      width: 88.29%;
+      height: 50.85%;
+      font-size: 20px;
+      text-align: center;
+    }
+    .gwd-p-187e {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      transform-origin: 50% 50% 0px;
+      width: 343px;
+      height: 81px;
+      font-size: 15px;
+      left: 1px;
+      top: 30px;
+      text-align: center;
+    }
+    .gwd-span-1j7v {
+      font-size: 30px;
+    }
+    .gwd-span-v9pg {
+      font-size: 60px;
+    }
+    .gwd-p-1q12 {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      background-image: -webkit-linear-gradient(left, rgb(122, 211, 172) 0%, rgb(28, 216, 133) 100%);
+      color: rgb(11, 30, 46);
+      transform-origin: 50% 50% 0px;
+      transform-style: preserve-3d;
+      font-size: 17px;
+      text-align: center;
+      left: 122.41%;
+      top: 93.47%;
+      width: 27.1%;
+      height: 14.42%;
+      transform: translate3d(-615px, -132px, 0px) rotateZ(-0.00188006deg);
+    }
+    .gwd-textarea-x70o {
+      transform-origin: 50% 50% 0px;
+      width: 12.34%;
+      height: 11.04%;
+      left: 18.14%;
+      top: 68.97%;
+    }
+    .gwd-p-fbns {
+      left: 2.52%;
+      top: 72.42%;
+      width: 12.09%;
+      height: 10.35%;
+      font-size: 12px;
+      text-align: center;
+    }
+    .gwd-div-vr3l {
+      position: absolute;
+      background-image: none;
+      transform-origin: 50% 50% 0px;
+      background-color: rgba(84, 86, 90, 0.6);
+      height: 41.85%;
+      left: 1.76%;
+      top: 23.07%;
+      width: 98.24%;
+    }
+    .gwd-input-1nok {
+      transform-origin: 50% 50% 0px;
+      left: 4.34%;
+      top: 248.92%;
+      width: 20.02%;
+      height: 9.86%;
+    }
+    .gwd-span-l6qa {
+      text-align: center;
+      width: 15.49%;
+      font-size: 15px;
+      height: 3.73%;
+      transform-origin: 106.321px 27px 0px;
+      left: 8.38%;
+      top: 108.98%;
+    }
+    .gwd-button-1qy7 {
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(234, 12, 26) 0%, rgb(0, 0, 0) 100%);
+      width: 168px;
+      top: 663px;
+      left: 558px;
+    }
+    .gwd-button-r02i {
+      top: 663px;
+      left: 282px;
+      opacity: 0.6;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .gwd-tbody-n74y {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-tr-1dut {
+      transform-style: preserve-3d;
+    }
+    .gwd-label-1yid {
+      left: 18px;
+      top: 42px;
+    }
+    .gwd-td-17j9 {
+      top: 0px;
+      height: 78px;
+      transform-origin: 50% 50% 0px;
+      width: 330px;
+      left: 0px;
+    }
+    .gwd-td-jfos {
+      left: 301px;
+      top: -1px;
+    }
+    .gwd-div-1vtm {
+      left: 10px;
+      top: 10px;
+    }
+    .gwd-input-2h2f {
+      position: absolute;
+      border-radius: 20px;
+      text-align: center;
+      background-image: none;
+      background-color: rgb(243, 225, 225);
+      width: 13.23%;
+      height: 5.66%;
+      transform-origin: 50% 50% 0px;
+      left: 38.94%;
+      top: 13.4%;
+    }
+    .gwd-p-g7dn {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      color: rgb(237, 241, 243);
+      text-align: center;
+      width: 9.55%;
+      height: 3.72%;
+      font-size: 19px;
+      left: 40.28%;
+      top: 4.42%;
+    }
+    .gwd-div-1e1g {
+      left: 37px;
+      top: 106px;
+    }
+    .gwd-div-1xnr {
+      position: absolute;
+      background-image: none;
+      transform-origin: 50% 50% 0px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(123, 215, 223, 0.57);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 2;
+      top: -2.49%;
+      left: 1.68%;
+      width: 99.25%;
+      height: 173.2%;
+    }
+    .gwd-button-1nuf {
+      position: absolute;
+      background-image: none;
+      background-color: rgba(123, 223, 158, 0.85);
+      font-size: 55px;
+      font-weight: bold;
+      font-family: Quicksand;
+      border-width: 4px;
+      border-radius: 35px;
+      border-style: double;
+      transform-origin: 50% 50% 0px;
+      width: 31.59%;
+      left: 23.14%;
+      height: 22.91%;
+      top: 20.98%;
+    }
+    .gwd-new-class-t2pr:hover {
+      transition: all 1s ease 0s;
+      background: yellow;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic|Oswald:200,300,regular,500,600,700|Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic|Noto+Sans:regular,italic,700,700italic|Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic|Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic|Roboto+Slab:100,200,300,regular,500,600,700,800,900|PT+Sans:regular,italic,700,700italic|Merriweather:300,300italic,regular,italic,700,700italic,900,900italic|Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic|Open+Sans+Condensed:300,300italic,700|Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic|Titillium+Web:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900|Quicksand:300,regular,500,600,700|Slabo+27px:regular|Bebas+Neue:regular|PT+Sans+Narrow:regular,700|Libre+Baskerville:regular,italic,700|Source+Code+Pro:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic|Dosis:200,300,regular,500,600,700,800|Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Yanone+Kaffeesatz:200,300,regular,500,600,700|Lobster:regular|Dancing+Script:regular,500,600,700|Source+Serif+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic|EB+Garamond:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic|Fjalla+One:regular" rel="stylesheet" type="text/css">
+  <script>
+    var _global = typeof window === 'object' && window.window === window ?
+      window : typeof self === 'object' && self.self === self ?
+      self : typeof global === 'object' && global.global === global ?
+      global :
+      this
+
+    function bom(blob, opts) {
+      if (typeof opts === 'undefined') {
+        opts = {
+          autoBom: false
+        }
+      } else if (typeof opts !== 'object') {
+        console.warn('Deprecated: Expected third argument to be a object')
+        opts = {
+          autoBom: !opts
+        }
+      }
+
+      // prepend BOM for UTF-8 XML and text/* types (including HTML)
+      // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+      if (opts.autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+        return new Blob([String.fromCharCode(0xFEFF), blob], {
+          type: blob.type
+        })
+      }
+      return blob
+    }
+
+    function download(url, name, opts) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.responseType = 'blob'
+      xhr.onload = function() {
+        saveAs(xhr.response, name, opts)
+      }
+      xhr.onerror = function() {
+        console.error('could not download file')
+      }
+      xhr.send()
+    }
+
+    function corsEnabled(url) {
+      var xhr = new XMLHttpRequest()
+        // use sync to avoid popup blocker
+      xhr.open('HEAD', url, false)
+      try {
+        xhr.send()
+      } catch (e) {}
+      return xhr.status >= 200 && xhr.status <= 299
+    }
+
+    // `a.click()` doesn't work for all browsers (#465)
+    function click(node) {
+      try {
+        node.dispatchEvent(new MouseEvent('click'))
+      } catch (e) {
+        var evt = document.createEvent('MouseEvents')
+        evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80,
+          20, false, false, false, false, 0, null)
+        node.dispatchEvent(evt)
+      }
+    }
+
+    // Detect WebView inside a native macOS app by ruling out all browsers
+    // We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
+    // https://www.whatismybrowser.com/guides/the-latest-user-agent/macos
+    var isMacOSWebView = /Macintosh/.test(navigator.userAgent) && /AppleWebKit/.test(navigator.userAgent) && !/Safari/.test(navigator.userAgent)
+
+    var saveAs = _global.saveAs || (
+      // probably in some web worker
+      (typeof window !== 'object' || window !== _global) ?
+      function saveAs() {
+        /* noop */
+      }
+
+      // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView
+      :
+      ('download' in HTMLAnchorElement.prototype && !isMacOSWebView) ?
+      function saveAs(blob, name, opts) {
+        var URL = _global.URL || _global.webkitURL
+        var a = document.createElement('a')
+        name = name || blob.name || 'download'
+
+        a.download = name
+        a.rel = 'noopener' // tabnabbing
+
+        // TODO: detect chrome extensions & packaged apps
+        // a.target = '_blank'
+
+        if (typeof blob === 'string') {
+          // Support regular links
+          a.href = blob
+          if (a.origin !== location.origin) {
+            corsEnabled(a.href) ?
+              download(blob, name, opts) :
+              click(a, a.target = '_blank')
+          } else {
+            click(a)
+          }
+        } else {
+          // Support blobs
+          a.href = URL.createObjectURL(blob)
+          setTimeout(function() {
+              URL.revokeObjectURL(a.href)
+            }, 4E4) // 40s
+          setTimeout(function() {
+            click(a)
+          }, 0)
+        }
+      }
+
+      // Use msSaveOrOpenBlob as a second approach
+      :
+      'msSaveOrOpenBlob' in navigator ?
+      function saveAs(blob, name, opts) {
+        name = name || blob.name || 'download'
+
+        if (typeof blob === 'string') {
+          if (corsEnabled(blob)) {
+            download(blob, name, opts)
+          } else {
+            var a = document.createElement('a')
+            a.href = blob
+            a.target = '_blank'
+            setTimeout(function() {
+              click(a)
+            })
+          }
+        } else {
+          navigator.msSaveOrOpenBlob(bom(blob, opts), name)
+        }
+      }
+
+      // Fallback to using FileReader and a popup
+      :
+      function saveAs(blob, name, opts, popup) {
+        // Open a popup immediately do go around popup blocker
+        // Mostly only available on user interaction and the fileReader is async so...
+        popup = popup || open('', '_blank')
+        if (popup) {
+          popup.document.title =
+            popup.document.body.innerText = 'downloading...'
+        }
+
+        if (typeof blob === 'string') return download(blob, name, opts)
+
+        var force = blob.type === 'application/octet-stream'
+        var isSafari = /constructor/i.test(_global.HTMLElement) || _global.safari
+        var isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent)
+
+        if ((isChromeIOS || (force && isSafari) || isMacOSWebView) && typeof FileReader !== 'undefined') {
+          // Safari doesn't allow downloading of blob URLs
+          var reader = new FileReader()
+          reader.onloadend = function() {
+            var url = reader.result
+            url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;')
+            if (popup) popup.location.href = url
+            else location = url
+            popup = null // reverse-tabnabbing #460
+          }
+          reader.readAsDataURL(blob)
+        } else {
+          var URL = _global.URL || _global.webkitURL
+          var url = URL.createObjectURL(blob)
+          if (popup) popup.location = url
+          else location.href = url
+          popup = null // reverse-tabnabbing #460
+          setTimeout(function() {
+              URL.revokeObjectURL(url)
+            }, 4E4) // 40s
+        }
+      }
+    )
+
+    _global.saveAs = saveAs.saveAs = saveAs
+
+    if (typeof module !== 'undefined') {
+      module.exports = saveAs;
+    }
+  </script>
+  <style>
+    .gwd-button-1l0b {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(0deg, rgba(8, 17, 19, 0.91) 0%, rgb(11, 45, 60) 97%);
+      top: 0%;
+      width: 78.57%;
+      left: 10.72%;
+      height: 85.78%;
+    }
+    .gwd-input-vtyl {
+      position: absolute;
+      height: 18px;
+      transform-origin: 50% 50% 0px;
+      left: 165px;
+      width: 143px;
+      background-image: none;
+      top: 63px;
+      background-color: rgb(239, 151, 151);
+    }
+    .gwd-input-fb3f {
+      width: 22.45%;
+      left: 27.6%;
+      top: 15.58%;
+      height: 3.35%;
+      text-align: center;
+    }
+    .gwd-input-v4fs {
+      left: 78.07%;
+      top: 9.87%;
+      width: 20.67%;
+      height: 3.8%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-1vqu {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      background-color: rgb(180, 241, 179);
+      left: 27.6%;
+      top: 9.87%;
+      width: 22.45%;
+      height: 3.8%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-10eh {
+      position: absolute;
+      top: 32px;
+      width: 185px;
+      height: 27px;
+      color: rgb(213, 132, 132);
+      background-image: none;
+      background-color: rgb(227, 216, 216);
+      font-size: 24px;
+      left: 863px;
+    }
+    .gwd-input-urya {
+      top: 141px;
+    }
+    .gwd-input-1clp {
+      transform-origin: 50% 50% 0px;
+      left: 1.57%;
+      top: 20.47%;
+      width: 30.64%;
+      height: 3.35%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-1ber {
+      top: 78px;
+      transform-origin: 50% 50% 0px;
+      width: 41px;
+      height: 27px;
+      color: rgb(32, 16, 16);
+      background-color: rgb(181, 162, 162);
+    }
+    .gwd-input-19gj {
+      height: 18px;
+      width: 135px;
+      top: 78px;
+      background-color: rgb(225, 123, 123);
+    }
+    .gwd-input-4jd0 {
+      font-size: 16px;
+      left: 1.57%;
+      width: 24.03%;
+      height: 3.17%;
+      transform-origin: 143.363px 11.7763px 0px;
+      top: 15.49%;
+      text-align: center;
+    }
+    .gwd-input-154p {
+      font-size: 16px;
+      left: 54.35%;
+      top: 15.49%;
+      width: 21.51%;
+      height: 3.44%;
+      text-align: center;
+    }
+    .gwd-input-1xzm {
+      width: 24.02%;
+      height: 2.43%;
+      transform-origin: 179.029px 28.6667px 0px;
+      top: 11.21%;
+      left: 1.68%;
+      font-size: 15px;
+    }
+    .gwd-input-1go6 {
+      top: 114px;
+      height: 18px;
+      width: 135px;
+      transform-origin: 84.2927px 28.6667px 0px;
+      background-color: rgb(183, 209, 171);
+    }
+    .gwd-input-uiaq {
+      left: 1173px;
+    }
+    .gwd-input-qo5c {
+      left: 54.35%;
+      top: 9.87%;
+      width: 21.51%;
+      height: 3.8%;
+      transform-origin: 160.768px 44.8301px 0px;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-10q3 {
+      left: 78.17%;
+      top: 15.49%;
+      width: 20.46%;
+      height: 3.44%;
+      transform-origin: 153.319px 40.703px 0px;
+      font-size: 15px;
+    }
+    .gwd-input-10wr {
+      transform-origin: 50% 50% 0px;
+      left: 69.99%;
+      top: 20.47%;
+      width: 28.54%;
+      height: 3.35%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-1b5o {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(160, 241, 241);
+      transform-origin: 50% 50% 0px;
+      left: 1.57%;
+      height: 3.81%;
+      top: 24.74%;
+      width: 12.01%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-input-a2sh {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(232, 150, 195);
+      transform-origin: 50% 50% 0px;
+      height: 3.81%;
+      top: 24.74%;
+      width: 12.01%;
+      left: 86.56%;
+      font-size: 15px;
+      text-align: center;
+    }
+    .gwd-div-1p0u {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(198, 206, 195);
+      transform-origin: 50% 50% 0px;
+      width: 78.99%;
+      height: 13.43%;
+      left: 7.83%;
+      top: 30.66%;
+    }
+    .gwd-div-1jer {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(211, 241, 200);
+      transform-origin: 50% 50% 0px;
+      top: 29.81%;
+      left: 1.57%;
+      width: 97%;
+      height: 14.8%;
+    }
+    .gwd-table-1oyt {
+      position: absolute;
+      left: 863px;
+      top: 363px;
+      width: 244px;
+      background-color: rgb(211, 241, 200);
+      height: 535px;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-table-qu6m {
+      border-width: 9px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(175, 225, 220);
+      border-style: ridge;
+      left: 54.31%;
+      width: 44.26%;
+      top: 46.11%;
+      height: 60.21%;
+    }
+    .gwd-table-1ulb {
+      border-style: ridge;
+      border-width: 9px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(171, 223, 218);
+      left: 1.7%;
+      width: 49.48%;
+      top: 46.11%;
+      height: 60.21%;
+    }
+    .gwd-p-1voy {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      font-size: 18px;
+      width: 25.2%;
+      height: 4.97%;
+      left: 15.01%;
+      top: 1.27%;
+      color: rgb(219, 225, 231);
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(81, 65, 16) 0%, rgb(11, 45, 60) 97%);
+      text-align: center;
+    }
+    .gwd-p-1rjc {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-weight: bold;
+      transform-origin: 50% 50% 0px;
+      font-size: 18px;
+      text-align: center;
+      width: 22.46%;
+      height: 4.97%;
+      left: 66.85%;
+      top: 1.27%;
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(12, 63, 54) 0%, rgb(11, 45, 60) 97%);
+      color: rgb(241, 235, 236);
+    }
+    .gwd-div-w8pv {
+      position: absolute;
+      background-image: none;
+      transform-origin: 122.8px 30px 0px;
+      width: 19.35%;
+      height: 4.13%;
+      left: 20.89%;
+      top: 52.12%;
+      background-color: rgba(123, 225, 215, 0);
+    }
+    .gwd-p-36mt {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      transform-origin: 50% 50% 0px;
+      text-align: center;
+      font-size: 16px;
+      width: 16.33%;
+      height: 2.48%;
+      background-image: none;
+      background-color: rgb(211, 234, 232);
+      left: 17.36%;
+      top: 47.57%;
+    }
+    .gwd-span-ldsy {
+      font-size: 30px;
+    }
+    .gwd-table-1mqd {
+      transform-style: preserve-3d;
+      transform-origin: 50% 50% 0px;
+      transform: scale(0.6, 0.6);
+      left: 0%;
+      top: 0%;
+      width: 98.25%;
+      height: 847.37%;
+    }
+    .gwd-tbody-r753 {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-p-1wbp {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      background-image: none;
+      background-color: rgb(23, 42, 40);
+      color: rgb(219, 230, 241);
+      text-align: center;
+      left: 69.33%;
+      width: 17.49%;
+      height: 2.96%;
+      transform-origin: 66.9812px 14px 0px;
+      font-size: 14px;
+      top: 47.25%;
+    }
+    .gwd-span-12ak {
+      font-size: 30px;
+    }
+    .gwd-table-1lwi {
+      left: -23px;
+      top: 36px;
+    }
+    .gwd-p-1kcu {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-weight: bold;
+      color: rgb(232, 222, 150);
+      font-size: 13px;
+      text-align: center;
+      transform-origin: 47.6833px 0px 0px;
+      left: 45.43%;
+      top: 20.72%;
+      width: 11.36%;
+      height: 2.85%;
+    }
+    .gwd-div-1oa9 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      background-color: rgb(223, 214, 214);
+      left: 46.38%;
+      top: 24.73%;
+      width: 9.55%;
+      height: 3.8%;
+    }
+    .gwd-div-1ibi {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(155, 220, 214) 0%, rgb(231, 239, 238) 100%);
+      box-shadow: black -10px -10px 20px 6px, black 10px 10px 40px 6px;
+      height: 24.7%;
+      top: 102.08%;
+      left: 1.57%;
+      width: 97.13%;
+    }
+    .gwd-p-lz96 {
+      position: absolute;
+      font-family: "Libre Baskerville";
+      color: rgb(33, 90, 30);
+      font-weight: bold;
+      border-width: 3px;
+      border-style: ridge;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(228, 141, 90);
+      background-image: -webkit-linear-gradient(left, rgb(213, 241, 238) 0%, rgb(231, 239, 238) 100%);
+      text-align: center;
+      top: -29.34%;
+      height: 19.44%;
+      left: 8.43%;
+      width: 33.16%;
+      transform-origin: 197.604px 71.3063px 0px;
+      font-size: 15px;
+    }
+    .gwd-p-1kj3 {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      background-image: -webkit-linear-gradient(left, rgb(21, 46, 43) 0%, rgb(0, 0, 0) 100%);
+      color: rgb(234, 239, 243);
+      transform-origin: 50% 50% 0px;
+      height: 25.64%;
+      width: 37.46%;
+      left: 31%;
+      top: 62.39%;
+      font-size: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .gwd-p-b47d {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(7, 7, 23);
+      color: rgb(207, 221, 239);
+      text-align: center;
+      width: 25.29%;
+      font-size: 12px;
+      height: 13.67%;
+      transform-origin: 124.714px 100.256px 0px;
+      left: 12.64%;
+      top: -46.94%;
+      font-weight: bold;
+      font-family: "Libre Baskerville";
+    }
+    .gwd-p-i93q {
+      position: absolute;
+      left: 1205px;
+      top: 871px;
+      width: 262.8px;
+      height: 32px;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-size: 25px;
+      background-image: -webkit-linear-gradient(left, rgb(211, 168, 122) 0%, rgb(212, 236, 225) 100%);
+      color: rgb(16, 81, 47);
+    }
+    .gwd-p-39nv {
+      transform-origin: 50% 50% 0px;
+      font-size: 15px;
+      text-align: center;
+      left: 71.41%;
+      top: 12.47%;
+      width: 27.11%;
+      height: 16.14%;
+    }
+    .gwd-p-1r9t {
+      transform-origin: 50% 50% 0px;
+      font-size: 15px;
+      text-align: center;
+      left: 0.97%;
+      top: 12.47%;
+      width: 27.11%;
+      height: 16.14%;
+    }
+    .gwd-div-12d9 {
+      position: absolute;
+      left: 1204px;
+      width: 262.8px;
+      height: 35.525px;
+      background-image: -webkit-linear-gradient(left, rgb(234, 10, 73) 0%, rgb(213, 87, 161) 99%);
+      top: 911px;
+    }
+    .gwd-div-17h4 {
+      transform-origin: 50% 50% 0px;
+      left: 0.97%;
+      top: 42.91%;
+      width: 27.11%;
+      height: 19.44%;
+    }
+    .gwd-div-1ykx {
+      transform-origin: 50% 50% 0px;
+      left: 71.62%;
+      top: 42.91%;
+      width: 27.11%;
+      height: 19.44%;
+    }
+    .gwd-input-10yf {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(197, 184, 220) 0%, rgb(217, 208, 232) 100%);
+      width: 19.26%;
+      height: 14.1%;
+      left: 40.1%;
+      top: 28.63%;
+      font-size: 17px;
+      color: rgb(67, 23, 23);
+      text-align: center;
+    }
+    .gwd-input-ue6i {
+      top: 9.87%;
+      width: 23.92%;
+      height: 3.8%;
+      transform-origin: 114.539px 56.9491px 0px;
+      text-align: center;
+    }
+    .gwd-div-1y80 {
+      width: 98.32%;
+      transform-origin: 50% 50% 0px;
+      height: 110.91%;
+      left: 2.09%;
+      top: 63.54%;
+    }
+    .gwd-button-fr4p {
+      transform-origin: -9.13195px 19.2114px 0px;
+      background-image: none;
+      padding: 0px;
+      background-color: rgba(195, 75, 43, 0.11);
+      left: 107.9%;
+      top: 0.85%;
+      width: 2.78%;
+      height: 3.39%;
+    }
+    .gwd-div-1wub {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(0deg, rgb(225, 229, 230) 0%, rgb(213, 223, 227) 97%);
+      height: 1287px;
+      left: 896px;
+      top: -67px;
+      width: 1073px;
+    }
+    .gwd-div-v6ms {
+      transform-origin: 71.6667px 0px 0px;
+      left: 62.65%;
+      top: 69.48%;
+    }
+    .gwd-div-3p42 {
+      top: 69.48%;
+      transform-origin: 55.987px 16.6791px 0px;
+      left: 68.26%;
+    }
+    .gwd-span-fcez {
+      width: 6.11%;
+      height: 4.56%;
+      transform-origin: 50% 50% 0px;
+      left: 53.94%;
+      top: 69.2%;
+    }
+    .gwd-span-3r13 {
+      width: 6.11%;
+      height: 4.42%;
+      transform-origin: 50% 50% 0px;
+      left: 45.23%;
+      top: 69.34%;
+    }
+    .gwd-input-2h2f {
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      background-color: rgb(190, 231, 234);
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(27, 35, 42);
+      border-width: 3px;
+      top: 9.81%;
+      height: 6.35%;
+      width: 18.59%;
+      left: 40.28%;
+    }
+    .gwd-p-g7dn {
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(33, 56, 67);
+      color: rgb(4, 9, 11);
+      font-weight: bold;
+      left: 45.23%;
+      top: 3.73%;
+    }
+    .gwd-div-fy11 {
+      width: 27.72%;
+      height: 11.05%;
+      transform-origin: 50% 50% 0px;
+      font-weight: bold;
+      text-align: justify;
+      left: 100%;
+      top: 0px;
+      transform: translate(-100%, 0%) translate3d(-30px, 41px, 0px);
+    }
+    .gwd-input-p7zo {
+      top: 291.17%;
+    }
+    .gwd-span-1gd3 {
+      transform: translate3d(73px, 0px, 0px) rotateZ(0.506698deg);
+    }
+    .gwd-table-1rjw {
+      transform-origin: 50% 50% 0px;
+      top: 74.17%;
+      width: 7.87%;
+      height: 3.18%;
+      left: 39.2%;
+    }
+    .gwd-div-e9a6 {
+      left: 1.76%;
+      width: 98.24%;
+      transform-origin: 50% 50% 0px;
+      top: 0%;
+      height: 22.38%;
+      background-image: -webkit-linear-gradient(left, rgb(227, 224, 152) 0%, rgb(241, 173, 241) 47%, rgb(186, 234, 171) 85%);
+      transform: rotateZ(-0.408507deg);
+    }
+    .gwd-button-m2hn {
+      left: 5.11%;
+      top: 5.52%;
+      font-weight: bold;
+    }
+    .gwd-input-8say {
+      left: 1.76%;
+      top: 63.54%;
+      width: 98.07%;
+      height: 107.04%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-div-vr3l {
+      width: 98.49%;
+      transform-origin: 50% 50% 0px;
+      height: 39.5%;
+      left: 2.09%;
+      top: 24.03%;
+    }
+    .gwd-div-1in7 {
+      left: -12.4%;
+      width: 112.06%;
+      transform-origin: 50% 50% 0px;
+      top: -7.46%;
+      height: 173.76%;
+    }
+    .gwd-div-9otg {
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-button-r02i {
+      width: 168px;
+      height: 37px;
+      transform-origin: 50% 50% 0px;
+      left: 381px;
+      top: 224px;
+    }
+    .gwd-button-1qy7 {
+      left: 450px;
+    }
+    .gwd-div-1xnr {
+      width: 99.25%;
+      height: 183.56%;
+      transform-origin: 50% 50% 0px;
+      left: 0.34%;
+      top: -7.46%;
+    }
+    .gwd-p-187e {
+      transform-origin: 50% 50% 0px;
+      width: 51.16%;
+      height: 25.57%;
+      left: 24.2%;
+      top: 36.16%;
+    }
+    .gwd-p-16tc {
+      font-size: 15px;
+      transform-origin: 50% 50% 0px;
+      left: 5.19%;
+      top: 5.83%;
+      width: 92.38%;
+      height: 85.82%;
+      text-align: center;
+      line-height: 20px;
+    }
+    .gwd-div-3hs8 {
+      transform-origin: 50% 50% 0px;
+      top: 28.57%;
+      width: 32.77%;
+      left: 14.29%;
+      height: 40.83%;
+      transform: rotateZ(0.366754deg);
+    }
+    .gwd-div-d7c7 {
+      left: 55.1%;
+      top: 28.57%;
+      width: 32.77%;
+      height: 41.01%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-h3-2onu {
+      left: 1.36%;
+      top: 26.05%;
+      width: 14.82%;
+      height: 10.21%;
+      transform-origin: 59px 15.0173px 0px;
+    }
+    .gwd-input-b5s2 {
+      left: 1.36%;
+      top: 53.87%;
+      width: 14.82%;
+      height: 10.21%;
+      transform-origin: 63.9167px 18.7586px 0px;
+    }
+    .gwd-input-1116 {
+      left: 29.22%;
+      top: 53.87%;
+      width: 14.74%;
+      height: 9.86%;
+      transform-origin: 50% 50% 0px;
+      transform: rotateZ(0.00442082deg);
+    }
+    .gwd-h3-1a5a {
+      left: 29.47%;
+      top: 26.05%;
+      width: 14.48%;
+      height: 9.86%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-h3-10d6 {
+      left: 47.62%;
+      top: 26.76%;
+      width: 14.48%;
+      transform-origin: 50% 50% 0px;
+      height: 9.51%;
+    }
+    .gwd-input-9mzh {
+      left: 65.85%;
+      top: 39.79%;
+      width: 7.92%;
+      transform-origin: 50% 50% 0px;
+      height: 10.56%;
+    }
+    .gwd-input-ykwm {
+      left: 18.66%;
+      top: 39.43%;
+      width: 7.92%;
+      height: 10.56%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-input-1jjj {
+      left: 78.11%;
+      top: 54.57%;
+      width: 14.48%;
+      transform-origin: 50% 50% 0px;
+      height: 10.56%;
+    }
+    .gwd-h3-snoy {
+      left: 78.11%;
+      top: 26.05%;
+      width: 14.48%;
+      transform-origin: 50% 50% 0px;
+      height: 10.56%;
+    }
+    .gwd-input-9wck {
+      left: 47.62%;
+      top: 53.87%;
+      transform-origin: 50% 50% 0px;
+      height: 9.86%;
+      width: 14.48%;
+    }
+    .gwd-line-z2zp {
+      left: 45.23%;
+      top: 0%;
+      width: 10px;
+      transform-origin: 50% 50% 0px;
+      height: 182px;
+    }
+    .gwd-div-1vk2 {
+      left: 1.76%;
+    }
+    .gwd-span-r9xr {
+      top: 15px;
+      text-align: center;
+      transform-origin: 50% 50% 0px;
+      height: 40px;
+      left: 0px;
+    }
+  </style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-1in7">
+    <p class="gwd-p-1peu"></p>
+  </div>
+  <div class="gwd-input-8say" id="expense" data-gwd-guide=""><span class="gwd-span-1vil">ATM</span>
+    <button class="gwd-button-zogw gwd-button-r02i" id="add_udhariss" data-gwd-name="ADD UDHARI" onclick="add_udhari(event)">ADD UDHARI</button>
+    <button class="gwd-button-zogw gwd-button-1qy7" id="remove_udhari" data-gwd-name="ADD UDHARI_1" onclick="removeUdhari()">REMOVE</button>
+  </div>
+  <div class="gwd-div-1xnr" id="downloadDone">
+    <button class="gwd-button-1nuf gwd-new-class-t2pr" id="refresh" data-gwd-name="REFRESH" onclick="refreshme()">REFRESH</button>
+  </div>
+  <div class="gwd-div-e9a6" id="selector"></div>
+  <svg id="gwd-svg-definitions" style="pointer-events: none;">
+    <defs>
+      <linearGradient gradientUnits="userSpaceOnUse" x2="10" id="grad804o">
+        <stop stop-color="rgba(134,147,225,1)" offset="0%"></stop>
+        <stop stop-color="rgba(0,0,0,1)" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient gradientUnits="userSpaceOnUse" x2="9.052" id="grads8j7">
+        <stop stop-color="rgba(74,188,218,1)" offset="0%"></stop>
+        <stop stop-color="rgba(10,59,72,1)" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+  <button class="gwd-button-m2hn" id="Check" data-gwd-name="CHECK FILE" data-toggle="animatedModal10" onclick="check()">CHECK FILE</button>
+  <div class="gwd-div-fy11" id="uploader">
+    <label for="file-input" class="gwd-label-o9c3">
+      <img src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" height="50" width="80">
+      <h1 class="gwd-span-r9xr" style="margin-left: 10px; color: gold; font-size: 15px; display: block; width: 180px;">UPLOAD PRE FILE</h1></label>
+    <input id="file-input" type="file" onchange="uploadPrev(this)">
+  </div>
+  <script>
+    function uploadPrev(el) {
+      /*       var prev = document.getElementById('prevInfo') */
+      var prda_2 = document.getElementById("parda_2")
+        /*       prev.style.transition = "1s all"
+              prev.style.visibility = "visible"
+              prev.style.height = "600px" */
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+        console.log(workbook);
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+          console.log(rowObject);
+
+        });
+        prda_2.style.opacity = "0.0"
+        prda_2.style['pointer-events'] = "none"
+        var msp1 = document.getElementById("msN1")
+        var msp2 = document.getElementById("msN2")
+        var hsdp1 = document.getElementById("hsdN1")
+        var hsdp2 = document.getElementById("hsdN2")
+        console.log(rowObject[1].msCn1)
+        msp1.value = rowObject[1].msCn1
+        msp2.value = rowObject[1].msCn2
+        hsdp1.value = rowObject[1].hsdCn1
+        hsdp2.value = rowObject[1].hsdCn2
+          //bari=https://script.google.com/macros/s/AKfycbz18fBnjU2GL3swdL33RfiF9WqUudWLfBqivGtA_e9RV97568ERpGSNTDx3iqh7f8KBnQ/exec
+        const readUrl = "https://script.google.com/macros/s/AKfycbwhfSen6ThRBmTv873iSnhxc3Ygy4wAYimSsuzmYjd9Bhk_joGxqTmuQgFgky4MwpzK/exec"
+        fetch(readUrl, {
+            method: 'GET'
+          })
+          .then(response => response.text()).then(function(el) {
+            var ob = JSON.parse(el)
+            console.log(ob)
+            namelist = ob
+            var t = []
+            for (var te of namelist) {
+              t.push(te[0])
+            }
+            namelist = t
+            namelist = [...new Set(namelist)]
+            console.log(Array.from(t))
+            horsey(document.getElementById('nomes_0'), {
+              source: [{
+                list: namelist
+              }],
+
+              renderItem: function(li, suggestion) {
+                var image = '<img class="autofruit" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Basic_red_dot.png" height="10" width="10" /> ';
+                li.style.padding = "10px"
+                li.innerHTML = image + suggestion;
+              }
+            });
+          })
+          .catch(error => console.error('Error!', error.message))
+
+      }
+
+    }
+  </script>
+  <script>
+    function read(el) {
+      console.log("merebhai")
+
+    }
+  </script>
+  <style>
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+      table-layout: auto;
+      width: 100%;
+    }
+    th, td {
+      text-align: center;
+      background: transparent;
+    }
+    .container {
+      display: flex;
+    }
+    .text-area {
+      width: 100px;
+      height: 40px;
+      transform: scale(0.8, 0.8);
+      color: gray;
+    }
+    #Download, #CheckBefore {
+      cursor: pointer;
+    }
+    tr {
+      background: transparent;
+    }
+    .udhar {
+      overflow: hidden;
+    }
+    #add_udhariss {
+      height: 10%;
+      width: 15%;
+      position: relative;
+      left: 35%;
+      top: 36%;
+      font-size: 12px;
+    }
+    #remove_udhari {
+      height: 10%;
+      width: 15%;
+      position: relative;
+      left: 45%;
+      font-size: 12px;
+      top: 36%;
+    }
+  </style>
+  <script>
+    var wb
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const EXCEL_EXTENSION = '.xlsx';
+
+
+    <!-- todays EXPENSES   -->
+
+    function expense() {
+
+    }
+    expense()
+  </script>
+  <script>
+    /*   SheetJS   */
+    var namelist = []
+
+    function start() {
+      var prda = document.getElementById("parda")
+        /*  Previous reading      */
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+
+      /*    OIL RATES N QUANTITY   */
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var readingList = [msp1, msp2, hsdp1, hsdp2, msc1, msc2, hsdc1, hsdc2, msRate, hsdRate, oil_quantity, oil_rate]
+      var trueCounter = 1
+      for (var r of readingList) {
+        console.log(r.value.length + "----" + isNaN(r.value))
+        if (r.value.length != 0 && isNaN(r.value) == false) {
+          trueCounter += 1
+        }
+
+        console.log(trueCounter)
+      }
+      if (trueCounter == 13) {
+        prda.style.opacity = "0.0"
+        prda.style['pointer-events'] = "none"
+      }
+
+
+
+
+
+    }
+    var readingList
+    var udhari_name = []
+    var udhari_amnt = []
+    var udhari_date = []
+    var udhari_status = []
+    var sheet = []
+    var sheetstr
+  </script>
+  <script type="text/javascript" gwd-events="handlers" async="true">
+    var addorremove = 'add'
+    var flow = 50
+    var i = 1
+    var nom = 1
+    var add_udhari = function(event) {
+      var del = document.getElementById('remove_udhari')
+      console.log(del)
+      var udha = document.getElementById("udhari_table")
+      console.log(document.getElementById("udhar").rows)
+      udha.style.overflow = "scroll"
+      var tr = document.createElement("TR")
+      tr.classList.add("udhariRows")
+      tr.style.transform = "scale(0.75,0.75)"
+      var td1 = document.createElement("TD")
+      var td2 = document.createElement("TD")
+      var td3 = document.createElement("TD")
+      var td4 = document.createElement("TD")
+      var cont = document.createElement("DIV")
+      cont.classList.add("container")
+      cont.classList.add("name")
+
+      td1.style.background = "transparent"
+      var text1 = document.createElement("INPUT")
+      text1.classList.add("text-area")
+      text1.classList.add("names")
+      text1.id = "nomes_" + nom
+
+      text1.style.width = "100px"
+      tr.style.transform = "translateX(-5px)"
+
+      var text2 = document.createElement("INPUT")
+      text2.classList.add("text-area")
+      text2.style.width = "100px"
+      cont.appendChild(text1)
+      td1.appendChild(cont)
+      var cont2 = document.createElement("DIV")
+      cont2.classList.add("container")
+      cont2.classList.add("amnt")
+      cont2.appendChild(text2)
+      td2.appendChild(cont2)
+      var r1 = document.createElement("INPUT")
+      var r2 = document.createElement("INPUT")
+      r1.type = "radio"
+      r1.name = "select" + i
+      r1.classList.add("Add_money")
+      r2.type = "radio"
+      r2.name = "select" + i
+      i++
+      r2.classList.add("Give_money")
+      td3.appendChild(r1)
+      td4.appendChild(r2)
+      var l1 = document.createElement("LABEL")
+      var sp1 = document.createElement("SPAN")
+      sp1.style.color = "gray"
+      sp1.innerHTML = "JAMA"
+      l1.appendChild(sp1)
+      var l2 = document.createElement("LABEL")
+      var sp2 = document.createElement("SPAN")
+      sp2.style.color = "gray"
+      sp2.innerHTML = "UDHARI"
+      l2.appendChild(sp2)
+      td3.appendChild(l1)
+      td4.appendChild(l2)
+      tr.appendChild(td1)
+      tr.appendChild(td2)
+      tr.appendChild(td3)
+      tr.appendChild(td4)
+      udha.appendChild(tr)
+      udha.style.transition = "1s all"
+
+      if (addorremove == "add") {
+
+        event.target.style.transition = "0.1s all"
+        del.style.transform = "translateY(" + flow + "px)"
+        event.target.style.transform = "translateY(" + flow + "px)"
+        flow += 100
+
+      }
+      console.log(document.querySelector('#nomes_' + nom))
+      horsey(document.getElementById('nomes_' + nom), {
+        source: [{
+          list: namelist
+        }],
+
+        renderItem: function(li, suggestion) {
+          var image = '<img class="autofruit" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Basic_red_dot.png" height="10" width="10" /> ';
+          li.style.padding = "10px"
+          li.innerHTML = image + suggestion;
+        }
+      });
+
+
+      nom++
+    };
+
+    function removeUdhari() {
+      var table = document.getElementById("udhar");
+      var add = document.getElementById('add_udhariss')
+      var del = document.getElementById('remove_udhari')
+      var rowCount = table.rows.length;
+
+
+      if (rowCount == 1) {
+        if (flow == 50) {} else {
+          flow -= 100
+          add.style.transform = "translateY(" + flow + "px)"
+          del.style.transform = "translateY(" + flow + "px)"
+        }
+      } else {
+        table.deleteRow(-1);
+        flow -= 100
+        add.style.transform = "translateY(" + flow + "px)"
+        del.style.transform = "translateY(" + flow + "px)"
+
+
+      }
+    }
+  </script>
+  <script>
+    var cord = 0
+
+    function CheckOrDownloads(el) {
+
+      if (el.id == 'Download') {
+        cord = 1
+
+      } else if (el.id == 'CheckBefore') {
+        cord = 0
+
+      }
+
+    }
+  </script>
+  <div class="gwd-div-1vk2" id="containers">
+    <svg data-gwd-shape="line" preserveAspectRatio="none" viewBox="0 0 9.052 509.418" class="gwd-line-1t5d">
+      <line x1="3" x2="6.052" y1="0.018" y2="509.4"></line>
+    </svg>
+    <svg data-gwd-shape="line" preserveAspectRatio="none" viewBox="0 0 10 182" class="gwd-line-z2zp">
+      <line x1="5" x2="5" y1="0" y2="182"></line>
+    </svg>
+    <h3 class="gwd-span-18j7"><span class="gwd-span-kl8b">MS-petrol</span><br><br><br><br></h3><span class="gwd-span-oyao">HSD-diesel<br><br><br><br></span><span class="gwd-span-1pf9">curr.N1</span><span class="gwd-span-14bh">curr.N2</span><span class="gwd-span-z948">prev.N1</span><span class="gwd-span-1hf8">prev.N2</span><span class="gwd-span-1n8c">curr.N1</span>
+    <span class="gwd-span-1nxt">curr.N2</span><span class="gwd-span-bzv4">prev.N1</span><span class="gwd-span-75dh">prev.N2</span>
+    <input class="gwd-input-b5s2" id="msN1">
+    <input class="gwd-input-1116" id="msN2">
+    <input class="gwd-input-9wck" id="hsdN1">
+    <input class="gwd-input-1jjj" id="hsdN2">
+    <input class="gwd-h3-2onu" id="msCn1">
+    <input class="gwd-h3-1a5a" id="msCn2">
+    <input class="gwd-h3-10d6" id="hsdCn1">
+    <input class="gwd-h3-snoy" id="hsdCn2">
+    <span class="gwd-span-jn38">Rate</span>
+    <input class="gwd-input-ykwm" id="MsRate">
+    <input class="gwd-input-9mzh" id="HsdRate"><span class="gwd-span-xz21">Rate</span>
+    <input class="gwd-input-pge5 gwd-input-ul2j" id="atm">
+    <input class="gwd-input-pge5 gwd-input-1ha2 gwd-input-1ee4 gwd-input-1gt6" id="online">
+    <input class="gwd-input-pge5 gwd-input-1ha2 gwd-input-1hs8 gwd-input-euxm gwd-input-1nok" id="testingMS">
+    <input class="gwd-input-pge5 gwd-input-1ha2 gwd-input-1hs8 gwd-input-nc0o" id="other">
+    <input class="gwd-input-pge5 gwd-input-1ha2 gwd-input-1hs8 gwd-input-euxm gwd-input-p7zo" id="testingHSD">
+    <p class="gwd-p-jkjn gwd-p-fbns"><font color="#020910">OIL SOLD</font><br><br><br><br><br><br>
+    </p>
+    <p class="gwd-p-jkjn gwd-p-mdzj"><span class="gwd-span-1q76">OIL RATES</span><br><br><br><br><br><br>
+    </p>
+    <textarea class="gwd-textarea-1ez6 gwd-textarea-x70o" id="oil_quantity"></textarea>
+    <textarea class="gwd-textarea-1ez6 gwd-textarea-1yks" id="oil_rate"></textarea>
+  </div>
+  <span class="gwd-span-1gd3">OnlinePaymnt</span><span class="gwd-span-vlnk">Others</span><span class="gwd-span-fqz8 gwd-span-l6qa">Testing MS</span>
+  <span class="gwd-span-fqz8 gwd-span-1d5m">Testing HSD</span>
+  <!--   <div id="udhari" class="gwd-div-qvgl">
+    <button class="gwd-button-zogw gwd-button-r02i" id="add_udhariss" data-gwd-name="ADD UDHARI" onclick="add_udhari(event)">ADD UDHARI</button>
+    <button class="gwd-button-zogw gwd-button-1qy7" id="remove_udhari" data-gwd-name="ADD UDHARI_1" onclick="removeUdhari()">REMOVE</button>
+  </div> -->
+  <span class="gwd-span-3r13">NAME</span>
+  <p class="gwd-span-fcez">Amount</p>
+  <div class="gwd-div-mmax gwd-div-v6ms">JAMA</div>
+  <div class="gwd-div-mmax gwd-div-3p42">UDHARI</div>
+  <table class="gwd-table-1rjw udhar" id="udhar">
+    <tbody class="gwd-tbody-n74y" id="udhari_table" style="overflow: scroll; transform: scale(0.8,0.8);">
+      <tr class="udhariRows gwd-tr-1dut">
+        <td class="gwd-td-17j9">
+          <div class="container name gwd-div-1vtm">
+            <input type="text" class="text-area" id="nomes_0">
+          </div>
+        </td>
+        <td>
+          <div class="container amnt">
+            <input type="text" class="text-area">
+          </div>
+        </td>
+        <td class="gwd-td-jfos">
+          <input type="radio" name="select" class="Add_money">
+          <label for="option-1" class="option option-1 gwd-label-1yid">
+            <span style="color: gray;">JAMA</span>
+          </label>
+        </td>
+        <td>
+          <input type="radio" name="select" class="Give_money">
+          <label for="option-2" class="option option-2">
+            <span style="color: gray;">UDHARI</span>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="gwd-button-3g4k" id="apply_reading" data-gwd-name="reading" style="font-size: 18px;" onclick="start()">Start</button>
+  <div class="gwd-div-9otg reveal" id="animatedModal10" style="pointer-events: all; border-radius: 15%; height: 52.21%; overflow: hidden; width: 73.87%; transform: translate3d(-349px, 67px, 0px);" data-reveal="" data-close-on-click="true" data-animation-in="spin-in" data-animation-out="spin-out">
+    <div class="gwd-div-3hs8" id="CheckBefore" onclick="createFile()" onmouseover="CheckOrDownloads(this)">
+      <h4 class="gwd-p-16tc" style="position: relative; cursor: pointer;">CHECK<br>before<br>DOWNLOAD</h4>
+    </div>
+    <button style="display: none;" id="cbd" data-toggle="bigcont">
+      o
+    </button>
+    <div class="gwd-div-d7c7" id="Download" onclick="createFile()" onmouseover="CheckOrDownloads(this)">
+      <h4 class="gwd-p-187e" style="font-size: 17px; position: relative; cursor: pointer;">DOWNLOAD
+        
+      </h4>
+    </div>
+    <button class="close-button" id="oip" data-close="" aria-label="Close reveal" style="transform: scale(1.5,1.5) translateY(-50px) translateX(0px);" type="button">
+      <span aria-hidden="true" style="color: lightyellow; font-size: 50px;">×</span>
+    </button>
+  </div>
+  <script>
+    function refreshme() {
+      window.location.reload(true)
+    }
+    var dateObj = ''
+
+    function createFile() {
+      if (udhari_name.length != 0) {
+        udhari_name = []
+        udhari_amnt = []
+        udhari_date = []
+        udhari_status = []
+      }
+      var trueCounter = 1
+      var other = document.getElementById("other")
+      var online = document.getElementById("online")
+      var atm = document.getElementById("atm")
+      var testingMS = document.getElementById("testingMS")
+      var testingHSD = document.getElementById("testingHSD")
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+      console.log(msp1.value == "")
+      if (msp1.value != "" && msp2.value != "" && hsdp1.value != "" && hsdp2.value != "" && msc1.value != "" && msc2.value != "" && hsdc1.value != "" && hsdc2.value != "" && msRate.value != "" && hsdRate.value != "" && oil_quantity.value != "" && oil_rate.value != "" && atm.value != "" && testingMS.value != "" && testingHSD.value != "" && online.value != "" && other.value != "") {
+        var prev = {
+          "msN1": msp1.value,
+          "msN2": msp2.value,
+          "hsdN1": hsdp1.value,
+          "hsdN2": hsdp2.value
+
+        }
+        var curr = {
+          "msCn1": msc1.value,
+          "msCn2": msc2.value,
+          "hsdCn1": hsdc1.value,
+          "hsdCn2": hsdc2.value
+        }
+        var rate = {
+          "MsRate": msRate.value,
+          "HsdRate": hsdRate.value,
+          "oilquantity": oil_quantity.value,
+          "oilrate": oil_rate.value
+
+        }
+        var paymentNother = {
+          "ATM": atm.value,
+          "TESTINGMS": testingMS.value,
+          "TESTINGHSD": testingHSD.value,
+          "ONLINE": online.value,
+          "OTHERS": other.value
+        }
+
+        var udharis = Array.from(document.getElementsByClassName("udhariRows"))
+        readingList = [other, online, atm, testingMS, testingHSD]
+        console.log(udharis)
+        var check = 0
+        var dateobj = document.getElementById("date")
+        for (var t of udharis) {
+
+          var td = Array.from(t.childNodes).filter(function(el) {
+            return typeof el.tagName != 'undefined'
+          })
+          console.log(td)
+          for (var d of td) {
+            var data = Array.from(d.childNodes).filter(function(el) {
+              return typeof el.tagName != 'undefined'
+            })
+            console.log(data)
+
+            if (data[0].classList[1] == 'name') {
+              var p = Array.from(data[0].childNodes).filter(function(el) {
+                return typeof el.tagName != 'undefined'
+              })
+              console.log("Name:" + p[0].value)
+              udhari_name.push(p[0].value)
+
+            }
+            if (data[0].classList[1] == 'amnt') {
+              var p2 = Array.from(data[0].childNodes).filter(function(el) {
+                return typeof el.tagName != 'undefined'
+              })
+              udhari_amnt.push(p2[0].value)
+            }
+            if (data[0].type == 'radio' && data[0].classList[0] == 'Add_money') {
+              console.log(data[0].name + "---Radio 1")
+              console.log(data[0].checked)
+              if (data[0].checked == true) {
+
+                console.log(data[0] + "^^^^")
+                udhari_name[check] = udhari_name[check] + "*add"
+                udhari_status.push('JAMA-KIYE')
+                udhari_date.push(dateobj.value)
+                break
+              }
+            } else if (data[0].type == 'radio' && data[0].classList[0] == 'Give_money') {
+              console.log(data[0].name + "---Radio 2")
+              if (data[0].checked == true) {
+                udhari_status.push('UDHARI')
+                udhari_date.push(dateobj.value)
+                console.log(data[0] + "####")
+                udhari_name[check] = udhari_name[check] + "*minus"
+                break
+              }
+            }
+          }
+          check += 1
+        }
+        console.log(udhari_name)
+        console.log(udhari_amnt)
+        console.log(udhari_status)
+        console.log(udhari_date)
+        for (var r of readingList) {
+          console.log(r.value.length + "----" + isNaN(r.value))
+          if (r.value.length != 0 && isNaN(r.value) == false && r.value != '') {
+
+          } else {
+            //   alert("Do Not Keep It Empty")
+          }
+
+          console.log(trueCounter)
+        }
+        var udharis = {}
+
+        sheet = [prev, curr, rate, paymentNother]
+        for (var t1 = 0; t1 < udhari_name.length; t1++) {
+          sheet.push({
+            "UDHARI": udhari_name[t1],
+            "AMNT": udhari_amnt[t1],
+            "DATE": udhari_date[t1],
+            "STATUS": udhari_status[t1]
+
+          })
+        }
+
+
+
+        sheetstr = JSON.stringify(sheet)
+        console.log(sheetstr)
+
+        if (cord == 0) {
+          checks()
+        } else if (cord == 1) {
+          function downloadAsExcel() {
+            console.log(dateObj)
+            var workbok = XLSX.utils.json_to_sheet(sheet);
+            wb = {
+              Sheets: {
+                'data': workbok
+              },
+              SheetNames: ['data']
+            }
+
+            const buffer = XLSX.write(wb, {
+              bookType: 'xlsx',
+              type: "array"
+            })
+            saveAs(new Blob([buffer], {
+              type: EXCEL_TYPE
+            }), dateObj.toString() + "-Machwai")
+          }
+          downloadAsExcel()
+          var dd = document.getElementById("downloadDone")
+          dd.style.transition = "1s all"
+          dd.style.opacity = "1.0"
+          dd.style['pointer-events'] = "all"
+        }
+      } else {
+        alert("SOME INPUTS ARE EMPTY")
+      }
+
+    }
+
+    function checks() {
+      var atm = document.getElementById("atm_check")
+      var online = document.getElementById("online_check")
+      var other = document.getElementById("other_check")
+      var testingMS = document.getElementById("testingMS_check")
+      var testingHSD = document.getElementById("testingHSD_check")
+
+      var expenseTotal = parseFloat(document.getElementById("atm").value) + parseFloat(document.getElementById("online").value) + parseFloat(document.getElementById("other").value) + parseFloat(document.getElementById("testingMS").value) + parseFloat(document.getElementById("testingHSD").value)
+      document.getElementById("totalexpenses").innerHTML = expenseTotal
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+
+      other.innerHTML = document.getElementById("other").value
+      online.innerHTML = document.getElementById("online").value
+      atm.innerHTML = document.getElementById("atm").value
+      testingMS.innerHTML = document.getElementById("testingMS").value
+      testingHSD.innerHTML = document.getElementById("testingHSD").value
+
+      /*   ERROR IS HERE     */
+      /*     udhariCont    */
+      var udha = document.getElementById("udhariCont")
+      console.log(udha)
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      document.getElementById('oilsale').innerHTML = parseFloat(oil_quantity.value) * parseFloat(oil_rate.value)
+      document.getElementById("prev1").value = msc1.value
+      document.getElementById("prev2").value = msc2.value
+      document.getElementById("curr1").value = msp1.value
+      document.getElementById("curr2").value = msp2.value
+      document.getElementById("prevH1").value = hsdc1.value
+      document.getElementById("prevH2").value = hsdc2.value
+      document.getElementById("currH1").value = hsdp1.value
+      document.getElementById("currH2").value = hsdp2.value
+      document.getElementById("MSRATE").value = msRate.value
+      document.getElementById("HSDRATE").value = hsdRate.value
+      var msSum = (parseFloat(msc1.value) - parseFloat(msp1.value)) + (parseFloat(msc2.value) - parseFloat(msp2.value))
+      document.getElementById("MSREADING").value = msSum
+      var hsdSum = (parseFloat(hsdc1.value) - parseFloat(hsdp1.value)) + (parseFloat(hsdc2.value) - parseFloat(hsdp2.value))
+      document.getElementById("HSDREADING").value = hsdSum
+
+      var Total = (msSum * parseFloat(msRate.value)) + (hsdSum * parseFloat(hsdRate.value)) + (parseFloat(oil_quantity.value) * parseFloat(oil_rate.value))
+      var greeny = document.getElementById("greenboard")
+      greeny.style['font-size'] = '15px'
+      greeny.innerHTML = "<h9>MS today : " + msSum + " x " + parseFloat(msRate.value) + ' = ' + (msSum * parseFloat(msRate.value)) + "</br> HSD today : " + hsdSum + ' x ' + parseFloat(hsdRate.value) + " = " + (parseFloat(hsdRate.value) * hsdSum) + "<br> Oil sales :" + parseFloat(oil_quantity.value) + ' x ' + parseFloat(oil_rate.value) + " = " + (parseFloat(oil_quantity.value) * parseFloat(oil_rate.value)) + "</br>" + "Total : " + Total + "</h9>"
+      var FinalTotal = Total - expenseTotal
+      document.getElementById("totalexpenses").innerHTML = expenseTotal
+      document.getElementById("after_expense").innerHTML = FinalTotal
+      var ooo = Array.from(udha.childNodes).filter(function(el) {
+        return typeof el.tagName != 'undefined'
+      })
+      console.log(ooo)
+      if (ooo.length != 1) {
+        console.log("DELETE")
+        var child = udha.lastElementChild;
+        while (child) {
+          udha.removeChild(child);
+          child = udha.lastElementChild;
+        }
+      }
+
+      var udhariTotal = 0
+      var udhari_real = 0
+      var cred = 0
+      for (var y = 4; y < sheet.length; y++) {
+        var tr = document.createElement("TR")
+        tr.classList.add("udhariRowscheck")
+        var td1 = document.createElement("TD")
+        var td2 = document.createElement("TD")
+        var tbody = document.createElement("TBODY")
+        var cont = document.createElement("DIV")
+        var cont2 = document.createElement("DIV")
+
+        cont.classList.add("container")
+        cont.classList.add("name")
+        cont2.classList.add("container")
+        cont2.classList.add("amnt")
+        var names = document.createElement("H3")
+        var am = document.createElement("H3")
+        var khel = sheet[y]
+        console.log("Great khel")
+        console.log(khel)
+        names.innerHTML = khel['UDHARI'].split("*")[0]
+        am.innerHTML = khel['AMNT']
+        cont2.appendChild(am)
+        cont.appendChild(names)
+        td1.appendChild(cont)
+
+        td2.appendChild(cont2)
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        if (khel['UDHARI'].split("*")[1] == 'minus') {
+          FinalTotal -= parseFloat(khel['AMNT'])
+          td1.style['background'] = "Crimson"
+          td2.style['background'] = "Crimson"
+          td1.style.transform = "scale(0.7)"
+          td2.style.transform = "scale(0.7)"
+          names.style.color = "lightyellow"
+          am.style.color = "lightyellow"
+          udhariTotal += parseFloat(khel['AMNT'])
+        } else if (khel['UDHARI'].split("*")[1] == 'add') {
+          FinalTotal += parseFloat(khel['AMNT'])
+          cred += parseFloat(khel['AMNT'])
+          td1.style['background'] = "#ADFF2F"
+          td2.style['background'] = "#ADFF2F"
+          td1.style.transform = "scale(0.7)"
+          td2.style.transform = "scale(0.7)"
+        }
+        tr.style.height = "20px"
+        tr.style.transform = "scale(0.7,0.5)"
+        tbody.appendChild(tr)
+        udha.appendChild(tbody)
+
+
+      }
+      document.getElementById("soft_total").innerHTML = Total - (udhari_real + expenseTotal)
+      document.getElementById("after_udhari").innerHTML = Total - udhariTotal
+      document.getElementById("FinalTotal").innerHTML = FinalTotal
+      document.getElementById("oip2").click()
+      document.getElementById("cbd").click()
+
+    }
+  </script>
+  <!--  BIG CONT  -->
+  <div class="gwd-div-1wub full reveal" id="bigcont" data-reveal="">
+    <div class="gwd-button-1l0b">
+      <input class="gwd-input-vtyl gwd-input-fb3f" id="prev2" disabled="">
+      <input class="gwd-input-vtyl gwd-input-v4fs" id="prevH2" disabled="">
+      <input class="gwd-input-1vqu" id="curr2" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1clp" disabled="" id="MSREADING">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-4jd0" id="prev1" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-154p" id="prevH1" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-1xzm gwd-input-ue6i" id="curr1" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-qo5c" id="currH1" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-10q3" id="currH2" disabled="">
+      <input class="gwd-input-10eh gwd-input-urya gwd-input-10wr" disabled="" id="HSDREADING">
+      <input class="gwd-input-1b5o" id="MSRATE" disabled="">
+      <input class="gwd-input-a2sh" disabled="" id="HSDRATE">
+      <div class="gwd-div-1p0u"></div>
+      <div class="gwd-div-1jer" id="greenboard"></div>
+      <table class="gwd-table-1oyt gwd-table-1ulb" id="expenseCont"></table>
+      <table class="gwd-table-1oyt gwd-table-qu6m" id="udhariCont"></table>
+      <p class="gwd-p-1voy" style="font-size: 18px;">MS<br><br><br>
+      </p>
+      <p class="gwd-p-1rjc">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;HSD</p>
+      <div class="gwd-div-w8pv">
+        <table class="gwd-table-1mqd" style="transform: translate3d(-70px, -28px, 0px) scale3d(0.779113, 0.715004, 1);">
+          <tbody class="gwd-tbody-r753" id="eXp">
+            <tr class="expRows">
+              <td>
+                <div class="container name">
+                  <h8>ATM</h8>
+                </div>
+              </td>
+              <td>
+                <div class="container amnt">
+                  <h8 id="atm_check">0000 </h8>
+                </div>
+              </td>
+            </tr>
+            <tr class="expRows">
+              <td>
+                <div class="container name">
+                  <h8>OnlinePay</h8>
+                </div>
+              </td>
+              <td>
+                <div class="container amnt">
+                  <h8 id="online_check">0000 </h8>
+                </div>
+              </td>
+            </tr>
+            <tr class="expRows">
+              <td>
+                <div class="container name">
+                  <h8>Others</h8>
+                </div>
+              </td>
+              <td>
+                <div class="container amnt">
+                  <h8 id="other_check">0000 </h8>
+                </div>
+              </td>
+            </tr>
+            <tr class="expRows">
+              <td>
+                <div class="container name">
+                  <h8>TestingMS</h8>
+                </div>
+              </td>
+              <td>
+                <div class="container amnt">
+                  <h8 id="testingMS_check">00000 </h8>
+                </div>
+              </td>
+            </tr>
+            <tr class="expRows">
+              <td>
+                <div class="container name">
+                  <h8>TestingHSD</h8>
+                </div>
+              </td>
+              <td>
+                <div class="container amnt">
+                  <h8 id="testingHSD_check">0000</h8>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwd-p-36mt"><span class="gwd-span-1r34">EXPENSES</span><br>
+      </p>
+      <p class="gwd-p-1wbp">UDHARI'S</p>
+      <p class="gwd-p-1kcu">OILSALE</p>
+      <p class="gwd-p-1arc">
+      </p>
+      <div class="gwd-div-1oa9" id="oilsale"></div>
+      <div class="gwd-div-1ibi" id="output">
+        <p class="gwd-p-lz96" id="totalexpenses"></p>
+        <p class="gwd-p-1kj3" id="FinalTotal"></p>
+        <p class="gwd-p-b47d">TOTAL EXPENSE</p>
+        <p class="gwd-p-i93q gwd-p-39nv">ToTal After Udhari<br><br>
+        </p>
+        <p class="gwd-p-i93q gwd-p-1r9t">ToTal After Expense<br><br>
+        </p>
+        <div class="gwd-div-12d9 gwd-div-17h4" id="after_udhari"></div>
+        <div class="gwd-div-12d9 gwd-div-1ykx" id="after_expense"></div>
+        <input class="gwd-input-10yf" id="soft_total" value="GRAND TOTAL">
+      </div>
+    </div>
+    <button class="close-button gwd-button-fr4p" id="oip2" data-close="" aria-label="Close reveal" style="color: white; display: block; transform: translate3d(-268px, 8px, 0px) scale3d(1.98884, 1.12392, 1);" type="button">X</button>
+  </div>
+  <div class="gwd-div-vr3l" id="parda_2"></div>
+  <input class="gwd-input-2h2f form-control date" id="date" type="text">
+  <p class="gwd-p-g7dn">DATE</p>
+  <script>
+    var date = new Date()
+    const myDatePicker = MCDatepicker.create({
+      el: '#date',
+      selectedDate: date
+    })
+    myDatePicker.onSelect(function(datee, formatedDate) {
+      console.log(datee.toLocaleString('en-GB').split(',')[0])
+      var udhariyan = document.getElementById("udhar")
+      udhariyan.style['pointer-events'] = 'all'
+      udhariyan.style.opacity = '1.0'
+      udhariyan.style.cursor = 'alias'
+
+      var addud = document.getElementById("add_udhariss")
+      addud.style['pointer-events'] = 'all'
+      addud.style.opacity = '1.0'
+      addud.style.cursor = 'alias'
+
+      var removud = document.getElementById('remove_udhari')
+      removud.style['pointer-events'] = 'all'
+      removud.style.opacity = '1.0'
+      removud.style.cursor = 'alias'
+
+      dateObj = datee.toLocaleString('en-GB').split(',')[0]
+    })
+    $(document).foundation()
+  </script>
+  <div class="gwd-div-1y80" id="parda"></div>
+</body>
+
+</html>
