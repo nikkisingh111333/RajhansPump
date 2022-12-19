@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta charset="utf-8">
+  <title>accountCalculator</title>
+  <meta name="generator" content="Google Web Designer 14.0.4.1108">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
+  <script src="https://unpkg.com/read-excel-file@4.0.2/bundle/read-excel-file.min.js"></script>
+  <script src="https://jsuites.net/v4/jsuites.js"></script>
+  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
+  <script integrity="sha512-JDgkxcdf7oYN/lR29Dzzw17b5Rv42eJ4Vj8aysjr+YpqwaURHrcR1/wGmyIBlsXK55Wsq3TW9tWoDzIou2q3qw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.5/vivus.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script integrity="sha512-W8V8RYNShyt84VKeFKgazx4KHzAWPflpH/GrRwEoDHRSdfVbHkyzE2xaYaEXmLsphgJTb2jr+UkCWp4PkynF2w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.min.js"></script>
+  <script integrity="sha512-T6fjpdTSkxwH7loJyfnVNyhJ7beJcXISAKW0f1Oze8yIF98JQnyxZflkZTFv3UYjnQq8z527wrHbLcwdDTyw3g==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.magellan.min.js"></script>
+  <script integrity="sha512-1jPYNTA2w4UFpGxDsTf8Jllbw5tpaMZIX0Gz7XzXQvNHX2DPfuNMiIJ/mtfg9Q1NLsL7Sag9ETlPTFUdbpb+cw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.smoothScroll.min.js"></script>
+  <script integrity="sha512-q0TFQvtnmcGPU5aA+70Vz0PjvRts1UrnytwLcU8glYKdlGS8zIcCSkHxbAL304U8biAvQQnGa8/G7kNw+A54+w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.triggers.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.css" integrity="sha512-IqEa1KBwTHGVlNBIkEabXbnF4iBG0cszlxjkJT8o+BjCE2NDtGVBd/sxkhttTZAGaL2JbLaLSBJvlWlmSDWbcw==" crossorigin="anonymous">
+  <script integrity="sha512-jAdSZ4O7LeDt+iCgVQ2/hMFtF1qyUGWMe/+KEIfhC09n+Tv5IbcTwBxLwU5XQnoo5v6WpEnktk5tFpju1xfSWA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.responsiveAccordionTabs.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script integrity="sha512-1Os/JhgaZ2EpT5JNZ2ovG3QcTtFZt+oiniVLRAdLKsm9oIgVJg8JHzcu2McMdAkFpMgpqLN0saS+SAgv1JZfUQ==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.toggler.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css" integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  <style type="text/css" id="gwd-text-style">p {
+    margin: 0px;
+}
+h1 {
+    margin: 0px;
+}
+h2 {
+    margin: 0px;
+}
+h3 {
+    margin: 0px;
+}</style>
+  <style type="text/css">html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+body {
+    background-color: transparent;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+    -moz-perspective: 1400px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+.gwd-div-1in7 {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background: -webkit-linear-gradient(left, rgb(69, 220, 205) 0%, rgb(0, 0, 0) 100%);
+    background: -moz-linear-gradient(left, rgb(69, 220, 205) 0%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(to right, rgb(69, 220, 205) 0%, rgb(0, 0, 0) 100%);
+    top: 0px;
+    width: 1943px;
+    height: 1249px;
+    left: -321px;
+}
+.gwd-div-e9a6 {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    border-style: ridge;
+    background: -webkit-linear-gradient(left, rgb(220, 69, 182) 0%, rgb(0, 0, 0) 47%, rgb(19, 213, 220) 85%);
+    background: -moz-linear-gradient(left, rgb(220, 69, 182) 0%, rgb(0, 0, 0) 47%, rgb(19, 213, 220) 85%);
+    background: linear-gradient(to right, rgb(220, 69, 182) 0%, rgb(0, 0, 0) 47%, rgb(19, 213, 220) 85%);
+    top: 13px;
+    height: 128px;
+    border-radius: 35px;
+    left: 17px;
+    width: 935px;
+}
+.gwd-div-140o {
+    position: absolute;
+    left: 11px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background: -webkit-linear-gradient(left, rgb(17, 77, 71) 0%, rgb(0, 0, 0) 100%);
+    background: -moz-linear-gradient(left, rgb(17, 77, 71) 0%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(to right, rgb(17, 77, 71) 0%, rgb(0, 0, 0) 100%);
+    border-width: 10px;
+    border-style: ridge;
+    top: 174px;
+    width: 769px;
+    height: 677px;
+}
+.gwd-div-1cvy {
+    position: absolute;
+    left: 56px;
+    top: 211px;
+    width: 234px;
+    height: 71px;
+    background-color: rgb(153, 31, 31);
+}
+.gwd-div-fy11 {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background: -webkit-linear-gradient(left, rgb(30, 61, 109) 0%, rgb(177, 204, 243) 100%);
+    background: -moz-linear-gradient(left, rgb(30, 61, 109) 0%, rgb(177, 204, 243) 100%);
+    background: linear-gradient(to right, rgb(30, 61, 109) 0%, rgb(177, 204, 243) 100%);
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 20px;
+    top: 32px;
+    left: 403px;
+    height: 64px;
+    width: 442px;
+}
+#file-input {
+    display: none;
+}
+.gwd-input-5wyq {
+    position: absolute;
+    left: 290px;
+    height: 21px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 212px;
+    top: 540px;
+}
+.gwd-input-1v9c {
+    left: 484px;
+    width: 177px;
+}
+.gwd-input-x9xl {
+    width: 155px;
+}
+.gwd-input-1qp9 {
+    top: 582px;
+}
+.gwd-input-llta {
+    top: 582px;
+}
+.gwd-button-1l0b {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background-image: -webkit-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: -moz-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    left: 17px;
+    top: 141px;
+    height: 957px;
+    width: 935px;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 20px;
+}
+.gwd-label-o9c3 {
+    top: 67px;
+    left: -218px;
+}
+.gwd-span-r9xr {
+    font-size: 25px;
+}
+.gwd-button-1w8k {
+    position: absolute;
+    background-image: -webkit-radial-gradient(circle farthest-corner, rgb(234, 87, 164) 0%, rgb(195, 20, 61) 47%, rgb(220, 19, 69) 85%);
+    background-image: -moz-radial-gradient(circle farthest-corner, rgb(234, 87, 164) 0%, rgb(195, 20, 61) 47%, rgb(220, 19, 69) 85%);
+    background-image: radial-gradient(circle farthest-corner, rgb(234, 87, 164) 0%, rgb(195, 20, 61) 47%, rgb(220, 19, 69) 85%);
+    font-size: 30px;
+    color: rgb(255, 207, 27);
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    border-style: double;
+    border-radius: 50%;
+    left: 30px;
+    top: 40px;
+    width: 302px;
+    height: 76px;
+}
+.gwd-input-10eh {
+    position: absolute;
+    top: 32px;
+    width: 185px;
+    height: 27px;
+    color: rgb(213, 132, 132);
+    background-image: none;
+    background-color: rgb(227, 216, 216);
+    font-size: 24px;
+    left: 863px;
+}
+.gwd-input-urya {
+    top: 141px;
+}
+.gwd-input-10wr {
+    left: 734px;
+    top: 272px;
+}
+.gwd-input-1ber {
+    top: 78px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 41px;
+    height: 27px;
+    color: rgb(32, 16, 16);
+    background-color: rgb(181, 162, 162);
+}
+.gwd-input-1go6 {
+    top: 114px;
+    height: 18px;
+    width: 135px;
+    transform-origin: 84.2927px 28.6667px 0px;
+    -webkit-transform-origin: 84.2927px 28.6667px 0px;
+    -moz-transform-origin: 84.2927px 28.6667px 0px;
+    background-color: rgb(183, 209, 171);
+}
+.gwd-input-19gj {
+    height: 18px;
+    width: 135px;
+    top: 78px;
+    background-color: rgb(225, 123, 123);
+}
+.gwd-input-vtyl {
+    position: absolute;
+    height: 18px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 165px;
+    width: 143px;
+    background-image: none;
+    top: 63px;
+    background-color: rgb(239, 151, 151);
+}
+.gwd-input-1vqu {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background-image: none;
+    background-color: rgb(180, 241, 179);
+    height: 18px;
+    top: 99px;
+    width: 211px;
+    left: 234px;
+}
+.gwd-input-154p {
+    width: 209px;
+    left: 498px;
+    top: 207px;
+}
+.gwd-input-v4fs {
+    height: 18px;
+    width: 211px;
+    left: 711px;
+}
+.gwd-input-uiaq {
+    left: 1173px;
+}
+.gwd-input-10q3 {
+    top: 240px;
+    width: 209px;
+    transform-origin: 130.855px 28.6667px 0px;
+    -webkit-transform-origin: 130.855px 28.6667px 0px;
+    -moz-transform-origin: 130.855px 28.6667px 0px;
+    left: 732px;
+}
+.gwd-input-qo5c {
+    width: 209px;
+    transform-origin: 130.497px 28.6667px 0px;
+    -webkit-transform-origin: 130.497px 28.6667px 0px;
+    -moz-transform-origin: 130.497px 28.6667px 0px;
+    left: 498px;
+    top: 240px;
+}
+.gwd-input-1clp {
+    top: 273px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 183px;
+    left: 48px;
+}
+.gwd-input-1b5o {
+    position: absolute;
+    width: 85px;
+    background-image: none;
+    background-color: rgb(160, 241, 241);
+    height: 41px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 146px;
+    top: 315px;
+}
+.gwd-input-a2sh {
+    position: absolute;
+    width: 85px;
+    background-image: none;
+    background-color: rgb(232, 150, 195);
+    height: 43px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 732px;
+    top: 310px;
+}
+.gwd-div-1p0u {
+    position: absolute;
+    background-image: none;
+    background-color: rgb(198, 206, 195);
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    height: 127px;
+    top: 375px;
+    left: 80px;
+    width: 704px;
+}
+.gwd-div-1jer {
+    position: absolute;
+    background-image: none;
+    background-color: rgb(211, 241, 200);
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    height: 144px;
+    left: 53px;
+    top: 366px;
+    border-radius: 20px;
+    width: 863px;
+}
+.gwd-table-1oyt {
+    position: absolute;
+    left: 863px;
+    top: 363px;
+    width: 244px;
+    background-color: rgb(211, 241, 200);
+    height: 535px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+}
+.gwd-table-qu6m {
+    border-width: 9px;
+    border-image-source: none;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-color: rgb(175, 225, 220);
+    border-style: ridge;
+    border-radius: 20px;
+    left: 453px;
+    width: 463px;
+    top: 527px;
+    height: 552px;
+}
+.gwd-table-1ulb {
+    border-style: ridge;
+    border-width: 9px;
+    border-image-source: none;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-color: rgb(171, 223, 218);
+    left: 55px;
+    border-radius: 20px;
+    top: 527px;
+    width: 398px;
+    height: 552px;
+}
+.gwd-div-1kvi {
+    position: absolute;
+    width: 219px;
+    height: 35.533px;
+    background-image: -webkit-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: -moz-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    top: 141px;
+    left: 103px;
+}
+.gwd-div-e3gk {
+    position: absolute;
+    width: 195px;
+    background-image: -webkit-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: -moz-radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    background-image: radial-gradient(circle farthest-corner, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+    top: 139px;
+    height: 38px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 641px;
+}
+.gwd-p-1voy {
+    position: absolute;
+    left: 908px;
+    top: 13px;
+    width: 189px;
+    height: 32px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    font-size: 20px;
+    font-weight: bold;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-origin: 45.2424px 32px 0px;
+    -webkit-transform-origin: 45.2424px 32px 0px;
+    -moz-transform-origin: 45.2424px 32px 0px;
+    transform: translate3d(-785px, 130px, 0px) rotateZ(0.0970879deg);
+    -webkit-transform: translate3d(-785px, 130px, 0px) rotateZ(0.0970879deg);
+    -moz-transform: translate3d(-785px, 130px, 0px) rotateZ(0.0970879deg);
+}
+.gwd-p-1rjc {
+    position: absolute;
+    height: 32px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    font-weight: bold;
+    font-size: 27px;
+    color: rgb(53, 3, 14);
+    width: 175px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 624px;
+    top: 141px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform: translate3d(27px, 0px, 0px) rotateZ(-0.277812deg);
+    -webkit-transform: translate3d(27px, 0px, 0px) rotateZ(-0.277812deg);
+    -moz-transform: translate3d(27px, 0px, 0px) rotateZ(-0.277812deg);
+}
+.gwd-span-1d8l {
+    font-size: 27px;
+}
+.gwd-div-w8pv {
+    position: absolute;
+    width: 244px;
+    height: 36px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background-image: none;
+    background-color: rgb(123, 225, 215);
+    top: 534px;
+    left: 172px;
+}
+.gwd-p-36mt {
+    position: absolute;
+    width: 219px;
+    height: 35.525px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    left: 184px;
+    top: 532px;
+}
+.gwd-span-ldsy {
+    font-size: 30px;
+}
+.gwd-p-1wbp {
+    position: absolute;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    background-image: none;
+    background-color: rgb(23, 42, 40);
+    color: rgb(219, 230, 241);
+    font-size: 30px;
+    left: 529px;
+    top: 536px;
+    width: 209px;
+    height: 36px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+}
+.gwd-span-12ak {
+    font-size: 30px;
+}
+.gwd-table-1lwi {
+    left: -23px;
+    top: 36px;
+}
+.gwd-span-1moc {
+    font-size: 40px;
+    color: rgb(20, 121, 223);
+}
+.gwd-table-1mqd {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 361px;
+    height: 171px;
+}
+.gwd-input-4jd0 {
+    width: 195px;
+    transform-origin: 97.5px 9px 0px;
+    -webkit-transform-origin: 97.5px 9px 0px;
+    -moz-transform-origin: 97.5px 9px 0px;
+    left: 36px;
+    top: 207px;
+}
+.gwd-p-1kcu {
+    position: absolute;
+    width: 76px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    height: 27px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(232, 222, 150);
+    left: 334px;
+    top: 273px;
+}
+.gwd-span-1j7v {
+    font-size: 30px;
+}
+.gwd-div-1z00 {
+    position: absolute;
+    background-image: none;
+    background-color: rgb(195, 186, 186);
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    top: 925px;
+    height: 61px;
+    left: 55px;
+    width: 398px;
+}
+.gwd-p-lz96 {
+    position: absolute;
+    height: 49px;
+    font-family: "Libre Baskerville";
+    color: rgb(33, 90, 30);
+    font-weight: bold;
+    font-size: 40px;
+    border-width: 3px;
+    border-style: ridge;
+    border-image-source: none;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-color: rgb(228, 141, 90);
+    width: 325px;
+    transform-origin: 162.5px 24.5px 0px;
+    -webkit-transform-origin: 162.5px 24.5px 0px;
+    -moz-transform-origin: 162.5px 24.5px 0px;
+    left: 92px;
+    top: 1012px;
+}
+.gwd-div-1ibi {
+    position: absolute;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background: -webkit-linear-gradient(left, rgb(155, 220, 214) 0%, rgb(231, 239, 238) 100%);
+    background: -moz-linear-gradient(left, rgb(155, 220, 214) 0%, rgb(231, 239, 238) 100%);
+    background: linear-gradient(to right, rgb(155, 220, 214) 0%, rgb(231, 239, 238) 100%);
+    box-shadow: black -10px -10px 20px 6px, black 10px 10px 40px 6px;
+    border-radius: 20px;
+    width: 1052px;
+    height: 163px;
+    top: 1086px;
+    left: -52px;
+}
+.gwd-div-1myz {
+    position: absolute;
+    left: 1194px;
+    width: 230.8px;
+    height: 36px;
+    top: 364px;
+}
+.gwd-p-1kj3 {
+    position: absolute;
+    height: 52px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    background: -webkit-linear-gradient(left, rgb(21, 46, 43) 0%, rgb(0, 0, 0) 100%);
+    background: -moz-linear-gradient(left, rgb(21, 46, 43) 0%, rgb(0, 0, 0) 100%);
+    background: linear-gradient(to right, rgb(21, 46, 43) 0%, rgb(0, 0, 0) 100%);
+    color: rgb(234, 239, 243);
+    font-size: 45px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    top: 1165px;
+    left: 322px;
+    width: 319px;
+}
+.gwd-tbody-r753 {
+    left: 0px;
+    top: 0px;
+}
+.gwd-p-b47d {
+    position: absolute;
+    width: 163px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    background-image: none;
+    background-color: rgb(7, 7, 23);
+    color: rgb(207, 221, 239);
+    font-size: 20px;
+    height: 32px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 168px;
+    top: 954px;
+}
+.gwd-p-1q12 {
+    position: absolute;
+    left: 1038px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    background: -webkit-linear-gradient(left, rgb(122, 211, 172) 0%, rgb(28, 216, 133) 100%);
+    background: -moz-linear-gradient(left, rgb(122, 211, 172) 0%, rgb(28, 216, 133) 100%);
+    background: linear-gradient(to right, rgb(122, 211, 172) 0%, rgb(28, 216, 133) 100%);
+    color: rgb(11, 30, 46);
+    font-size: 25px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    top: 931px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    width: 231.01px;
+    height: 48.9982px;
+    transform: translate3d(-668px, 171.8px, 0px) rotateZ(-0.00188006deg);
+    -webkit-transform: translate3d(-668px, 171.8px, 0px) rotateZ(-0.00188006deg);
+    -moz-transform: translate3d(-668px, 171.8px, 0px) rotateZ(-0.00188006deg);
+}
+.gwd-p-i93q {
+    position: absolute;
+    left: 1205px;
+    top: 871px;
+    width: 262.8px;
+    height: 32px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+    font-size: 25px;
+    background: -webkit-linear-gradient(left, rgb(211, 168, 122) 0%, rgb(212, 236, 225) 100%);
+    background: -moz-linear-gradient(left, rgb(211, 168, 122) 0%, rgb(212, 236, 225) 100%);
+    background: linear-gradient(to right, rgb(211, 168, 122) 0%, rgb(212, 236, 225) 100%);
+    color: rgb(16, 81, 47);
+}
+.gwd-div-12d9 {
+    position: absolute;
+    left: 1204px;
+    width: 262.8px;
+    height: 35.525px;
+    background: -webkit-linear-gradient(left, rgb(234, 10, 73) 0%, rgb(213, 87, 161) 99%);
+    background: -moz-linear-gradient(left, rgb(234, 10, 73) 0%, rgb(213, 87, 161) 99%);
+    background: linear-gradient(to right, rgb(234, 10, 73) 0%, rgb(213, 87, 161) 99%);
+    top: 911px;
+}
+.gwd-p-1r9t {
+    width: 263px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    top: 1104px;
+    height: 52px;
+    left: 10px;
+}
+.gwd-div-1ykx {
+    height: 36px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 263px;
+    top: 1175px;
+    left: 8px;
+}
+.gwd-div-1oa9 {
+    position: absolute;
+    height: 34px;
+    background-color: rgb(37, 22, 22);
+    width: 114px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 452px;
+    top: 310px;
+}
+.gwd-font-xa25 {
+    font-size: 25px;
+}
+.gwd-input-brcn {
+    height: 18px;
+    width: 211px;
+    left: 234px;
+}
+.gwd-input-1ilm {
+    top: 240px;
+    width: 195px;
+    transform-origin: 121.756px 28.6667px 0px;
+    -webkit-transform-origin: 121.756px 28.6667px 0px;
+    -moz-transform-origin: 121.756px 28.6667px 0px;
+    left: 36px;
+}
+.gwd-div-1jxq {
+    width: 62px;
+    left: 338px;
+    top: 316px;
+}
+.gwd-div-4f2l {
+    left: 520px;
+    top: 316px;
+}
+.gwd-p-sh8u {
+    left: 529px;
+    top: 282px;
+}
+.gwd-tr-1c5x {
+    left: 0px;
+    top: 110px;
+}
+.gwd-line-mlrl {
+    position: absolute;
+    opacity: 1;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    stroke-width: 8px;
+    stroke: rgba(8, 5, 28, 0.3);
+    left: 460px;
+    top: 1px;
+    width: 7px;
+    height: 116px;
+}
+.gwd-p-1xc2 {
+    top: 283px;
+    left: 331px;
+}
+.gwd-p-197m {
+    width: 248px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    height: 45px;
+    top: 1107px;
+    left: 693px;
+}
+.gwd-div-1nmk {
+    height: 36px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 248px;
+    top: 1175px;
+    left: 693px;
+}
+.gwd-div-bq44 {
+    left: 0px;
+    top: -1px;
+}
+.gwd-table-dqeb {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    height: 6px;
+    width: 444px;
+}
+.gwd-tr-91wc {
+    left: 0px;
+    top: 0px;
+}
+.gwd-td-mqwr {
+    top: -1px;
+    left: 177px;
+}
+.gwd-div-1664 {
+    left: 10px;
+    top: 8px;
+}
+.gwd-textarea-jg63 {
+    left: 25px;
+    top: 8px;
+}
+.gwd-tbody-120e {
+    left: 0px;
+    top: 0px;
+}
+.gwd-tr-1fta {
+    left: 0px;
+    top: 0px;
+}
+.gwd-td-1piu {
+    left: 0px;
+    top: 0px;
+}
+.gwd-div-y4a2 {
+    position: absolute;
+    top: 13px;
+    width: 625px;
+    left: 969px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    background: -webkit-linear-gradient(left, rgb(192, 181, 186) 0%, rgb(229, 215, 230) 100%);
+    background: -moz-linear-gradient(left, rgb(192, 181, 186) 0%, rgb(229, 215, 230) 100%);
+    background: linear-gradient(to right, rgb(192, 181, 186) 0%, rgb(229, 215, 230) 100%);
+    height: 1060px;
+    border-style: groove;
+    border-radius: 20px;
+}
+.gwd-div-yt85 {
+    position: absolute;
+    height: 76px;
+    border-radius: 20px;
+    top: 13px;
+    background: -webkit-linear-gradient(left, rgb(156, 158, 154) 0%, rgb(181, 176, 181) 100%);
+    background: -moz-linear-gradient(left, rgb(156, 158, 154) 0%, rgb(181, 176, 181) 100%);
+    background: linear-gradient(to right, rgb(156, 158, 154) 0%, rgb(181, 176, 181) 100%);
+    border-style: groove;
+    border-width: 4px;
+    width: 285px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    left: 1139px;
+}
+.gwd-p-qf0x {
+    position: absolute;
+    left: 969px;
+    top: 94px;
+    width: 625px;
+    height: 36px;
+    font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+}
+.gwd-span-c8o0 {
+    font-size: 30px;
+}
+.gwd-div-znko {
+    position: absolute;
+    width: 625px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    height: 897px;
+    background: -webkit-linear-gradient(left, rgb(225, 197, 210) 0%, rgb(220, 197, 223) 100%);
+    background: -moz-linear-gradient(left, rgb(225, 197, 210) 0%, rgb(220, 197, 223) 100%);
+    background: linear-gradient(to right, rgb(225, 197, 210) 0%, rgb(220, 197, 223) 100%);
+    left: 969px;
+    top: 139px;
+}
+.gwd-table-j05v {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 625px;
+    height: 107px;
+}
+.gwd-table-1hic {
+    left: 8px;
+    top: 0px;
+}
+.gwd-td-3ewv {
+    left: 0px;
+    top: 0px;
+    height: 55px;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+    -moz-transform-origin: 50% 50% 0px;
+    width: 154px;
+}</style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic|Oswald:200,300,regular,500,600,700|Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic|Noto+Sans:regular,italic,700,700italic|Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic|Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic|Roboto+Slab:100,200,300,regular,500,600,700,800,900|PT+Sans:regular,italic,700,700italic|Merriweather:300,300italic,regular,italic,700,700italic,900,900italic|Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic|Open+Sans+Condensed:300,300italic,700|Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic|Titillium+Web:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900|Quicksand:300,regular,500,600,700|Slabo+27px:regular|Bebas+Neue:regular|PT+Sans+Narrow:regular,700|Libre+Baskerville:regular,italic,700|Source+Code+Pro:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic|Dosis:200,300,regular,500,600,700,800|Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Yanone+Kaffeesatz:200,300,regular,500,600,700|Lobster:regular|Dancing+Script:regular,500,600,700|Source+Serif+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic|EB+Garamond:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic|Fjalla+One:regular" rel="stylesheet" type="text/css">
+  <script>
+    var _global = typeof window === 'object' && window.window === window ?
+      window : typeof self === 'object' && self.self === self ?
+      self : typeof global === 'object' && global.global === global ?
+      global :
+      this
+
+    function bom(blob, opts) {
+      if (typeof opts === 'undefined') {
+        opts = {
+          autoBom: false
+        }
+      } else if (typeof opts !== 'object') {
+        console.warn('Deprecated: Expected third argument to be a object')
+        opts = {
+          autoBom: !opts
+        }
+      }
+
+      // prepend BOM for UTF-8 XML and text/* types (including HTML)
+      // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+      if (opts.autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+        return new Blob([String.fromCharCode(0xFEFF), blob], {
+          type: blob.type
+        })
+      }
+      return blob
+    }
+
+    function download(url, name, opts) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.responseType = 'blob'
+      xhr.onload = function() {
+        saveAs(xhr.response, name, opts)
+      }
+      xhr.onerror = function() {
+        console.error('could not download file')
+      }
+      xhr.send()
+    }
+
+    function corsEnabled(url) {
+      var xhr = new XMLHttpRequest()
+        // use sync to avoid popup blocker
+      xhr.open('HEAD', url, false)
+      try {
+        xhr.send()
+      } catch (e) {}
+      return xhr.status >= 200 && xhr.status <= 299
+    }
+
+    // `a.click()` doesn't work for all browsers (#465)
+    function click(node) {
+      try {
+        node.dispatchEvent(new MouseEvent('click'))
+      } catch (e) {
+        var evt = document.createEvent('MouseEvents')
+        evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80,
+          20, false, false, false, false, 0, null)
+        node.dispatchEvent(evt)
+      }
+    }
+
+    // Detect WebView inside a native macOS app by ruling out all browsers
+    // We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
+    // https://www.whatismybrowser.com/guides/the-latest-user-agent/macos
+    var isMacOSWebView = /Macintosh/.test(navigator.userAgent) && /AppleWebKit/.test(navigator.userAgent) && !/Safari/.test(navigator.userAgent)
+
+    var saveAs = _global.saveAs || (
+      // probably in some web worker
+      (typeof window !== 'object' || window !== _global) ?
+      function saveAs() {
+        /* noop */
+      }
+
+      // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView
+      :
+      ('download' in HTMLAnchorElement.prototype && !isMacOSWebView) ?
+      function saveAs(blob, name, opts) {
+        var URL = _global.URL || _global.webkitURL
+        var a = document.createElement('a')
+        name = name || blob.name || 'download'
+
+        a.download = name
+        a.rel = 'noopener' // tabnabbing
+
+        // TODO: detect chrome extensions & packaged apps
+        // a.target = '_blank'
+
+        if (typeof blob === 'string') {
+          // Support regular links
+          a.href = blob
+          if (a.origin !== location.origin) {
+            corsEnabled(a.href) ?
+              download(blob, name, opts) :
+              click(a, a.target = '_blank')
+          } else {
+            click(a)
+          }
+        } else {
+          // Support blobs
+          a.href = URL.createObjectURL(blob)
+          setTimeout(function() {
+              URL.revokeObjectURL(a.href)
+            }, 4E4) // 40s
+          setTimeout(function() {
+            click(a)
+          }, 0)
+        }
+      }
+
+      // Use msSaveOrOpenBlob as a second approach
+      :
+      'msSaveOrOpenBlob' in navigator ?
+      function saveAs(blob, name, opts) {
+        name = name || blob.name || 'download'
+
+        if (typeof blob === 'string') {
+          if (corsEnabled(blob)) {
+            download(blob, name, opts)
+          } else {
+            var a = document.createElement('a')
+            a.href = blob
+            a.target = '_blank'
+            setTimeout(function() {
+              click(a)
+            })
+          }
+        } else {
+          navigator.msSaveOrOpenBlob(bom(blob, opts), name)
+        }
+      }
+
+      // Fallback to using FileReader and a popup
+      :
+      function saveAs(blob, name, opts, popup) {
+        // Open a popup immediately do go around popup blocker
+        // Mostly only available on user interaction and the fileReader is async so...
+        popup = popup || open('', '_blank')
+        if (popup) {
+          popup.document.title =
+            popup.document.body.innerText = 'downloading...'
+        }
+
+        if (typeof blob === 'string') return download(blob, name, opts)
+
+        var force = blob.type === 'application/octet-stream'
+        var isSafari = /constructor/i.test(_global.HTMLElement) || _global.safari
+        var isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent)
+
+        if ((isChromeIOS || (force && isSafari) || isMacOSWebView) && typeof FileReader !== 'undefined') {
+          // Safari doesn't allow downloading of blob URLs
+          var reader = new FileReader()
+          reader.onloadend = function() {
+            var url = reader.result
+            url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;')
+            if (popup) popup.location.href = url
+            else location = url
+            popup = null // reverse-tabnabbing #460
+          }
+          reader.readAsDataURL(blob)
+        } else {
+          var URL = _global.URL || _global.webkitURL
+          var url = URL.createObjectURL(blob)
+          if (popup) popup.location = url
+          else location.href = url
+          popup = null // reverse-tabnabbing #460
+          setTimeout(function() {
+              URL.revokeObjectURL(url)
+            }, 4E4) // 40s
+        }
+      }
+    )
+
+    _global.saveAs = saveAs.saveAs = saveAs
+
+    if (typeof module !== 'undefined') {
+      module.exports = saveAs;
+    }
+  </script>
+<style type="text/css">#pagedeck { overflow: hidden !important; }</style></head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-1in7">
+  </div>
+  <div class="gwd-div-e9a6" id="selector"></div>
+  <div class="gwd-div-fy11" id="uploader">
+    <label for="file-input" class="gwd-label-o9c3">
+      <img src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" height="50" width="50">&nbsp;&nbsp;<font color="#ffd700" class="gwd-font-xa25">CHECK TODAYS FILE</font></label>
+    <input id="file-input" type="file" onchange="read(this)">
+  </div>
+  <script>
+    function uploadPrev(el) {
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+        console.log(workbook);
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+          console.log(rowObject);
+
+        });
+
+      }
+
+    }
+  </script>
+  <script>
+    function read(el) {
+      console.log("merebhai")
+
+    }
+  </script>
+  <style>table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    table-layout: auto;
+    width: 100%;
+}
+th,
+td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+.container {
+    display: flex;
+}
+.text-area {
+    width: 100%;
+    height: 50%;
+    margin: 5px;
+}
+#Download,
+#CheckBefore {
+    cursor: pointer;
+}</style>
+  <script>
+    var wb
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const EXCEL_EXTENSION = '.xlsx';
+
+
+    <!-- todays EXPENSES   -->
+
+    function expense() {
+
+    }
+    expense()
+  </script>
+  <script>
+    /*   SheetJS   */
+    function start() {
+      var prda = document.getElementById("parda")
+        /*  Previous reading      */
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+
+      /*    OIL RATES N QUANTITY   */
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var readingList = [msp1, msp2, hsdp1, hsdp2, msc1, msc2, hsdc1, hsdc2, msRate, hsdRate, oil_quantity, oil_rate]
+      var trueCounter = 1
+      for (var r of readingList) {
+        console.log(r.value.length + "----" + isNaN(r.value))
+        if (r.value.length != 0 && isNaN(r.value) == false) {
+          trueCounter += 1
+        }
+
+        console.log(trueCounter)
+      }
+      if (trueCounter == 13) {
+        prda.style.opacity = "0.0"
+        prda.style['pointer-events'] = "none"
+      }
+    }
+    var readingList
+    var udhari_name = []
+    var udhari_amnt = []
+    var sheet = []
+    var sheetstr
+  </script>
+  <script type="text/javascript" gwd-events="handlers" async="true">
+    var addorremove = 'add'
+    var flow = 50
+    var i = 1
+    var add_udhari = function(event) {
+      var udha = document.getElementById("udhari_table")
+      var tr = document.createElement("TR")
+      tr.classList.add("udhariRows")
+      var td1 = document.createElement("TD")
+      var td2 = document.createElement("TD")
+      var td3 = document.createElement("TD")
+      var td4 = document.createElement("TD")
+      var cont = document.createElement("DIV")
+      cont.classList.add("container")
+      cont.classList.add("name")
+      var text1 = document.createElement("TEXTAREA")
+      text1.classList.add("text-area")
+      text1.rows = "1"
+      var text2 = document.createElement("TEXTAREA")
+      text2.classList.add("text-area")
+      text2.rows = "1"
+      cont.appendChild(text1)
+      td1.appendChild(cont)
+      var cont2 = document.createElement("DIV")
+      cont2.classList.add("container")
+      cont2.classList.add("amnt")
+      cont2.appendChild(text2)
+      td2.appendChild(cont2)
+      var r1 = document.createElement("INPUT")
+      var r2 = document.createElement("INPUT")
+      r1.type = "radio"
+      r1.name = "select" + i
+      r1.classList.add("Add_money")
+      r2.type = "radio"
+      r2.name = "select" + i
+      i++
+      r2.classList.add("Give_money")
+      td3.appendChild(r1)
+      td4.appendChild(r2)
+      var l1 = document.createElement("LABEL")
+      var sp1 = document.createElement("SPAN")
+      sp1.style.color = "lightyellow"
+      sp1.innerHTML = "Addmoney"
+      l1.appendChild(sp1)
+      var l2 = document.createElement("LABEL")
+      var sp2 = document.createElement("SPAN")
+      sp2.style.color = "lightyellow"
+      sp2.innerHTML = "Givemoney"
+      l2.appendChild(sp2)
+      td3.appendChild(l1)
+      td4.appendChild(l2)
+      tr.appendChild(td1)
+      tr.appendChild(td2)
+      tr.appendChild(td3)
+      tr.appendChild(td4)
+      udha.appendChild(tr)
+      udha.style.transition = "1s all"
+      if (addorremove == "add") {
+        event.target.style.transition = "0.1s all"
+        event.target.style.transform = "translateY(" + flow + "px)"
+        flow += 70
+      }
+    };
+  </script>
+  <button class="gwd-button-1l0b">
+    <input class="gwd-input-vtyl gwd-input-brcn" id="prev2">
+    <input class="gwd-input-vtyl gwd-input-v4fs" id="prevH2">
+    <input class="gwd-input-1vqu" id="curr2">
+    <svg data-gwd-shape="line" preserveAspectRatio="none" viewBox="0 0 8 116" class="gwd-line-mlrl">
+      <line x1="4" x2="4" y1="0" y2="116"></line>
+    </svg>
+  </button>
+  <button class="gwd-button-1w8k" id="CreateFile" data-gwd-name="CREATE FILE">UPDATEFILE</button>
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1clp" id="MSREADING">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-4jd0" id="prev1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-154p" id="prevH1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-1ilm" id="curr1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-qo5c" id="currH1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-10q3" id="currH2">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-10wr" id="HSDREADING">
+  <input class="gwd-input-1b5o" id="MSRATE">
+  <input class="gwd-input-a2sh" id="HSDRATE">
+  <div class="gwd-div-1p0u"></div>
+  <div class="gwd-div-1jer" id="greenboard"></div>
+  <table class="gwd-table-1oyt gwd-table-1ulb" id="expenseCont"></table>
+  <table class="gwd-table-1oyt gwd-table-qu6m" id="udhariCont"></table>
+  <div class="gwd-div-1kvi"></div>
+  <div class="gwd-div-e3gk"></div>
+  <p class="gwd-p-1voy"><span class="gwd-span-1d8l">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MS</span><br>
+    <br>
+    <br>
+    
+  </p>
+  <p class="gwd-p-1rjc">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;HSD</p>
+  <div class="gwd-div-w8pv">
+    <table class="gwd-table-1mqd" style="transform: translate3d(-94px, 53px, 0px);">
+      <tbody class="gwd-tbody-r753" id="eXp">
+        <tr class="expRows gwd-tr-91wc">
+          <td>
+            <div class="container name">
+              <h4>ATM</h4>
+            </div>
+          </td>
+          <td class="gwd-td-mqwr">
+            <div class="container amnt gwd-div-1664">
+              <textarea id="atm_check" class="gwd-textarea-jg63">0000 </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>OnlinePay</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="online_check">0000 </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows gwd-tr-1c5x">
+          <td>
+            <div class="container name">
+              <h4>Others</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="other_check">0000 </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>TestingMS</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="testingMS_check" value="0000">00000 </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>TestingHSD</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="testingHSD_check" value="0000"></textarea>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="gwd-p-36mt"><span class="gwd-span-ldsy">&nbsp; &nbsp; &nbsp;EXPENSES</span><br>
+    
+  </p>
+  <div class="gwd-div-1myz gwd-div-bq44">
+    <table class="gwd-table-1t4z gwd-table-dqeb" style="transform: translate3d(465px, 574px, 0px); overflow: scroll;">
+      <tbody class="gwd-tbody-120e" id="udhari_table_check">
+        <tr class="udhariRowscheck gwd-tr-1fta">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="gwd-p-1wbp">&nbsp; &nbsp; &nbsp;UDHARI'S</p>
+  <p class="gwd-p-1kcu gwd-p-1xc2">OILSOLD</p>
+  <p class="gwd-p-1kcu gwd-p-sh8u">OILRATE</p>
+  <p class="">
+  </p>
+  <script>
+    function read(el) {
+      console.log("merebhai")
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+
+
+        });
+        console.log(rowObject)
+        checks(rowObject)
+      }
+    }
+
+    function readLedger(el) {
+      console.log("merebhai")
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+
+
+        });
+        console.log(rowObject)
+        checkledger(rowObject)
+      }
+
+    }
+  </script>
+  <script>
+    function createFile(row) {
+      if (udhari_name.length != 0) {
+        udhari_name = []
+        udhari_amnt = []
+      }
+      var trueCounter = 1
+      var other = document.getElementById("other")
+      var online = document.getElementById("online")
+      var atm = document.getElementById("atm")
+      var testingMS = document.getElementById("testingMS")
+      var testingHSD = document.getElementById("testingHSD")
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+      var prev = {
+        "msN1": msp1.value,
+        "msN2": msp2.value,
+        "hsdN1": hsdp1.value,
+        "hsdN2": hsdp2.value
+
+      }
+      var curr = {
+        "msCn1": msc1.value,
+        "msCn2": msc2.value,
+        "hsdCn1": hsdc1.value,
+        "hsdCn2": hsdc2.value
+      }
+      var rate = {
+        "MsRate": msRate.value,
+        "HsdRate": hsdRate.value,
+        "oilquantity": oil_quantity.value,
+        "oilrate": oil_rate.value
+
+      }
+      var paymentNother = {
+        "ATM": atm.value,
+        "TESTINGMS": testingMS.value,
+        "TESTINGHSD": testingHSD.value,
+        "ONLINE": online.value,
+        "OTHERS": other.value
+      }
+
+      var udharis = Array.from(document.getElementsByClassName("udhariRows"))
+      readingList = [other, online, atm, testingMS, testingHSD]
+      console.log(udharis)
+      var check = 0
+      for (var t of udharis) {
+
+        var td = Array.from(t.childNodes).filter(function(el) {
+          return typeof el.tagName != 'undefined'
+        })
+        console.log(td)
+        for (var d of td) {
+          var data = Array.from(d.childNodes).filter(function(el) {
+            return typeof el.tagName != 'undefined'
+          })
+          console.log(data)
+          if (data[0].classList[1] == 'name') {
+            var p = Array.from(data[0].childNodes).filter(function(el) {
+              return typeof el.tagName != 'undefined'
+            })
+            console.log("Name:" + p[0].value)
+            udhari_name.push(p[0].value)
+          }
+          if (data[0].classList[1] == 'amnt') {
+            var p2 = Array.from(data[0].childNodes).filter(function(el) {
+              return typeof el.tagName != 'undefined'
+            })
+            udhari_amnt.push(p2[0].value)
+          }
+          if (data[0].type == 'radio' && data[0].classList[0] == 'Add_money') {
+            console.log(data[0].name + "---Radio 1")
+            console.log(data[0].checked)
+            if (data[0].checked == true) {
+
+              console.log(data[0] + "^^^^")
+              udhari_name[check] = udhari_name[check] + "*add"
+              break
+            }
+          } else if (data[0].type == 'radio' && data[0].classList[0] == 'Give_money') {
+            console.log(data[0].name + "---Radio 2")
+            if (data[0].checked == true) {
+
+              console.log(data[0] + "####")
+              udhari_name[check] = udhari_name[check] + "*minus"
+              break
+            }
+          }
+        }
+        check += 1
+      }
+      console.log(udhari_name)
+      console.log(udhari_amnt)
+
+      for (var r of readingList) {
+        console.log(r.value.length + "----" + isNaN(r.value))
+        if (r.value.length != 0 && isNaN(r.value) == false && r.value != '') {
+
+        } else {
+          //   alert("Do Not Keep It Empty")
+        }
+
+        console.log(trueCounter)
+      }
+      var udharis = {}
+      sheet = [prev, curr, rate, paymentNother]
+      for (var t1 = 0; t1 < udhari_name.length; t1++) {
+        sheet.push({
+          "UDHARI": udhari_name[t1],
+          "AMNT": udhari_amnt[t1]
+        })
+      }
+
+
+
+      sheetstr = JSON.stringify(sheet)
+      console.log(sheetstr)
+
+
+      checks(sheet)
+
+      function downloadAsExcel() {
+        var workbok = XLSX.utils.json_to_sheet(sheet);
+        wb = {
+          Sheets: {
+            'data': workbok
+          },
+          SheetNames: ['data']
+        }
+
+        const buffer = XLSX.write(wb, {
+          bookType: 'xlsx',
+          type: "array"
+        })
+        saveAs(new Blob([buffer], {
+          type: EXCEL_TYPE
+        }), new Date().toString().split("GMT")[0])
+      }
+      //downloadAsExcel()
+
+
+
+    }
+
+    function checks(sheet) {
+      console.log(sheet)
+      var atm = sheet[3]['ATM']
+      var online = sheet[3]['ONLINE']
+      var other = sheet[3]['OTHERS']
+      var testingMS = sheet[3]['TESTINGMS']
+      var testingHSD = sheet[3]['TESTINGHSD']
+
+      document.getElementById("other_check").value = other
+      document.getElementById("online_check").value = online
+      document.getElementById("atm_check").value = atm
+      document.getElementById("testingMS_check").value = testingMS
+      document.getElementById("testingHSD_check").value = testingHSD
+      var expenseTotal = parseInt(atm) + parseInt(online) + parseInt(other) + parseInt(testingMS) + parseInt(testingHSD)
+      document.getElementById("totalexpenses").innerHTML = expenseTotal
+      var msp1 = sheet[0]['msN1']
+      var msp2 = sheet[0]['msN2']
+      var hsdp1 = sheet[0]['hsdN1']
+      var hsdp2 = sheet[0]['hsdN2']
+        /*     CurrentReading     */
+      var msc1 = sheet[1]['msCn1']
+      var msc2 = sheet[1]['msCn2']
+      var hsdc1 = sheet[1]['hsdCn1']
+      var hsdc2 = sheet[1]['hsdCn2']
+        /*    Rates      */
+      var msRate = sheet[2]["MsRate"]
+      var hsdRate = sheet[2]["HsdRate"]
+
+      /*     Oil Rates   */
+      var oil_quantity = sheet[2]["oilquantity"]
+      var oil_rate = sheet[2]["oilrate"]
+      console.log(oil_quantity + "----" + oil_rate)
+      var udha = document.getElementById("udhari_table_check")
+
+
+      document.getElementById('oilsale').innerHTML = parseInt(oil_quantity) * parseInt(oil_rate)
+      document.getElementById("prev1").value = msc1
+      document.getElementById("prev2").value = msc2
+      document.getElementById("curr1").value = msp1
+      document.getElementById("curr2").value = msp2
+      document.getElementById("prevH1").value = hsdc1
+      document.getElementById("prevH2").value = hsdc2
+      document.getElementById("currH1").value = hsdp1
+      document.getElementById("currH2").value = hsdp2
+      document.getElementById("MSRATE").value = msRate
+      document.getElementById("HSDRATE").value = hsdRate
+      var msSum = (parseInt(msc1) - parseInt(msp1)) + (parseInt(msc2) - parseInt(msp2))
+      document.getElementById("MSREADING").value = msSum
+      var hsdSum = (parseInt(hsdc1) - parseInt(hsdp1)) + (parseInt(hsdc2) - parseInt(hsdp2))
+      document.getElementById("HSDREADING").value = hsdSum
+
+      var Total = (msSum * parseInt(msRate)) + (hsdSum * parseInt(hsdRate)) + (parseInt(oil_quantity) * parseInt(oil_rate))
+      document.getElementById("greenboard").innerHTML = "<h3>MS today : " + msSum + " x " + parseInt(msRate) + ' = ' + (msSum * parseInt(msRate)) + "</br> HSD today : " + hsdSum + ' x ' + parseInt(hsdRate) + " = " + (parseInt(hsdRate) * hsdSum) + "<br> Oil sales :" + parseInt(oil_quantity) + ' x ' + parseInt(oil_rate) + " = " + (parseInt(oil_quantity) * parseInt(oil_rate)) + "</br>" + "Total : " + Total + "</h3>"
+      var FinalTotal = Total - expenseTotal
+      document.getElementById("totalexpenses").innerHTML = expenseTotal
+      document.getElementById("after_expense").innerHTML = FinalTotal
+      var ooo = Array.from(udha.childNodes).filter(function(el) {
+        return typeof el.tagName != 'undefined'
+      })
+      console.log(ooo)
+      if (ooo.length != 1) {
+        console.log("DELETE")
+        var child = udha.lastElementChild;
+        while (child) {
+          udha.removeChild(child);
+          child = udha.lastElementChild;
+        }
+      }
+
+      var udhariTotal = 0
+      var cred = 0
+      for (var y = 4; y < sheet.length; y++) {
+        var tr = document.createElement("TR")
+        tr.classList.add("udhariRowscheck")
+        var td1 = document.createElement("TD")
+        var td2 = document.createElement("TD")
+        var cont = document.createElement("DIV")
+        var cont2 = document.createElement("DIV")
+
+        cont.classList.add("container")
+        cont.classList.add("name")
+        cont2.classList.add("container")
+        cont2.classList.add("amnt")
+        var names = document.createElement("TEXTAREA")
+        var am = document.createElement("TEXTAREA")
+        var khel = sheet[y]
+        names.innerHTML = khel['UDHARI'].split("*")[0]
+        am.innerHTML = khel['AMNT']
+        cont2.appendChild(am)
+        cont.appendChild(names)
+        td1.appendChild(cont)
+
+        td2.appendChild(cont2)
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        if (khel['UDHARI'].split("*")[1] == 'minus') {
+          FinalTotal -= parseInt(khel['AMNT'])
+          td1.style['background'] = "Crimson"
+          td2.style['background'] = "Crimson"
+          names.style.color = "black"
+          am.style.color = "black"
+          udhariTotal += parseInt(khel['AMNT'])
+        } else if (khel['UDHARI'].split("*")[1] == 'add') {
+          FinalTotal += parseInt(khel['AMNT'])
+          cred += parseInt(khel['AMNT'])
+          td1.style['background'] = "#ADFF2F"
+          td2.style['background'] = "#ADFF2F"
+        }
+        udha.appendChild(tr)
+
+      }
+      document.getElementById("after_udhari").innerHTML = Total - udhariTotal
+      document.getElementById("FinalTotal").innerHTML = FinalTotal + cred
+
+
+    }
+
+    function checkledger(this) {
+      console.log(sheet)
+
+
+      var udhariTotal = 0
+      var cred = 0
+      for (var y = 0; y < sheet.length; y++) {
+        var udha = document.createElement('ledg')
+        var tr = document.createElement("TR")
+        tr.classList.add("udhariRowscheck")
+        var td1 = document.createElement("TD")
+        var td2 = document.createElement("TD")
+        var td3 = document.createElement("TD")
+        var td4 = document.createElement("TD")
+        var cont = document.createElement("DIV")
+        var cont2 = document.createElement("DIV")
+        var cont3 = document.createElement("DIV")
+        var cont4 = document.createElement("DIV")
+
+        cont.classList.add("container")
+        cont.classList.add("name")
+
+        cont2.classList.add("container")
+        cont2.classList.add("amnt")
+        var names = document.createElement("H5")
+        var am = document.createElement("H5")
+        var date = document.createElement("H5")
+        var update = document.createElement("H5")
+        var khel = sheet[y]
+        names.innerHTML = khel['Name'].split("*")[0]
+        
+          am.innerHTML = parseInt(khel['AMNT'])
+        
+        date.innerHTML = khel['Date'].split(" ")[0]
+        update.innerHTML = khel['Update'].split(' ')[0]
+        cont2.appendChild(am)
+        cont.appendChild(names)
+        cont3.appendChild(date)
+        cont4.appendChild(update)
+
+        td1.appendChild(cont)
+
+        td2.appendChild(cont2)
+        td3.appendChild(cont3)
+
+        td4.appendChild(cont4)
+
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+
+        tr.appendChild(td3)
+        tr.appendChild(td4)
+        if (khel['UDHARI'].split("*")[1] == 'minus') {
+          FinalTotal -= parseInt(khel['AMNT'])
+          td1.style['background'] = "Crimson"
+          td2.style['background'] = "Crimson"
+          names.style.color = "black"
+          am.style.color = "black"
+          udhariTotal += parseInt(khel['AMNT'])
+        } else if (khel['UDHARI'].split("*")[1] == 'add') {
+          FinalTotal += parseInt(khel['AMNT'])
+          cred += parseInt(khel['AMNT'])
+          td1.style['background'] = "#ADFF2F"
+          td2.style['background'] = "#ADFF2F"
+        }
+        udha.appendChild(tr)
+
+      }
+      document.getElementById("after_udhari").innerHTML = Total - udhariTotal
+      document.getElementById("FinalTotal").innerHTML = FinalTotal + cred
+
+
+    }
+  </script>
+  <script>
+    $(document).foundation()
+  </script>
+  <div class="gwd-div-1z00"></div>
+  <p class="gwd-p-lz96" id="totalexpenses"></p>
+  <div class="gwd-div-1ibi"></div>
+  <p class="gwd-p-1kj3" id="FinalTotal"></p>
+  <p class="gwd-p-b47d">TOTAL EXPENSE</p>
+  <p class="gwd-p-1q12">&nbsp; &nbsp; &nbsp;GRAND TOTAL&nbsp;</p>
+  <p class="gwd-p-i93q gwd-p-197m">&nbsp; &nbsp; &nbsp;ToTal After Udhari<br>
+    <br>
+    
+  </p>
+  <p class="gwd-p-i93q gwd-p-1r9t">&nbsp; &nbsp; &nbsp;ToTal After Expense<br>
+    <br>
+    
+  </p>
+  <h3 class="gwd-div-12d9 gwd-div-1nmk" id="after_udhari"></h3>
+  <h3 class="gwd-div-12d9 gwd-div-1ykx" id="after_expense"></h3>
+  <h3 class="gwd-div-1oa9 gwd-div-4f2l" id="oilsale"></h3>
+  <h3 class="gwd-div-1oa9 gwd-div-1jxq" id="oil_sold"></h3>
+  <div class="gwd-div-y4a2"></div>
+  <div class="gwd-div-yt85" id="upload_ledger">
+    <label for="file-input" class="gwd-label-o9c3">
+      <img src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" height="50" width="50">&nbsp;&nbsp;<font color="#ffd700" class="gwd-font-xa25">UPLOAD LEDGER</font></label>
+    <input id="legderupload" type="file" onchange="readledger(this)">
+  </div>
+  <p class="gwd-p-qf0x"><span class="gwd-span-c8o0">Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|AMNT&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|DATE&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Updated</span><br>
+    
+  </p>
+  <div class="gwd-div-znko" id="ledger" style="overflow: scroll;">
+    <table id="Ledger" class="gwd-table-1hic">
+      <tbody id="ledg">
+        <tr class="expRows">
+          <td class="">
+            <div class="container name">
+              <h4>ATM</h4>
+            </div>
+          </td>
+          <td class="">
+            <div class="container amnt">
+              <h5 id="atm_check" class="">0000 </h5>
+            </div>
+          </td>
+          <td class="">
+            <div class="container amnt">
+              <h5 id="atm_check" class="">0000 </h5>
+            </div>
+          </td>
+          <td class="">
+            <div class="container amnt">
+              <h5 id="atm_check" class="">0000 </h5>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</body></html>

@@ -1,0 +1,3030 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>File Checker</title>
+  <meta name="generator" content="Google Web Designer 15.0.0.0913">
+  <script integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <script async="" src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
+  <script src="https://unpkg.com/read-excel-file@4.0.2/bundle/read-excel-file.min.js"></script>
+  <script src="https://jsuites.net/v4/jsuites.js"></script>
+  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./NewDatePicker/dist/mc-calendar.min.css">
+  <script src="./NewDatePicker/dist/mc-calendar.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
+  <script integrity="sha512-JDgkxcdf7oYN/lR29Dzzw17b5Rv42eJ4Vj8aysjr+YpqwaURHrcR1/wGmyIBlsXK55Wsq3TW9tWoDzIou2q3qw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.5/vivus.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"></script>
+  <script integrity="sha512-W8V8RYNShyt84VKeFKgazx4KHzAWPflpH/GrRwEoDHRSdfVbHkyzE2xaYaEXmLsphgJTb2jr+UkCWp4PkynF2w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.min.js"></script>
+  <script integrity="sha512-T6fjpdTSkxwH7loJyfnVNyhJ7beJcXISAKW0f1Oze8yIF98JQnyxZflkZTFv3UYjnQq8z527wrHbLcwdDTyw3g==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.magellan.min.js"></script>
+  <script integrity="sha512-1jPYNTA2w4UFpGxDsTf8Jllbw5tpaMZIX0Gz7XzXQvNHX2DPfuNMiIJ/mtfg9Q1NLsL7Sag9ETlPTFUdbpb+cw==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.smoothScroll.min.js"></script>
+  <script integrity="sha512-q0TFQvtnmcGPU5aA+70Vz0PjvRts1UrnytwLcU8glYKdlGS8zIcCSkHxbAL304U8biAvQQnGa8/G7kNw+A54+w==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.triggers.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/2.0.3/motion-ui.css" integrity="sha512-IqEa1KBwTHGVlNBIkEabXbnF4iBG0cszlxjkJT8o+BjCE2NDtGVBd/sxkhttTZAGaL2JbLaLSBJvlWlmSDWbcw==" crossorigin="anonymous">
+  <script integrity="sha512-jAdSZ4O7LeDt+iCgVQ2/hMFtF1qyUGWMe/+KEIfhC09n+Tv5IbcTwBxLwU5XQnoo5v6WpEnktk5tFpju1xfSWA==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.responsiveAccordionTabs.js">
+  </script>
+  <link rel="stylesheet" href="jstable.css">
+  <script src="jstable.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script integrity="sha512-1Os/JhgaZ2EpT5JNZ2ovG3QcTtFZt+oiniVLRAdLKsm9oIgVJg8JHzcu2McMdAkFpMgpqLN0saS+SAgv1JZfUQ==" crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.toggler.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css" integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  <style type="text/css" id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+    #udhariData {
+      border-collapse: collapse;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      max-width: 800px;
+      width: 100%;
+      margin: 0px auto;
+      position: relative;
+    }
+    #udhariData * {
+      position: relative;
+    }
+    #udhariData td, #udhariData th {
+      padding-left: 8px;
+    }
+    #udhariData #udhariHead tr {
+      height: 60px;
+      background: rgb(255, 237, 134);
+      font-size: 16px;
+    }
+    #udhariData #udhariBody tr {
+      height: 48px;
+      border-bottom: 1px solid rgb(227, 241, 213);
+    }
+    #udhariData #udhariBody tr:last-child {
+      border: 0px;
+    }
+    #udhariData td, #udhariData th {
+      text-align: left;
+    }
+    #udhariData td.l, #udhariData th.l {
+      text-align: right;
+    }
+    #udhariData td.c, #udhariData th.c {
+      text-align: center;
+    }
+    #udhariData td.r, #udhariData th.r {
+      text-align: center;
+    }
+    @media screen and (max-width: 35.5em) {
+      #udhariData {
+        display: block;
+      }
+      #udhariData > *, #udhariData tr, #udhariData td, #udhariData th {
+        display: block;
+      }
+      #udhariData #udhariHead {
+        display: none;
+      }
+      #udhariData #udhariBody tr {
+        height: auto;
+        padding: 8px 0px;
+      }
+      #udhariData #udhariBody tr td {
+        padding-left: 45%;
+        margin-bottom: 12px;
+      }
+      #udhariData #udhariBody tr td:last-child {
+        margin-bottom: 0px;
+      }
+      #udhariData #udhariBody tr td::before {
+        position: absolute;
+        font-weight: 700;
+        width: 40%;
+        left: 10px;
+        top: 0px;
+      }
+      #udhariData #udhariBody tr td:nth-child(1)::before {
+        content: "Code";
+      }
+      #udhariData #udhariBody tr td:nth-child(2)::before {
+        content: "Stock";
+      }
+      #udhariData #udhariBody tr td:nth-child(3)::before {
+        content: "Cap";
+      }
+      #udhariData #udhariBody tr td:nth-child(4)::before {
+        content: "Inch";
+      }
+      #udhariData #udhariBody tr td:nth-child(5)::before {
+        content: "Box Type";
+      }
+    }
+  </style>
+  <style type="text/css">
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+    }
+    .gwd-div-1in7 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(69, 220, 205) 0%, rgb(0, 0, 0) 100%);
+      width: 2060px;
+      left: -213px;
+      top: -22px;
+      height: 1648px;
+    }
+    .gwd-div-e9a6 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      border-style: ridge;
+      background-image: -webkit-linear-gradient(left, rgb(220, 69, 182) 0%, rgb(0, 0, 0) 47%, rgb(19, 213, 220) 85%);
+      border-radius: 35px;
+      height: 17.68%;
+      top: 0.14%;
+      left: 0.92%;
+      width: 98.58%;
+    }
+    .gwd-div-140o {
+      position: absolute;
+      left: 11px;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(17, 77, 71) 0%, rgb(0, 0, 0) 100%);
+      border-width: 10px;
+      border-style: ridge;
+      top: 174px;
+      width: 769px;
+      height: 677px;
+    }
+    .gwd-div-1cvy {
+      position: absolute;
+      left: 56px;
+      top: 211px;
+      width: 234px;
+      height: 71px;
+      background-color: rgb(153, 31, 31);
+    }
+    .gwd-div-fy11 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(30, 61, 109) 0%, rgb(177, 204, 243) 100%);
+      border-style: solid;
+      border-width: 5px;
+      border-radius: 20px;
+      width: 34.84%;
+      left: 52.35%;
+      top: 3.31%;
+      height: 10.5%;
+    }
+    #file-input {
+      display: none;
+    }
+    .gwd-input-5wyq {
+      position: absolute;
+      left: 290px;
+      height: 21px;
+      transform-origin: 50% 50% 0px;
+      width: 212px;
+      top: 540px;
+    }
+    .gwd-input-1v9c {
+      left: 484px;
+      width: 177px;
+    }
+    .gwd-input-x9xl {
+      width: 155px;
+    }
+    .gwd-input-1qp9 {
+      top: 582px;
+    }
+    .gwd-input-llta {
+      top: 582px;
+    }
+    .gwd-button-1l0b {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(181, 194, 197) 0%, rgb(11, 45, 60) 97%);
+      border-style: groove;
+      border-width: 3px;
+      border-radius: 20px;
+      top: 17.82%;
+      width: 98.58%;
+      height: 205.39%;
+      left: 0.92%;
+    }
+    .gwd-label-o9c3 {
+      top: 67px;
+      left: -218px;
+    }
+    .gwd-span-r9xr {
+      font-size: 25px;
+    }
+    .gwd-button-1w8k {
+      position: absolute;
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(234, 87, 164) 0%, rgb(195, 20, 61) 47%, rgb(220, 19, 69) 85%);
+      font-size: 30px;
+      color: rgb(255, 207, 27);
+      transform-origin: 50% 50% 0px;
+      border-style: double;
+      left: 2.51%;
+      width: 25.29%;
+      height: 10.5%;
+      border-radius: 30pt;
+      top: 3.31%;
+    }
+    .gwd-input-10eh {
+      position: absolute;
+      top: 32px;
+      width: 185px;
+      height: 27px;
+      color: rgb(213, 132, 132);
+      background-image: none;
+      background-color: rgb(227, 216, 216);
+      font-size: 24px;
+      left: 863px;
+    }
+    .gwd-input-urya {
+      top: 141px;
+    }
+    .gwd-input-10wr {
+      transform-origin: 50% 50% 0px;
+      font-size: 17px;
+      top: 46.27%;
+      left: 73.45%;
+      width: 22.11%;
+      height: 4.97%;
+    }
+    .gwd-input-1ber {
+      top: 78px;
+      transform-origin: 50% 50% 0px;
+      width: 41px;
+      height: 27px;
+      color: rgb(32, 16, 16);
+      background-color: rgb(181, 162, 162);
+    }
+    .gwd-input-1go6 {
+      top: 114px;
+      height: 18px;
+      width: 135px;
+      transform-origin: 84.2927px 28.6667px 0px;
+      background-color: rgb(183, 209, 171);
+    }
+    .gwd-input-19gj {
+      height: 18px;
+      width: 135px;
+      top: 78px;
+      background-color: rgb(234, 175, 175);
+    }
+    .gwd-input-vtyl {
+      position: absolute;
+      height: 18px;
+      transform-origin: 50% 50% 0px;
+      left: 165px;
+      width: 143px;
+      background-image: none;
+      top: 63px;
+      background-color: rgb(239, 151, 151);
+    }
+    .gwd-input-1vqu {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      font-size: 20px;
+      width: 22.51%;
+      left: 25.06%;
+      top: 9.21%;
+      background-color: rgb(213, 241, 213);
+      height: 2.89%;
+    }
+    .gwd-input-v4fs {
+      font-size: 20px;
+      height: 3.26%;
+      width: 24.72%;
+      left: 73.24%;
+      top: 5.93%;
+    }
+    .gwd-input-uiaq {
+      left: 1173px;
+    }
+    .gwd-input-10q3 {
+      font-size: 20px;
+      top: 37.02%;
+      height: 6.08%;
+      background-color: rgb(221, 243, 211);
+      left: 73.45%;
+      width: 22.11%;
+      transform-origin: 165.581px 71.4522px 0px;
+    }
+    .gwd-input-qo5c {
+      font-size: 20px;
+      height: 6.22%;
+      top: 36.88%;
+      left: 50%;
+      background-color: rgb(217, 239, 207);
+      width: 22.11%;
+      transform-origin: 164.851px 71.487px 0px;
+    }
+    .gwd-input-1clp {
+      font-size: 17px;
+      left: 2.6%;
+      top: 46.27%;
+      transform-origin: 50% 50% 0px;
+      width: 22.03%;
+      height: 4.97%;
+    }
+    .gwd-input-1b5o {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(160, 241, 241);
+      left: 16.25%;
+      top: 54.01%;
+      padding: 3px;
+      height: 5.8%;
+      width: 8.38%;
+      transform-origin: 63.4765px 41.966px 0px;
+    }
+    .gwd-input-a2sh {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(232, 150, 195);
+      transform-origin: 50% 50% 0px;
+      top: 54.01%;
+      height: 5.8%;
+      left: 73.45%;
+      width: 8.38%;
+    }
+    .gwd-div-1jer {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(211, 241, 200);
+      transform-origin: 50% 50% 0px;
+      border-radius: 20px;
+      width: 92.63%;
+      left: 4.1%;
+      top: 65.75%;
+      height: 30.52%;
+    }
+    .gwd-table-1oyt {
+      position: absolute;
+      left: 863px;
+      top: 363px;
+      width: 244px;
+      background-color: rgb(211, 241, 200);
+      height: 535px;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-table-qu6m {
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(175, 225, 220);
+      border-radius: 20px;
+      border-style: dashed;
+      border-width: 2px;
+      width: 47.65%;
+      left: 50.42%;
+      top: 110.77%;
+      height: 110.36%;
+    }
+    .gwd-table-1ulb {
+      border-style: ridge;
+      border-width: 9px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(171, 223, 218);
+      border-radius: 20px;
+      width: 46.9%;
+      left: 2.68%;
+      top: 82.87%;
+      height: 109.67%;
+    }
+    .gwd-p-1rjc {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-weight: bold;
+      transform-style: preserve-3d;
+      left: 52.26%;
+      top: 19.48%;
+      color: rgb(241, 236, 237);
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(149, 149, 232) 0%, rgb(11, 45, 60) 97%);
+      text-align: center;
+      height: 5.6%;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      width: 45.22%;
+      transform-origin: 270.031px 20.2684px 0px;
+      transform: translate3d(-24px, -6.00192px, 0px) rotateZ(-0.277812deg);
+      font-size: 25px;
+    }
+    .gwd-div-w8pv {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: none;
+      width: 29.56%;
+      background-color: rgb(225, 246, 244);
+      left: 11.89%;
+      top: 83.01%;
+      height: 4.97%;
+    }
+    .gwd-p-36mt {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      background-image: none;
+      background-color: rgb(233, 241, 240);
+      width: 26.3%;
+      transform-origin: 50% 50% 0px;
+      left: 11.98%;
+      top: 100.97%;
+      height: 6.22%;
+      text-align: center;
+    }
+    .gwd-span-ldsy {
+      font-size: 30px;
+      background-image: none;
+      left: 0px;
+      background-color: rgb(236, 247, 248);
+      top: 0px;
+    }
+    .gwd-span-12ak {
+      font-size: 30px;
+    }
+    .gwd-table-1lwi {
+      left: -23px;
+      top: 36px;
+    }
+    .gwd-span-1moc {
+      font-size: 40px;
+      color: rgb(20, 121, 223);
+    }
+    .gwd-table-1mqd {
+      transform-style: preserve-3d;
+      transform-origin: 50% 50% 0px;
+      left: 0%;
+      top: 0%;
+      width: 146.77%;
+      height: 1901.32%;
+    }
+    .gwd-input-4jd0 {
+      font-size: 20px;
+      top: 28.04%;
+      height: 6.08%;
+      left: 2.51%;
+      width: 22.11%;
+      transform-origin: 132.063px 22.0455px 0px;
+    }
+    .gwd-p-1kcu {
+      position: absolute;
+      width: 76px;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      height: 27px;
+      transform-origin: 50% 50% 0px;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(232, 222, 150);
+      left: 334px;
+      top: 273px;
+    }
+    .gwd-span-1j7v {
+      font-size: 30px;
+    }
+    .gwd-p-lz96 {
+      position: absolute;
+      font-family: "Libre Baskerville";
+      color: rgb(33, 90, 30);
+      font-weight: bold;
+      font-size: 40px;
+      border-width: 3px;
+      border-style: ridge;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(228, 141, 90);
+      transform-origin: 162.5px 24.5px 0px;
+      top: 139.78%;
+      width: 27.22%;
+      height: 6.77%;
+      left: 7.79%;
+    }
+    .gwd-div-1myz {
+      position: absolute;
+      left: 1194px;
+      width: 230.8px;
+      height: 36px;
+      top: 364px;
+    }
+    .gwd-tbody-r753 {
+      width: 0%;
+      height: 0%;
+      left: -3.61%;
+      top: -48.24%;
+    }
+    .gwd-div-1ykx {
+      transform-origin: 50% 50% 0px;
+      top: 162.29%;
+      left: -1.17%;
+      transform-style: preserve-3d;
+      background-image: -webkit-linear-gradient(left, rgb(241, 230, 233) 0%, rgb(241, 229, 236) 99%);
+      width: 17.29%;
+      height: 8.56%;
+      transform: translate3d(18px, -820px, 0px) rotateZ(-0.0904566deg);
+    }
+    .gwd-font-xa25 {
+      font-size: 25px;
+    }
+    .gwd-input-brcn {
+      font-size: 20px;
+      background-color: rgb(236, 165, 165);
+      top: 4.77%;
+      height: 3.03%;
+      left: 25.06%;
+      width: 22.51%;
+    }
+    .gwd-input-1ilm {
+      font-size: 20px;
+      background-color: rgb(218, 241, 208);
+      left: 2.51%;
+      top: 37.02%;
+      height: 6.08%;
+      width: 22.11%;
+      transform-origin: 164.923px 70.6581px 0px;
+    }
+    .gwd-p-sh8u {
+      height: 3.59%;
+      transform-origin: 0px 15.6656px 0px;
+      width: 7.96%;
+      top: 46.27%;
+      left: 34.51%;
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-tr-1c5x {
+      left: 0px;
+      top: 110px;
+    }
+    .gwd-line-mlrl {
+      position: absolute;
+      opacity: 1;
+      stroke-width: 8px;
+      stroke: rgba(8, 5, 28, 0.3);
+      transform-origin: 50% 50% 0px;
+      top: -0.2%;
+      left: 48.34%;
+      width: 9px;
+      height: 361px;
+    }
+    .gwd-p-1xc2 {
+      width: 6.53%;
+      transform-origin: 77.95px 0px 0px;
+      height: 2.9%;
+      top: 46.27%;
+      font-size: 20px;
+      left: 57.79%;
+    }
+    .gwd-div-bq44 {
+      left: 0px;
+      top: 46px;
+    }
+    .gwd-table-dqeb {
+      transform-style: preserve-3d;
+      transform-origin: 50% 50% 0px;
+      height: 6px;
+      width: 444px;
+    }
+    .gwd-tr-91wc {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-td-mqwr {
+      top: -1px;
+      left: 177px;
+    }
+    .gwd-div-1664 {
+      left: 10px;
+      top: 8px;
+    }
+    .gwd-textarea-jg63 {
+      left: 25px;
+      top: 8px;
+    }
+    .gwd-tbody-120e {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-tr-1fta {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-td-1piu {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-div-y4a2 {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(192, 181, 186) 0%, rgb(229, 215, 230) 100%);
+      border-style: groove;
+      border-radius: 20px;
+      width: 52.35%;
+      top: 0%;
+      left: 111.73%;
+      height: 223.2%;
+    }
+    .gwd-div-yt85 {
+      position: absolute;
+      border-radius: 20px;
+      background-image: -webkit-linear-gradient(left, rgb(156, 158, 154) 0%, rgb(181, 176, 181) 100%);
+      border-style: groove;
+      border-width: 4px;
+      transform-origin: 50% 50% 0px;
+      width: 23.87%;
+      height: 10.5%;
+      left: 121.86%;
+      top: 2.76%;
+    }
+    .gwd-p-qf0x {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      transform-origin: 50% 50%;
+      width: 52.35%;
+      height: 4.97%;
+      left: 110.8%;
+      top: 11.33%;
+    }
+    .gwd-span-c8o0 {
+      font-size: 30px;
+    }
+    .gwd-div-znko {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      background-image: -webkit-linear-gradient(left, rgb(225, 197, 210) 0%, rgb(220, 197, 223) 100%);
+      width: 51.09%;
+      left: 112.4%;
+      top: 17.82%;
+      height: 195.3%;
+    }
+    .gwd-table-j05v {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 625px;
+      height: 107px;
+    }
+    .gwd-table-1hic {
+      left: 35px;
+      top: 34px;
+    }
+    .gwd-td-3ewv {
+      left: 0px;
+      top: 0px;
+      height: 55px;
+      transform-origin: 50% 50% 0px;
+      width: 154px;
+    }
+    .gwd-p-c5fw {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      color: rgb(234, 239, 243);
+      background-image: -webkit-linear-gradient(left, rgb(140, 93, 213) 0%, rgb(157, 162, 220) 100%);
+      transform-origin: 50% 50% 0px;
+      font-size: 35px;
+      height: 7.18%;
+      width: 31.66%;
+      top: 175.69%;
+      left: 48.32%;
+    }
+    .gwd-td-z6gi {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-label-30q0 {
+      left: -218px;
+      top: 67px;
+      width: 434px;
+      height: 141.6px;
+      transform-origin: 50% 50%;
+    }
+    .gwd-span-19li {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      font-size: 30px;
+      width: 132px;
+      transform-origin: 50% 50% 0px;
+      color: rgb(226, 230, 234);
+      height: 36px;
+      left: 14px;
+      top: 314px;
+    }
+    .gwd-span-eb6g {
+      top: 54.01%;
+      text-align: center;
+      width: 9.88%;
+      height: 4.97%;
+      transform-origin: 17.2874px 14.3163px 0px;
+      left: 85.68%;
+      font-size: 20px;
+    }
+    .gwd-span-1cpr {
+      height: 4.97%;
+      width: 8.71%;
+      transform-origin: 67.8753px 19.113px 0px;
+      text-align: center;
+      font-size: 20px;
+      left: 2.93%;
+      top: 53.73%;
+    }
+    .gwd-p-nsr5 {
+      left: 0%;
+      width: 0%;
+      top: 0%;
+      height: 0%;
+    }
+    .gwd-span-1933 {
+      position: absolute;
+      font-family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+      background-image: -webkit-radial-gradient(center center, circle cover, rgb(223, 198, 13) 0%, rgb(11, 45, 60) 97%);
+      color: rgb(239, 243, 246);
+      top: 18.51%;
+      text-align: center;
+      height: 6.08%;
+      left: 2.93%;
+      width: 44.56%;
+      transform-origin: 266.024px 21.6876px 0px;
+      font-size: 25px;
+    }
+    .gwd-tbody-18x9 {
+      left: -36px;
+      top: -29px;
+    }
+    .gwd-p-1lw2 {
+      left: 0px;
+      top: 8px;
+    }
+    .gwd-input-19en {
+      position: absolute;
+      left: 56.7%;
+      top: 47.65%;
+      width: 9.64%;
+      height: 5%;
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-input-1cqa {
+      width: 9.63%;
+      left: 33.67%;
+      top: 51.8%;
+      height: 6.22%;
+      transform-origin: -109.975px 26.8277px 0px;
+    }
+    .gwd-span-1q65 {
+      font-size: inherit;
+    }
+    .gwd-input-zr31 {
+      top: 4.77%;
+      height: 2.89%;
+      left: 73.74%;
+      width: 22.6%;
+    }
+    .gwd-input-929w {
+      top: 4.77%;
+      left: 49.87%;
+      height: 3.03%;
+      width: 22.6%;
+    }
+    .gwd-input-17cl {
+      width: 9.63%;
+      transform-origin: 50% 50% 0px;
+      left: 56.87%;
+      top: 51.8%;
+      height: 6.08%;
+    }
+    .gwd-img-19bw {
+      left: 0px;
+      top: 3px;
+      transform-origin: 50% 50% 0px;
+      width: 49px;
+      height: 51px;
+    }
+    .gwd-div-d03k {
+      left: 0px;
+      top: 100px;
+    }
+    .gwd-div-1hq6 {
+      position: absolute;
+      background-color: rgb(211, 241, 200);
+      left: 31.0333px;
+      top: 773.6px;
+      width: 1022.3px;
+      height: 392.747px;
+      transform-origin: 50% 50%;
+    }
+    .gwd-span-7c73 {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(208, 232, 234);
+      font-weight: bold;
+      font-size: 22px;
+      top: 0%;
+      width: 81.95%;
+      height: 91.75%;
+      left: 187.25%;
+    }
+    .gwd-button-1yc0 {
+      position: absolute;
+      background-image: none;
+      font-size: 24px;
+      transform-origin: 50% 50% 0px;
+      border-radius: 20px;
+      left: 31.16%;
+      top: 5.11%;
+      width: 17.76%;
+      background-color: rgb(58, 223, 159);
+      color: rgb(9, 6, 6);
+      cursor: pointer;
+      height: 7.6%;
+    }
+    .gwd-new-class-c7l8:hover {
+      background: red;
+      transition: all 1.2s ease 0s;
+    }
+    .gwd-div-4q40 {
+      transform-origin: 50% 50%;
+      top: 0px;
+      left: 0px;
+    }
+    .gwd-div-sjbm {
+      left: 0px;
+      top: 0px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic|Oswald:200,300,regular,500,600,700|Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic|Noto+Sans:regular,italic,700,700italic|Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic|Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic|Roboto+Slab:100,200,300,regular,500,600,700,800,900|PT+Sans:regular,italic,700,700italic|Merriweather:300,300italic,regular,italic,700,700italic,900,900italic|Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic|Open+Sans+Condensed:300,300italic,700|Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic|Titillium+Web:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900|Quicksand:300,regular,500,600,700|Slabo+27px:regular|Bebas+Neue:regular|PT+Sans+Narrow:regular,700|Libre+Baskerville:regular,italic,700|Source+Code+Pro:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic|Dosis:200,300,regular,500,600,700,800|Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic|Yanone+Kaffeesatz:200,300,regular,500,600,700|Lobster:regular|Dancing+Script:regular,500,600,700|Source+Serif+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic|EB+Garamond:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic|Fjalla+One:regular" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+  <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
+  <script>
+    var _global = typeof window === 'object' && window.window === window ?
+      window : typeof self === 'object' && self.self === self ?
+      self : typeof global === 'object' && global.global === global ?
+      global :
+      this
+
+    function bom(blob, opts) {
+      if (typeof opts === 'undefined') {
+        opts = {
+          autoBom: false
+        }
+      } else if (typeof opts !== 'object') {
+        console.warn('Deprecated: Expected third argument to be a object')
+        opts = {
+          autoBom: !opts
+        }
+      }
+
+      // prepend BOM for UTF-8 XML and text/* types (including HTML)
+      // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+      if (opts.autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+        return new Blob([String.fromCharCode(0xFEFF), blob], {
+          type: blob.type
+        })
+      }
+      return blob
+    }
+
+    function download(url, name, opts) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.responseType = 'blob'
+      xhr.onload = function() {
+        saveAs(xhr.response, name, opts)
+      }
+      xhr.onerror = function() {
+        console.error('could not download file')
+      }
+      xhr.send()
+    }
+
+    function corsEnabled(url) {
+      var xhr = new XMLHttpRequest()
+        // use sync to avoid popup blocker
+      xhr.open('HEAD', url, false)
+      try {
+        xhr.send()
+      } catch (e) {}
+      return xhr.status >= 200 && xhr.status <= 299
+    }
+
+    // `a.click()` doesn't work for all browsers (#465)
+    function click(node) {
+      try {
+        node.dispatchEvent(new MouseEvent('click'))
+      } catch (e) {
+        var evt = document.createEvent('MouseEvents')
+        evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80,
+          20, false, false, false, false, 0, null)
+        node.dispatchEvent(evt)
+      }
+    }
+
+    // Detect WebView inside a native macOS app by ruling out all browsers
+    // We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
+    // https://www.whatismybrowser.com/guides/the-latest-user-agent/macos
+    var isMacOSWebView = /Macintosh/.test(navigator.userAgent) && /AppleWebKit/.test(navigator.userAgent) && !/Safari/.test(navigator.userAgent)
+
+    var saveAs = _global.saveAs || (
+      // probably in some web worker
+      (typeof window !== 'object' || window !== _global) ?
+      function saveAs() {
+        /* noop */
+      }
+
+      // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView
+      :
+      ('download' in HTMLAnchorElement.prototype && !isMacOSWebView) ?
+      function saveAs(blob, name, opts) {
+        var URL = _global.URL || _global.webkitURL
+        var a = document.createElement('a')
+        name = name || blob.name || 'download'
+
+        a.download = name
+        a.rel = 'noopener' // tabnabbing
+
+        // TODO: detect chrome extensions & packaged apps
+        // a.target = '_blank'
+
+        if (typeof blob === 'string') {
+          // Support regular links
+          a.href = blob
+          if (a.origin !== location.origin) {
+            corsEnabled(a.href) ?
+              download(blob, name, opts) :
+              click(a, a.target = '_blank')
+          } else {
+            click(a)
+          }
+        } else {
+          // Support blobs
+          a.href = URL.createObjectURL(blob)
+          setTimeout(function() {
+              URL.revokeObjectURL(a.href)
+            }, 4E4) // 40s
+          setTimeout(function() {
+            click(a)
+          }, 0)
+        }
+      }
+
+      // Use msSaveOrOpenBlob as a second approach
+      :
+      'msSaveOrOpenBlob' in navigator ?
+      function saveAs(blob, name, opts) {
+        name = name || blob.name || 'download'
+
+        if (typeof blob === 'string') {
+          if (corsEnabled(blob)) {
+            download(blob, name, opts)
+          } else {
+            var a = document.createElement('a')
+            a.href = blob
+            a.target = '_blank'
+            setTimeout(function() {
+              click(a)
+            })
+          }
+        } else {
+          navigator.msSaveOrOpenBlob(bom(blob, opts), name)
+        }
+      }
+
+      // Fallback to using FileReader and a popup
+      :
+      function saveAs(blob, name, opts, popup) {
+        // Open a popup immediately do go around popup blocker
+        // Mostly only available on user interaction and the fileReader is async so...
+        popup = popup || open('', '_blank')
+        if (popup) {
+          popup.document.title =
+            popup.document.body.innerText = 'downloading...'
+        }
+
+        if (typeof blob === 'string') return download(blob, name, opts)
+
+        var force = blob.type === 'application/octet-stream'
+        var isSafari = /constructor/i.test(_global.HTMLElement) || _global.safari
+        var isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent)
+
+        if ((isChromeIOS || (force && isSafari) || isMacOSWebView) && typeof FileReader !== 'undefined') {
+          // Safari doesn't allow downloading of blob URLs
+          var reader = new FileReader()
+          reader.onloadend = function() {
+            var url = reader.result
+            url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;')
+            if (popup) popup.location.href = url
+            else location = url
+            popup = null // reverse-tabnabbing #460
+          }
+          reader.readAsDataURL(blob)
+        } else {
+          var URL = _global.URL || _global.webkitURL
+          var url = URL.createObjectURL(blob)
+          if (popup) popup.location = url
+          else location.href = url
+          popup = null // reverse-tabnabbing #460
+          setTimeout(function() {
+              URL.revokeObjectURL(url)
+            }, 4E4) // 40s
+        }
+      }
+    )
+
+    _global.saveAs = saveAs.saveAs = saveAs
+
+    if (typeof module !== 'undefined') {
+      module.exports = saveAs;
+    }
+  </script>
+  <style>
+    body * {
+      transform-style: preserve-3d;
+    }
+    .dela:hover {
+      transition: all 0.7s ease 0s;
+      transform: rotate(20deg);
+    }
+    .gwd-input-qo5c {
+      text-align: center;
+      height: 6.18%;
+      left: 50%;
+      top: 37.5%;
+      width: 22.14%;
+      transform-origin: 164.747px 71.487px 0px;
+    }
+    .gwd-div-fy11 {
+      width: 23.87%;
+      height: 9.39%;
+      transform-origin: 50% 50% 0px;
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+      font-weight: bold;
+      left: 53.96%;
+      top: 3.03%;
+    }
+    .gwd-button-12vc {
+      position: absolute;
+      background-image: -webkit-linear-gradient(left, rgb(66, 100, 151) 0%, rgb(177, 204, 243) 100%);
+      left: 118.6%;
+      top: -5.88%;
+      height: 108.86%;
+      width: 48.42%;
+      transform-origin: 39.1658px 73.95px 0px;
+      border-width: 3px;
+      border-style: ridge;
+      border-radius: 30px;
+      font-family: Quicksand;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .gwd-div-e9a6 {
+      background-image: -webkit-linear-gradient(left, rgb(21, 3, 17) 0%, rgb(0, 0, 0) 47%, rgb(202, 231, 232) 85%);
+      transform-origin: 50% 50% 0px;
+      left: -0.73%;
+      top: 0.13%;
+      width: 100%;
+      height: 18.55%;
+    }
+    .gwd-button-1l0b {
+      height: 205.39%;
+      transform-origin: 50% 50% 0px;
+      width: 98.58%;
+      left: 0.73%;
+      top: 18.29%;
+    }
+    .gwd-table-qu6m {
+      width: 47.66%;
+      top: 110.79%;
+      left: 50.71%;
+      height: 112.89%;
+    }
+    .gwd-button-wbye {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(128, 181, 109);
+      border-radius: 30px;
+      border-width: 3px;
+      border-style: ridge;
+      font-weight: bold;
+      font-family: Merriweather;
+      font-size: 14px;
+      left: 80.71%;
+      top: 5.26%;
+      width: 17.66%;
+      height: 7.89%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-div-1in7 {
+      transform-origin: 50% 50% 0px;
+      height: 1808px;
+      width: 1582px;
+      left: -122px;
+      top: -50px;
+    }
+    .gwd-input-zr31 {
+      text-align: center;
+      top: 4.87%;
+      left: 73.55%;
+      width: 24.1%;
+      height: 2.88%;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-button-1yc0 {
+      width: 17.74%;
+      transform-origin: 50% 50% 0px;
+      font-weight: bold;
+      font-size: 16px;
+      height: 4.74%;
+      left: 31.52%;
+      top: 3.03%;
+    }
+    .gwd-div-w8pv {
+      left: 11.95%;
+      top: 83.79%;
+    }
+    .gwd-div-1r6u {
+      position: absolute;
+      background-image: none;
+      background-color: rgba(17, 30, 25, 0.76);
+      transform-origin: 50% 50% 0px;
+      height: 1602px;
+      width: 1470px;
+      left: -20px;
+      top: 128px;
+    }
+    .gwd-div-sjbm {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-div-10v1 {
+      position: absolute;
+      background-image: none;
+      transform-origin: 50% 50% 0px;
+      left: 0%;
+      top: -3.68%;
+      width: 98.61%;
+      height: 138.16%;
+      background-color: rgb(209, 223, 217);
+    }
+    .gwd-button-1w8k {
+      font-weight: bold;
+      left: 2.27%;
+      top: 3.16%;
+    }
+    .gwd-span-1cpr {
+      font-size: 16px;
+      transform-origin: 93.8375px 37.7625px 0px;
+      left: 3.45%;
+      top: 54.47%;
+    }
+    .gwd-span-eb6g {
+      font-size: 16px;
+      left: 85.85%;
+      top: 54.87%;
+    }
+    .gwd-input-a2sh {
+      left: 73.46%;
+      top: 54.47%;
+      text-align: center;
+    }
+    .gwd-input-17cl {
+      left: 56.23%;
+      top: 52.37%;
+    }
+    .gwd-p-1xc2 {
+      font-size: 17px;
+    }
+    .gwd-p-sh8u {
+      left: 34.31%;
+      top: 46.32%;
+      font-size: 17px;
+    }
+    .gwd-input-4jd0 {
+      text-align: center;
+      height: 6.05%;
+      top: 28.68%;
+      left: 2.57%;
+      width: 21.77%;
+      transform-origin: 129.674px 21.7307px 0px;
+    }
+    .gwd-input-brcn {
+      text-align: center;
+      left: 24.99%;
+      width: 22.53%;
+      height: 3.01%;
+      transform-origin: 50% 50% 0px;
+      top: 4.74%;
+    }
+    .gwd-input-929w {
+      text-align: center;
+      height: 3.01%;
+      transform-origin: 50% 50% 0px;
+      width: 22.61%;
+      left: 49.98%;
+      top: 4.74%;
+    }
+    .gwd-input-10q3 {
+      text-align: center;
+      top: 37.5%;
+      height: 6.05%;
+      left: 73.17%;
+      width: 23.61%;
+      transform-origin: 176.585px 71.4522px 0px;
+    }
+    .gwd-input-1vqu {
+      text-align: center;
+      width: 22.53%;
+      height: 3.01%;
+      transform-origin: 50% 50% 0px;
+      left: 24.99%;
+      top: 9.16%;
+    }
+    .gwd-input-1ilm {
+      text-align: center;
+      left: 2.49%;
+      top: 37.5%;
+    }
+    .gwd-input-1clp {
+      color: rgb(122, 64, 64);
+      text-align: center;
+    }
+    .gwd-input-10wr {
+      color: rgb(120, 64, 64);
+      left: 73.46%;
+      top: 46.32%;
+      text-align: center;
+    }
+    .gwd-input-1cqa {
+      left: 33.5%;
+      top: 52.37%;
+    }
+    .gwd-input-1b5o {
+      left: 15.98%;
+      top: 54.08%;
+      text-align: center;
+    }
+    .gwd-div-bq44 {
+      left: 91px;
+      top: 35px;
+    }
+    .gwd-div-1kdu {
+      position: absolute;
+      transform-origin: 50% 50% 0px;
+      border-radius: 30px;
+      background-image: none;
+      background-color: rgb(213, 187, 223);
+      left: 31.67%;
+      width: 17.67%;
+      top: 10.53%;
+      height: 5.39%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .gwd-span-1933 {
+      top: 19.61%;
+      left: 1.47%;
+      width: 45.97%;
+      height: 6.05%;
+      transform-origin: 274.318px 21.6876px 0px;
+    }
+    .gwd-p-1rjc {
+      height: 5.94%;
+      width: 46.42%;
+      transform-origin: 277.208px 21.4961px 0px;
+      transform: translate3d(-31.0001px, 0.965203px, 0px) rotateZ(-0.277812deg);
+    }
+    .gwd-div-1myz {
+      width: 231px;
+      transform-origin: 50% 50% 0px;
+      height: 55px;
+      pointer-events: none;
+    }
+    .gwd-table-1oyt {
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-div-c7p7 {
+      top: 443px;
+      left: -9px;
+    }
+    .gwd-div-u9uz {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(70, 116, 53);
+      width: 15.04%;
+      height: 5.8%;
+      left: 67.02%;
+      top: 101.58%;
+    }
+    .gwd-h2-1c5j {
+      position: absolute;
+      font-size: 19px;
+      transform-origin: 91.8576px 21.8459px 0px;
+      color: rgb(226, 233, 241);
+      font-family: Rubik;
+      width: 6.52%;
+      height: 2.89%;
+      left: 31.12%;
+      top: 22.69%;
+    }
+    .gwd-div-1w1u {
+      position: absolute;
+      left: -1.42%;
+      top: -2.63%;
+      width: 101.42%;
+      height: 20.92%;
+      background-image: -webkit-linear-gradient(0deg, rgba(128, 108, 179, 0.98) 0%, rgb(0, 0, 0) 100%);
+      pointer-events: none;
+      transform: translate3d(0px, 192px, 0px) scale3d(0.999991, 5.31717, 1);
+      opacity: 0;
+    }
+    .gwd-button-10i7 {
+      left: 33.71%;
+      top: 41.51%;
+      font-size: 15px;
+      letter-spacing: 5px;
+      font-weight: 800;
+      width: 33%;
+      height: 25%;
+      font-family: Merriweather;
+    }
+    @media (width: 1194px) and (height: 724px) {}
+  </style>
+  <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
+  <script type="text/javascript" gwd-events="registration">
+    // Support code for event handling in Google Web Designer
+    // This script block is auto-generated. Please do not edit!
+    gwd.actions.events.registerEventHandlers = function(event) {
+      gwd.actions.events.addHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.addHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.addHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.addHandler('checkagain', 'click', gwd.inputChecker, false);
+    };
+    gwd.actions.events.deregisterEventHandlers = function(event) {
+      gwd.actions.events.removeHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.removeHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.removeHandler('checkagain', 'click', gwd.inputChecker, false);
+      gwd.actions.events.removeHandler('checkagain', 'click', gwd.inputChecker, false);
+    };
+    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-sweetalert2@5.0.5/dist/vue-sweetalert.umd.min.js"></script>
+  <script integrity="sha512-dnyteqeKASHjUgi20CTeO5cfd1JwMTNV2ZS+tx5rlPCdWgnd6UKYNLM2EarSU9E6J3lMtMhUkcA6g8f3cAjoQQ==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.min.css" integrity="sha512-Yn5Z4XxNnXXE8Y+h/H1fwG/2qax2MxG9GeUOWL6CYDCSp4rTFwUpOZ1PS6JOuZaPBawASndfrlWYx8RGKgILhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body class="htmlNoPages">
+  <script gwd-served-sizes="" type="application/json">["1194x724"]</script>
+  <div class="gwd-div-10v1 full reveal" id="exploring" data-reveal="">
+    <div class="table-scroll">
+      <div id="app1" style="height: 500px;">
+        <table id="udhariData">
+          <thead id="udhariHead" style="opacity: 0.2;">
+            <tr>
+              <th>Delete</th>
+              <th>BorrowerName</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="udhariBody">
+            <tr v-for="itemy in udariDatas">
+              <td>
+                <form :name="">
+                  <input class="p" type="hidden" id="Borrower_Name" name="Borrower_Name" :value="itemy[0]">
+                  <input class="p" type="hidden" id="Amount" name="Amount" :value="itemy[1]">
+                  <input class="p" type="hidden" d="Updated" name="Updated" :value="itemy[2]">
+                  <input class="p" type="hidden" id="Status" name="Status" :value="itemy[3]">
+                  <input class="p" type="hidden" id="delete" name="delete" value="1">
+                  <input class="p" type="hidden" id="index" name="index" :value="itemy[5]">
+                  <img class="dela" src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="28" height="28" style="transform: scale(0.8,0.8); cursor: pointer;" onclick="deleteme(this)">
+                </form>
+              </td>
+              <td onclick="deleteme(this)">
+                {{itemy[0]}}
+              </td>
+              <td>
+                {{itemy[1]}}
+              </td>
+              <td>
+                {{itemy[2].split("T")[0]}}
+              </td>
+              <td>
+                {{itemy[3]}}
+              </td>
+              <td style="display: none;">
+              </td>
+              <td style="display: none;">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <select v-model="branch" style="background: lightyellow; border-radius: 35px; padding: 10px; position: relative; left: 35%; top: 120px; width: 300px; height: 100px; text-align: center;">
+          <option value="">Select one branch</option>
+          <option>Machwai</option>
+          <option>Bari</option>
+        </select>
+        <button class="close-button" style="height: 60px; width: 60px; transform: translateX(-400px) scale(1.0,1.0); cursor: pointer; border-radius: 30px; background: rgba(244,50,50,0.8);" data-close="" aria-label="Close reveal" type="button">
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+    </div>
+    <button class="close-button" data-close="" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <script>
+    function getme() {
+      console.log("OHHHOOOOO")
+      Swal.fire('ORCORYY')
+    }
+    const range = (start, end, step = 1) => {
+      let output = [];
+      if (typeof end === 'undefined') {
+        end = start;
+        start = 0;
+      }
+      for (let i = start; i < end; i += step) {
+        output.push(i);
+      }
+      return output;
+    }
+    var sheetname = ''
+      //DELETE N ADD URL
+    var delNadd = 'https://script.google.com/macros/s/AKfycbyQk5z55C0JVSbFn2KLGCvwOkhVp7sybOGgEAm7qTY3hnRQUPZvpKPvdK9RHamoegA/exec'
+
+    async function deleteme(e) {
+      //https://script.google.com/macros/s/AKfycbxyuuu4fxINwdvgGUIsOnE8Wnqy-VSRvArs0BJ6sc4fSLO76UbLqL5JRyTau0WIWY0/exec
+      var o = e.parentNode
+      console.log(o)
+      var inp = document.createElement("INPUT")
+      var tr = e.parentNode.parentNode.parentNode
+      var i = Array.from(o.parentNode.parentNode.parentNode.childNodes)
+      console.log(i)
+        /*           var sheetRows= */
+      try {
+
+
+        /*         var sheetRow = range(2, i.length + 2)
+                inp.value = sheetRow[tr.rowIndex - 1].toString()
+                inp.name = "index"
+                inp.type = "hidden"
+                o.appendChild(inp) */
+        console.log(o)
+        var data = new FormData(o);
+        console.log(data)
+        const deleteURL = delNadd
+        var resp = await fetch(deleteURL, {
+          method: 'POST',
+          body: data
+        })
+
+        document.getElementById("udhariData").deleteRow(tr.rowIndex);
+        // for(var t in ud)
+        console.log('Deleted', resp)
+      } catch (e) {
+        console.log(e.message)
+      }
+
+    }
+
+    function uploadPrev(el) {
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+        console.log(workbook);
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+          console.log(rowObject);
+
+        });
+
+      }
+
+    }
+    let ind
+    let indagain
+    const app = Vue.createApp({
+      //variable declare part
+      data() {
+          return {
+            udariDatas: [],
+            jstable: null,
+            branch: '',
+            readurl: "",
+            sheetname: ''
+
+          }
+        },
+        watch: {
+          branch(newQuestion, oldQuestion) {
+            if (newQuestion == 'Machwai') {
+              console.log(newQuestion)
+              this.readurl = "https://script.google.com/macros/s/AKfycbwhfSen6ThRBmTv873iSnhxc3Ygy4wAYimSsuzmYjd9Bhk_joGxqTmuQgFgky4MwpzK/exec"
+              this.loop(this.readurl)
+              sheetname = "RajhansFuel_Machwai"
+              this.sheetname = "RajhansFuel_Machwai"
+
+              delNadd = 'https://script.google.com/macros/s/AKfycbxYCLYYhhjHWube0HWPW1PPUJs6fG059VvUdQG6SnwQn1gW-nz7q3eEVVRsah7Sh56F/exec'
+
+            } else if (newQuestion == 'Bari') {
+              this.readurl = "https://script.google.com/macros/s/AKfycbz18fBnjU2GL3swdL33RfiF9WqUudWLfBqivGtA_e9RV97568ERpGSNTDx3iqh7f8KBnQ/exec"
+              sheetname = "RajhansFuel_Bari"
+              this.sheetname = "RajhansFuel_Bari"
+              delNadd = 'https://script.google.com/macros/s/AKfycbwuKROMuxwd6_Ow1XAEsjRFWnOt24iKxEx_NIsy8iPgn_0rbGywDsFwu9Kw7dyRILHSmQ/exec'
+              this.loop(this.readurl)
+            }
+            var up = document.getElementById("uploader")
+            up.style.opacity = "1.0"
+            up.style['pointer-events'] = "all"
+            up.style.cursor = "pointer"
+          }
+        },
+        created() {
+          console.log("Called")
+
+          //this.loop()
+        },
+        methods: {
+
+          loop(er) {
+            // these will work as expected.
+            //swal("Good job!", "You clicked the button!", "success");
+
+            //JUst a Note: DOnt USe function inside OR outside fetchApi instead use () simple lambda function
+            //otherwise 'this' keyword will work like hell
+
+            let readUrl = er
+            console.log(er)
+            fetch(readUrl, {
+                method: 'GET'
+              })
+              .then(response => {
+                return response.json();
+              })
+              .then(ob => {
+                var arr = []
+                console.log("Cool")
+                console.log(ob)
+
+                for (var y in ob) {
+                  var i = ob[y]
+                    /*                   i.pop()
+                                      i.pop() */
+                  arr.push(i)
+
+                }
+
+                console.log(arr)
+                this.udariDatas = arr
+                if (arr.length == 0) {
+                  console.log(arr.length)
+                  ind = arr.length + 2
+                  indagain = arr.length + 2
+                  console.log("Read----Data Len:" + ind)
+                    /*var popped=this.udariDatas.pop().pop() */
+                } else if (arr.length > 0) {
+
+                  ind = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                  indagain = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                  console.log("Length more than 0" + arr[arr.length - 1][arr[arr.length - 1].length - 1])
+                }
+                setTimeout(function() {
+                  this.jstable = new JSTable("#udhariData", {
+                    perPageSelect: [6, 8, 10],
+                    perPage: 30,
+                    top: "dt-top",
+
+                    nextPrev: true,
+                    firstLast: false,
+                    prevText: "&lsaquo;",
+                    nextText: "&rsaquo;",
+                    firstText: "&laquo;",
+                    lastText: "&raquo;",
+                    ellipsisText: "&hellip;",
+                    truncatePager: true,
+                    pagerDelta: 2,
+                    labels: {
+                      placeholder: "Search Anything...",
+
+                      noRows: "No entries found",
+                      info: "Showing {start} to {end} of {rows} entries",
+                      loading: "Loading...",
+                      infoFiltered: "Showing {start} to {end} of {rows} entries (filtered from {rowsTotal} entries)"
+                    },
+                    layout: {
+                      top: "{select}{search}",
+                      bottom: "{info}{pager}"
+                    },
+                  });
+                  var prda2 = document.getElementById("parda2").style
+                  prda2.opacity = "0.0"
+                  prda2['pointer-events'] = "none"
+                  var up = document.getElementById("uploader")
+                  up.style.opacity = "1.0"
+                  up.style['pointer-events'] = "all"
+                  up.style.cursor = "pointer"
+                  var hea = document.getElementById("udhariHead")
+                  hea.style.opacity = "1.0"
+                }, 3000)
+
+
+              }).catch(err => {
+                console.log(err)
+              })
+
+
+          }
+        }, // `mounted` is a lifecycle hook which we will explain later
+        mounted() {
+
+
+        }
+    }).mount('#app1')
+  </script>
+  <div class="off-canvas-wrapper gwd-div-sjbm">
+    <div class="off-canvas position-left gwd-div-4q40" id="offCanvasLeft1" style="width: 850px; height: 1000px;" data-off-canvas="">
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content="">
+      <!-- Your page content lives here -->
+    </div>
+  </div>
+  <button type="button" class="button">Open Left</button>
+  <div class="gwd-div-1hq6"></div>
+  <div class="gwd-div-1in7">
+  </div>
+  <div class="gwd-div-e9a6" id="selector"></div>
+  <div class="gwd-div-fy11" id="uploader">
+    <label for="file-input" class="gwd-label-o9c3">
+      <img src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" height="50" width="50" class="gwd-img-19bw">&nbsp;<font color="#ffd700" class="gwd-font-xa25">&nbsp;TODAYS FILE</font>
+    </label>
+    <input id="file-input" type="file" onchange="read(this)">
+  </div>
+  <button class="gwd-button-1yc0 gwd-new-class-c7l8" id="ty" data-gwd-name="name" data-toggle="exploring">Explore Udharies</button>
+  <style>
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+      table-layout: auto;
+      width: 100%;
+    }
+    th, td {
+      text-align: center;
+      border: 1px solid black;
+      padding: 5px;
+    }
+    .container {
+      display: flex;
+    }
+    .text-area {
+      width: 100%;
+      height: 50%;
+      margin: 5px;
+    }
+    #Download, #CheckBefore {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    var wb
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const EXCEL_EXTENSION = '.xlsx';
+
+
+    <!-- todays EXPENSES   -->
+
+    function expense() {
+
+    }
+    expense()
+  </script>
+  <script>
+    /*   SheetJS   */
+    function start() {
+      console.log("")
+      var prda = document.getElementById("parda2")
+
+      /*  Previous reading      */
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+
+      /*    OIL RATES N QUANTITY   */
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var readingList = [msp1, msp2, hsdp1, hsdp2, msc1, msc2, hsdc1, hsdc2, msRate, hsdRate, oil_quantity, oil_rate]
+      var trueCounter = 1
+      for (var r of readingList) {
+        console.log(r.value.length + "----" + isNaN(r.value))
+        if (r.value.length != 0 && isNaN(r.value) == false) {
+          trueCounter += 1
+        }
+
+        console.log(trueCounter)
+      }
+      if (trueCounter == 13) {
+        prda.style.opacity = "0.0"
+        prda.style['pointer-events'] = "none"
+      }
+    }
+    var readingList
+    var udhari_name = []
+    var udhari_amnt = []
+    var sheet = []
+    var sheetstr
+  </script>
+  <script type="text/javascript" gwd-events="handlers" async="true">
+    window.gwd = window.gwd || {};
+    var addorremove = 'add'
+    var flow = 50
+    var i = 1
+    var add_udhari = function(event) {
+      var udha = document.getElementById("udhari_table")
+      var tr = document.createElement("TR")
+      tr.classList.add("udhariRows")
+      var td1 = document.createElement("TD")
+      var td2 = document.createElement("TD")
+      var td3 = document.createElement("TD")
+      var td4 = document.createElement("TD")
+      var cont = document.createElement("DIV")
+      cont.classList.add("container")
+      cont.classList.add("name")
+      var text1 = document.createElement("TEXTAREA")
+      text1.classList.add("text-area")
+      text1.rows = "1"
+      var text2 = document.createElement("TEXTAREA")
+      text2.classList.add("text-area")
+      text2.rows = "1"
+      cont.appendChild(text1)
+      td1.appendChild(cont)
+      var cont2 = document.createElement("DIV")
+      cont2.classList.add("container")
+      cont2.classList.add("amnt")
+      cont2.appendChild(text2)
+      td2.appendChild(cont2)
+      var r1 = document.createElement("INPUT")
+      var r2 = document.createElement("INPUT")
+      r1.type = "radio"
+      r1.name = "select" + i
+      r1.classList.add("Add_money")
+      r2.type = "radio"
+      r2.name = "select" + i
+      i++
+      r2.classList.add("Give_money")
+      td3.appendChild(r1)
+      td4.appendChild(r2)
+      var l1 = document.createElement("LABEL")
+      var sp1 = document.createElement("SPAN")
+      sp1.style.color = "lightyellow"
+      sp1.innerHTML = "Addmoney"
+      l1.appendChild(sp1)
+      var l2 = document.createElement("LABEL")
+      var sp2 = document.createElement("SPAN")
+      sp2.style.color = "lightyellow"
+      sp2.innerHTML = "Givemoney"
+      l2.appendChild(sp2)
+      td3.appendChild(l1)
+      td4.appendChild(l2)
+      tr.appendChild(td1)
+      tr.appendChild(td2)
+      tr.appendChild(td3)
+      tr.appendChild(td4)
+      udha.appendChild(tr)
+      udha.style.transition = "1s all"
+      if (addorremove == "add") {
+        event.target.style.transition = "0.1s all"
+        event.target.style.transform = "translateY(" + flow + "px)"
+        flow += 100
+      }
+    };
+    gwd.inputChecker = function(event) {
+      checks('checking')
+      console.log(sheets)
+    };
+    gwd.justlil = function(event) {
+      var y = document.getElementById("udhariCont")
+      console.log(Array.from(Array.from(Array.from(Array.from(y.childNodes)[1].childNodes)[0].childNodes)[0].childNodes)[0].value)
+    };
+  </script>
+  <button class="gwd-button-1l0b">
+    <input class="gwd-input-vtyl gwd-input-brcn" id="prev2">
+    <input class="gwd-input-vtyl gwd-input-v4fs gwd-input-929w" id="prevH2">
+    <input class="gwd-input-vtyl gwd-input-v4fs gwd-input-zr31" id="prevH1">
+    <input class="gwd-input-1vqu" id="curr2">
+    <svg data-gwd-shape="line" preserveAspectRatio="none" viewBox="0 0 9 361" class="gwd-line-mlrl">
+      <line x1="4" x2="5" y1="0.011" y2="360.989"></line>
+    </svg>
+  </button>
+  <button class="gwd-button-1w8k" id="UpdateUdha" data-gwd-name="updateUdha" onclick="updateUdha()">UPDATEFILE</button>
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1clp" id="MSREADING">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-4jd0" id="prev1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-1ilm" id="curr1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-qo5c" id="currH1">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-uiaq gwd-input-10q3" id="currH2">
+  <input class="gwd-input-10eh gwd-input-urya gwd-input-10wr" id="HSDREADING">
+  <input class="gwd-input-1b5o" id="MSRATE">
+  <input class="gwd-input-a2sh" id="HSDRATE">
+  <table class="gwd-table-1oyt gwd-table-qu6m" id="udhariCont">
+  </table>
+  <div class="gwd-p-1rjc">HSD</div>
+  <div class="gwd-div-w8pv">
+    <table class="gwd-table-1mqd" style="background: rgb(211, 241, 200); transform: translate3d(-88px, 199px, 0px);">
+      <tbody class="gwd-tbody-r753" id="eXp">
+        <tr class="expRows gwd-tr-91wc">
+          <td>
+            <div class="container name">
+              <h4>ATM</h4>
+            </div>
+          </td>
+          <td class="gwd-td-mqwr">
+            <div class="container amnt gwd-div-1664">
+              <textarea id="atm_check" class="gwd-textarea-jg63"> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>OnlinePay</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="online_check"> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows gwd-tr-1c5x">
+          <td>
+            <div class="container name">
+              <h4>Others</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="other_check"> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>TestingMS</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="testingMS_check" value=""> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows">
+          <td>
+            <div class="container name">
+              <h4>TestingHSD</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="testingHSD_check" value=""></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr class="expRows" style="background: gray;">
+          <td>
+            <div class="container name">
+              <h4>TotalExpense</h4>
+            </div>
+          </td>
+          <td>
+            <div class="container amnt">
+              <textarea id="totalexpenses" style="text-align: center;" value=""></textarea>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="gwd-p-36mt"><span class="gwd-span-ldsy">EXPENSES</span><br>
+  </p>
+  <table class="gwd-table-1t4z gwd-table-dqeb udhariCont" style="transform: translate3d(465px, 574px, 0px); overflow: scroll;">
+  </table>
+  <p class="gwd-p-1kcu gwd-p-1xc2">OILSOLD</p>
+  <p class="gwd-p-1kcu gwd-p-sh8u">OILRATE</p>
+  <p class="gwd-p-nsr5">
+  </p>
+  <input class="gwd-div-1kdu form-control date" id="datepick" type="text" value="FILE DATE">
+  <script>
+    let forms = []
+
+    function read(el) {
+      console.log("merebhai")
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+
+
+        });
+        console.log("HOLAAAAAA")
+        document.getElementById('res').click()
+        console.log(rowObject)
+        checks(rowObject)
+      }
+    }
+
+    function readLedger(el) {
+      console.log('Dost')
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(el.files[0]);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, {
+          type: "binary"
+        });
+
+        let rowObject
+        workbook.SheetNames.forEach(sheet => {
+          rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+
+
+        });
+        console.log(rowObject)
+        checkledger(rowObject)
+      }
+
+    }
+  </script>
+  <script>
+    var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    var datepic = new Date()
+    var timeup = '--'
+    const myDatePicker = MCDatepicker.create({
+      el: '#datepick',
+      selectedDate: datepic
+    })
+    myDatePicker.onSelect(function(datee, formatedDate) {
+      var datep = document.getElementById("datepick")
+      var month = new Date(datee).getMonth() + 1
+        /*    Date ISsue        */
+      var formateddate = new Date(datee)
+
+      console.log("Selected:" + formateddate)
+      var mon = formateddate.getMonth() + 1
+      var time = formateddate.getDate() + "-" + mon + "-" + formateddate.getFullYear()
+      console.log("FormttedDate:" + moment(time, "DDMMYYYY").format())
+      const userAgent = navigator.userAgent
+      forms.forEach(function(el) {
+
+        var t = Array.from(el.childNodes)
+        console.log(t)
+        if (userAgent.match(/chrome|chromium|crios/i)) {
+          t[2].value = moment(time, "DDMMYYYY").format()
+        } else if (userAgent.match(/firefox|fxios/i)) {
+          t[2].value = moment(time, "DDMMYYYY").format()
+        }
+        datep.value = time
+        timeup = time
+
+      })
+
+      /*       console.log(datee.toLocaleString('en-GB').split(',')[0])
+            var udhariyan = document.getElementById("udhar")
+            udhariyan.style['pointer-events'] = 'all'
+            udhariyan.style.opacity = '1.0'
+            udhariyan.style.cursor = 'alias'
+
+            var addud = document.getElementById("add_udhariss")
+            addud.style['pointer-events'] = 'all'
+            addud.style.opacity = '1.0'
+            addud.style.cursor = 'alias'
+
+            var removud = document.getElementById('remove_udhari')
+            removud.style['pointer-events'] = 'all'
+            removud.style.opacity = '1.0'
+            removud.style.cursor = 'alias'
+
+            dateObj = datee.toLocaleString('en-GB').split(',')[0] */
+    })
+  </script>
+  <script>
+    function createFile(row) {
+      if (udhari_name.length != 0) {
+        udhari_name = []
+        udhari_amnt = []
+      }
+      var trueCounter = 1
+      var other = document.getElementById("other")
+      var online = document.getElementById("online")
+      var atm = document.getElementById("atm")
+      var testingMS = document.getElementById("testingMS")
+      var testingHSD = document.getElementById("testingHSD")
+      var oil_quantity = document.getElementById("oil_quantity")
+      var oil_rate = document.getElementById("oil_rate")
+      var msp1 = document.getElementById("msN1")
+      var msp2 = document.getElementById("msN2")
+      var hsdp1 = document.getElementById("hsdN1")
+      var hsdp2 = document.getElementById("hsdN2")
+        /*     CurrentReading     */
+      var msc1 = document.getElementById("msCn1")
+      var msc2 = document.getElementById("msCn2")
+      var hsdc1 = document.getElementById("hsdCn1")
+      var hsdc2 = document.getElementById("hsdCn2")
+        /*    Rates      */
+      var msRate = document.getElementById("MsRate")
+      var hsdRate = document.getElementById("HsdRate")
+      var prev = {
+        "msN1": msp1.value,
+        "msN2": msp2.value,
+        "hsdN1": hsdp1.value,
+        "hsdN2": hsdp2.value
+
+      }
+      var curr = {
+        "msCn1": msc1.value,
+        "msCn2": msc2.value,
+        "hsdCn1": hsdc1.value,
+        "hsdCn2": hsdc2.value
+      }
+      var rate = {
+        "MsRate": msRate.value,
+        "HsdRate": hsdRate.value,
+        "oilquantity": oil_quantity.value,
+        "oilrate": oil_rate.value
+
+      }
+      var paymentNother = {
+        "ATM": atm.value,
+        "TESTINGMS": testingMS.value,
+        "TESTINGHSD": testingHSD.value,
+        "ONLINE": online.value,
+        "OTHERS": other.value
+      }
+
+      var udharis = Array.from(document.getElementsByClassName("udhariRows"))
+      readingList = [other, online, atm, testingMS, testingHSD]
+      console.log(udharis)
+      var check = 0
+      for (var t of udharis) {
+
+        var td = Array.from(t.childNodes).filter(function(el) {
+          return typeof el.tagName != 'undefined'
+        })
+        console.log(td)
+        for (var d of td) {
+          var data = Array.from(d.childNodes).filter(function(el) {
+            return typeof el.tagName != 'undefined'
+          })
+          console.log(data)
+          if (data[0].classList[1] == 'name') {
+            var p = Array.from(data[0].childNodes).filter(function(el) {
+              return typeof el.tagName != 'undefined'
+            })
+            console.log("Name:" + p[0].value)
+            udhari_name.push(p[0].value)
+          }
+          if (data[0].classList[1] == 'amnt') {
+            var p2 = Array.from(data[0].childNodes).filter(function(el) {
+              return typeof el.tagName != 'undefined'
+            })
+            udhari_amnt.push(p2[0].value)
+          }
+          if (data[0].type == 'radio' && data[0].classList[0] == 'Add_money') {
+            console.log(data[0].name + "---Radio 1")
+            console.log(data[0].checked)
+            if (data[0].checked == true) {
+
+              console.log(data[0] + "^^^^")
+              udhari_name[check] = udhari_name[check] + "*add"
+              break
+            }
+          } else if (data[0].type == 'radio' && data[0].classList[0] == 'Give_money') {
+            console.log(data[0].name + "---Radio 2")
+            if (data[0].checked == true) {
+
+              console.log(data[0] + "####")
+              udhari_name[check] = udhari_name[check] + "*minus"
+              break
+            }
+          }
+        }
+        check += 1
+      }
+      console.log(udhari_name)
+      console.log(udhari_amnt)
+
+      for (var r of readingList) {
+        console.log(r.value.length + "----" + isNaN(r.value))
+        if (r.value.length != 0 && isNaN(r.value) == false && r.value != '') {
+
+        } else {
+          //   alert("Do Not Keep It Empty")
+        }
+
+        console.log(trueCounter)
+      }
+      var udharis = {}
+      sheet = [prev, curr, rate, paymentNother]
+      for (var t1 = 0; t1 < udhari_name.length; t1++) {
+        sheet.push({
+          "UDHARI": udhari_name[t1],
+          "AMNT": udhari_amnt[t1]
+        })
+      }
+
+
+
+      sheetstr = JSON.stringify(sheet)
+      console.log(sheetstr)
+
+
+      checks(sheet)
+
+      function downloadAsExcel() {
+        var workbok = XLSX.utils.json_to_sheet(sheet);
+        wb = {
+          Sheets: {
+            'data': workbok
+          },
+          SheetNames: ['data']
+        }
+
+        const buffer = XLSX.write(wb, {
+          bookType: 'xlsx',
+          type: "array"
+        })
+        saveAs(new Blob([buffer], {
+          type: EXCEL_TYPE
+        }), new Date().toString().split("GMT")[0])
+      }
+      //downloadAsExcel()
+
+
+
+    }
+
+
+    const ca = document.getElementById("checkagain")
+    ca.style['pointer-events'] = "none"
+    ca.style['cursor'] = "not-allowed"
+    ca.style['opacity'] = "0.4"
+
+    function inputChecker(inp) {
+      console.log(sheets)
+    }
+
+    var sheets = ''
+
+    var dateob = []
+    const udhariyan = Vue.createApp({
+      //variable declare part
+      data() {
+          return {
+            udariDatas: [],
+            jstable: null,
+            branch: '',
+            readurl: "",
+            sheetname: ''
+
+          }
+        },
+        watch: {
+          branch(newQuestion, oldQuestion) {
+            if (newQuestion == 'Machwai') {
+              console.log(newQuestion)
+              this.readurl = "https://script.google.com/macros/s/AKfycbwhfSen6ThRBmTv873iSnhxc3Ygy4wAYimSsuzmYjd9Bhk_joGxqTmuQgFgky4MwpzK/exec"
+              this.loop(this.readurl)
+              sheetname = "RajhansFuel_Machwai"
+              this.sheetname = "RajhansFuel_Machwai"
+
+              delNadd = 'https://script.google.com/macros/s/AKfycbxYCLYYhhjHWube0HWPW1PPUJs6fG059VvUdQG6SnwQn1gW-nz7q3eEVVRsah7Sh56F/exec'
+
+            } else if (newQuestion == 'Bari') {
+              this.readurl = "https://script.google.com/macros/s/AKfycbz18fBnjU2GL3swdL33RfiF9WqUudWLfBqivGtA_e9RV97568ERpGSNTDx3iqh7f8KBnQ/exec"
+              sheetname = "RajhansFuel_Bari"
+              this.sheetname = "RajhansFuel_Bari"
+              delNadd = 'https://script.google.com/macros/s/AKfycbwuKROMuxwd6_Ow1XAEsjRFWnOt24iKxEx_NIsy8iPgn_0rbGywDsFwu9Kw7dyRILHSmQ/exec'
+              this.loop(this.readurl)
+            }
+            var up = document.getElementById("uploader")
+            up.style.opacity = "1.0"
+            up.style['pointer-events'] = "all"
+            up.style.cursor = "pointer"
+          }
+        },
+        created() {
+          console.log("Called")
+
+          //this.loop()
+        },
+        methods: {
+
+          loop(er) {
+            // these will work as expected.
+            //swal("Good job!", "You clicked the button!", "success");
+
+            //JUst a Note: DOnt USe function inside OR outside fetchApi instead use () simple lambda function
+            //otherwise 'this' keyword will work like hell
+
+            let readUrl = er
+            console.log(er)
+            fetch(readUrl, {
+                method: 'GET'
+              })
+              .then(response => {
+                return response.json();
+              })
+              .then(ob => {
+                var arr = []
+                console.log("Cool")
+                console.log(ob)
+
+                for (var y in ob) {
+                  var i = ob[y]
+                    /*                   i.pop()
+                                      i.pop() */
+                  arr.push(i)
+
+                }
+
+                console.log(arr)
+                this.udariDatas = arr
+                if (arr.length == 0) {
+                  console.log(arr.length)
+                  ind = arr.length + 2
+                  indagain = arr.length + 2
+                  console.log("Read----Data Len:" + ind)
+                    /*var popped=this.udariDatas.pop().pop() */
+                } else if (arr.length > 0) {
+
+                  ind = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                  indagain = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                  console.log("Length more than 0" + arr[arr.length - 1][arr[arr.length - 1].length - 1])
+                }
+                setTimeout(function() {
+                  this.jstable = new JSTable("#udhariData", {
+                    perPageSelect: [6, 8, 10],
+                    perPage: 30,
+                    top: "dt-top",
+
+                    nextPrev: true,
+                    firstLast: false,
+                    prevText: "&lsaquo;",
+                    nextText: "&rsaquo;",
+                    firstText: "&laquo;",
+                    lastText: "&raquo;",
+                    ellipsisText: "&hellip;",
+                    truncatePager: true,
+                    pagerDelta: 2,
+                    labels: {
+                      placeholder: "Search Anything...",
+
+                      noRows: "No entries found",
+                      info: "Showing {start} to {end} of {rows} entries",
+                      loading: "Loading...",
+                      infoFiltered: "Showing {start} to {end} of {rows} entries (filtered from {rowsTotal} entries)"
+                    },
+                    layout: {
+                      top: "{select}{search}",
+                      bottom: "{info}{pager}"
+                    },
+                  });
+                  var prda2 = document.getElementById("parda2").style
+                  prda2.opacity = "0.0"
+                  prda2['pointer-events'] = "none"
+                  var up = document.getElementById("uploader")
+                  up.style.opacity = "1.0"
+                  up.style['pointer-events'] = "all"
+                  up.style.cursor = "pointer"
+                  var hea = document.getElementById("udhariHead")
+                  hea.style.opacity = "1.0"
+                }, 3000)
+
+
+              }).catch(err => {
+                console.log(err)
+              })
+
+
+          }
+        }, // `mounted` is a lifecycle hook which we will explain later
+        mounted() {
+
+
+        }
+    }).mount('#udhariyan')
+
+    function checks(sheet) {
+      var formschk = []
+      var datep = document.getElementById("datepick")
+      const userAgent = navigator.userAgent
+
+      if (sheet != "checking") {
+        sheets = sheet
+        console.log(sheets)
+        var atm = sheets[3]['ATM']
+        var online = sheets[3]['ONLINE']
+        var other = sheets[3]['OTHERS']
+        var testingMS = sheets[3]['TESTINGMS']
+        var testingHSD = sheets[3]['TESTINGHSD']
+        if (document.getElementById("other_check").value == "" || document.getElementById("atm_check").value == "" || document.getElementById("atm_check").value == "") {
+
+        }
+
+        document.getElementById("other_check").value = other
+        document.getElementById("online_check").value = online
+        document.getElementById("atm_check").value = atm
+        document.getElementById("testingMS_check").value = testingMS
+        document.getElementById("testingHSD_check").value = testingHSD
+
+
+        var expenseTotal = parseFloat(atm) + parseFloat(online) + parseFloat(other) + parseFloat(testingMS) + parseFloat(testingHSD)
+        document.getElementById("totalexpenses").value = expenseTotal
+
+        /*       document.getElementById("totalexpenses").innerHTML = expenseTotal */
+        var msp1 = sheets[0]['msN1']
+        var msp2 = sheets[0]['msN2']
+        var hsdp1 = sheets[0]['hsdN1']
+        var hsdp2 = sheets[0]['hsdN2']
+          /*     CurrentReading     */
+        var msc1 = sheets[1]['msCn1']
+        var msc2 = sheets[1]['msCn2']
+        var hsdc1 = sheets[1]['hsdCn1']
+        var hsdc2 = sheets[1]['hsdCn2']
+          /*    Rates      */
+        var msRate = sheets[2]["MsRate"]
+        var hsdRate = sheets[2]["HsdRate"]
+
+        /*     Oil Rates   */
+        var oil_quantity = sheets[2]["oilquantity"]
+        var oil_rate = sheets[2]["oilrate"]
+        console.log(oil_quantity + "----" + oil_rate)
+
+        var udha = document.getElementById("udhariCont")
+        udha.style['overflow-x'] = 'scroll'
+        document.getElementById('oilrate').value = parseFloat(oil_rate)
+        document.getElementById('oilsale').value = parseFloat(oil_quantity)
+        document.getElementById("prev1").value = msc1
+        document.getElementById("prev2").value = msc2
+        document.getElementById("curr1").value = msp1
+        document.getElementById("curr2").value = msp2
+        document.getElementById("prevH1").value = hsdc1
+        document.getElementById("prevH2").value = hsdc2
+        document.getElementById("currH1").value = hsdp1
+        document.getElementById("currH2").value = hsdp2
+        document.getElementById("MSRATE").value = msRate
+        document.getElementById("HSDRATE").value = hsdRate
+        var msSum = (parseFloat(msc1) - parseFloat(msp1)) + (parseFloat(msc2) - parseFloat(msp2))
+        document.getElementById("MSREADING").value = msSum
+        var hsdSum = (parseFloat(hsdc1) - parseFloat(hsdp1)) + (parseFloat(hsdc2) - parseFloat(hsdp2))
+        document.getElementById("HSDREADING").value = hsdSum
+
+        var Total = (msSum * parseFloat(msRate)) + (hsdSum * parseFloat(hsdRate)) + (parseFloat(oil_quantity) * parseFloat(oil_rate))
+        document.getElementById("greenboard").innerHTML = "<h5>MS today : " + msSum + " x " + parseFloat(msRate) + ' = ' + (msSum * parseFloat(msRate)) + "</br> HSD today : " + hsdSum + ' x ' + parseFloat(hsdRate) + " = " + (parseFloat(hsdRate) * hsdSum) + "<br> Oil sales :" + parseFloat(oil_quantity) + ' x ' + parseFloat(oil_rate) + " = " + (parseFloat(oil_quantity) * parseFloat(oil_rate)) + "</br>" + "Total : " + Total + "</h5>"
+        var FinalTotal = Total - expenseTotal
+        console.log("000--" + FinalTotal)
+        document.getElementById("totalexpenses").innerHTML = expenseTotal
+          //  document.getElementById("after_expense").innerHTML = FinalTotal
+        var ooo = Array.from(udha.childNodes).filter(function(el) {
+          return typeof el.tagName != 'undefined'
+        })
+        console.log(ooo)
+        if (ooo.length != 1) {
+          console.log("DELETE")
+          var child = udha.lastElementChild;
+          while (child) {
+            udha.removeChild(child);
+            child = udha.lastElementChild;
+          }
+        }
+
+        var udhariTotal = 0
+        var udhari_real = 0
+        var cred = 0
+        var namam = 1
+
+        for (var y = 4; y < sheets.length; y++) {
+          var form = document.createElement("FORM")
+          form.name = sheetname
+          var tr = document.createElement("TR")
+          tr.classList.add("udhariRowscheck")
+          var td1 = document.createElement("TD")
+          var td2 = document.createElement("TD")
+          var td3 = document.createElement("TD")
+          var td4 = document.createElement("TD")
+          var cont = document.createElement("DIV")
+          var cont2 = document.createElement("DIV")
+          var khel = sheets[y]
+          cont.classList.add("container")
+          cont.classList.add("name")
+          cont2.classList.add("container")
+          cont2.classList.add("amnt")
+          var names = document.createElement("INPUT")
+          var am = document.createElement("INPUT")
+          names.addEventListener('input', function() {
+            var con = document.getElementById('confirmchange')
+            con.style['pointer-events'] = 'all'
+            con.style.opacity = '1.0'
+          })
+          am.addEventListener('input', function() {
+            var con = document.getElementById('confirmchange')
+            con.style['pointer-events'] = 'all'
+            con.style.opacity = '1.0'
+          })
+          names.type = "text"
+
+          am.type = "text"
+
+          names.name = "Borrower_name"
+          am.name = 'Amount'
+          names.id = khel['UDHARI'].split("*")[0] + "*" + namam
+          am.id = khel['AMNT'] + "*" + namam
+          var date = document.createElement("INPUT")
+          var status = document.createElement("INPUT")
+          var deletes = document.createElement("INPUT")
+          var index = document.createElement("INPUT")
+          date.type = "hidden"
+          status.type = "hidden"
+          deletes.type = "hidden"
+          index.type = "hidden"
+          deletes.name = "delete"
+          index.name = "index"
+
+          date.name = "Updated"
+          status.name = "Status"
+
+          console.log(khel)
+          names.value = khel['UDHARI'].split("*")[0]
+          am.value = khel['AMNT']
+
+          namam++
+          var month = new Date(khel['DATE']).getMonth() + 1
+            /*    Date ISsue        */
+          var formateddate = new Date(khel['DATE'])
+
+          console.log("RawDate::" + formateddate)
+          var mon = formateddate.getMonth() + 1
+          var time = ''
+
+          if (userAgent.match(/chrome|chromium|crios/i)) {
+            time = formateddate.getDate() + "-" + mon + "-" + formateddate.getFullYear()
+            date.value = moment(time, "DDMMYYYY").format()
+
+          } else if (userAgent.match(/firefox|fxios/i)) {
+            time = formateddate.getDate() + "-" + mon + formateddate.getFullYear()
+            date.value = moment(time, "DDMMYYYY").format()
+
+          }
+          console.log("FormttedDate:" + moment(time, "DDMMYYYY").format())
+          datep.value = time
+          var dt = new Date(date.value)
+          console.log(dt.getMonth())
+          status.value = khel['STATUS']
+          deletes.value = "0"
+
+          index.value = ind
+          ind += 3
+          console.log("Sheet date--" + new Date(khel['DATE']).getMonth() + 1 + "--" + new Date(khel['DATE']).getDate())
+
+          console.log("DATE:--" + date.value)
+          console.log("Data Len:" + ind)
+          console.log("Date obj:" + new Date(date.value).toISOString())
+          cont2.appendChild(am)
+          cont.appendChild(names)
+          td1.appendChild(cont)
+          td2.appendChild(cont2)
+          td3.appendChild(date)
+          td4.appendChild(status)
+          tr.appendChild(td1)
+          tr.appendChild(td2)
+          tr.appendChild(td3)
+          tr.appendChild(td4)
+
+          /*     UDHARiSSSs     */
+
+          if (khel['UDHARI'].split("*")[1] == 'minus') {
+            FinalTotal -= parseFloat(khel['AMNT'])
+            td1.style['background'] = "Crimson"
+            td2.style['background'] = "Crimson"
+            names.style.color = "black"
+            am.style.color = "black"
+            udhariTotal += parseFloat(khel['AMNT'])
+            udhari_real += parseFloat(khel['AMNT'])
+          } else if (khel['UDHARI'].split("*")[1] == 'add') {
+            FinalTotal += parseFloat(khel['AMNT'])
+            cred += parseFloat(khel['AMNT'])
+            td1.style['background'] = "#ADFF2F"
+            td2.style['background'] = "#ADFF2F"
+          }
+          tr.style.position = 'relative'
+            // form.appendChild(tr)
+          var cname = names.cloneNode(true)
+          var cam = am.cloneNode(true)
+          var cdate = date.cloneNode(true)
+          var cstatus = status.cloneNode(true)
+          console.log(cname.value + "----" + cam.value + "----" + cdate.value + "--" + cstatus.value)
+          form.appendChild(cname)
+          form.appendChild(cam)
+          form.appendChild(cdate)
+          form.appendChild(cstatus)
+          form.appendChild(deletes)
+          form.appendChild(index)
+          udha.appendChild(tr)
+            /*           udha.appendChild(form) */
+          forms.push(form)
+        }
+        console.log(forms)
+
+
+        document.getElementById("soft_total").innerHTML = Total - (udhari_real + expenseTotal)
+          //     document.getElementById("after_udhari").innerHTML = Total - udhariTotal
+        document.getElementById("FinalTotal").innerHTML = FinalTotal
+        var ca = document.getElementById("checkagain")
+        ca.style['pointer-events'] = "all"
+        ca.style['cursor'] = "pointer"
+        ca.style['opacity'] = "1.0"
+      } else {
+
+        if (document.getElementById("other_check").value == "" || document.getElementById("atm_check").value == "" || document.getElementById("atm_check").value == "") {
+
+        }
+
+        sheets[3]['ATM'] = document.getElementById("other_check").value
+        sheets[3]['ONLINE'] = document.getElementById("online_check").value
+        sheets[3]['OTHERS'] = document.getElementById("atm_check").value
+        sheets[3]['TESTINGMS'] = document.getElementById("testingMS_check").value
+        sheets[3]['TESTINGHSD'] = document.getElementById("testingHSD_check").value
+        var atm = sheets[3]['ATM']
+        var online = sheets[3]['ONLINE']
+        var other = sheets[3]['OTHERS']
+        var testingMS = sheets[3]['TESTINGMS']
+        var testingHSD = sheets[3]['TESTINGHSD']
+        inputChecker(this)
+          /*         document.getElementById("other_check").value = other
+                  document.getElementById("online_check").value = online
+                  document.getElementById("atm_check").value = atm
+                  document.getElementById("testingMS_check").value = testingMS
+                  document.getElementById("testingHSD_check").value = testingHSD */
+
+
+        var expenseTotal = parseFloat(atm) + parseFloat(online) + parseFloat(other) + parseFloat(testingMS) + parseFloat(testingHSD)
+        document.getElementById("totalexpenses").value = expenseTotal
+
+        /*       document.getElementById("totalexpenses").innerHTML = expenseTotal */
+
+        /*     HSD MS RATE anD READIngS     */
+        var udha = document.getElementById("udhariCont")
+        var datep = document.getElementById("datepick")
+        udha.style['overflow-x'] = 'scroll'
+        sheets[2]["oilrate"] = document.getElementById('oilrate').value
+        sheets[2]["oilquantity"] = document.getElementById('oilsale').value
+
+        sheets[1]['msCn1'] = document.getElementById("prev1").value
+        sheets[1]['msCn2'] = document.getElementById("prev2").value
+        sheets[0]['msN1'] = document.getElementById("curr1").value
+        sheets[0]['msN2'] = document.getElementById("curr2").value
+        sheets[1]['hsdCn1'] = document.getElementById("prevH1").value
+        sheets[1]['hsdCn2'] = document.getElementById("prevH2").value
+        sheets[0]['hsdN1'] = document.getElementById("currH1").value
+        sheets[0]['hsdN2'] = document.getElementById("currH2").value
+        sheets[2]["MsRate"] = document.getElementById("MSRATE").value
+        sheets[2]["HsdRate"] = document.getElementById("HSDRATE").value
+        console.log(document.getElementById("currH2").value)
+        var msp1 = sheets[0]['msN1']
+        var msp2 = sheets[0]['msN2']
+        var hsdp1 = sheets[0]['hsdN1']
+        var hsdp2 = sheets[0]['hsdN2']
+          /*     CurrentReading     */
+        var msc1 = sheets[1]['msCn1']
+        var msc2 = sheets[1]['msCn2']
+        var hsdc1 = sheets[1]['hsdCn1']
+        var hsdc2 = sheets[1]['hsdCn2']
+          /*    Rates      */
+        var msRate = sheets[2]["MsRate"]
+        var hsdRate = sheets[2]["HsdRate"]
+
+
+        /*     Oil Rates   */
+        var oil_quantity = sheets[2]["oilquantity"]
+        var oil_rate = sheets[2]["oilrate"]
+        console.log(oil_quantity + "----" + oil_rate)
+        console.log(sheets)
+        console.log("ALl Values Changed ?" + msp1)
+
+        var msSum = (parseFloat(msc1) - parseFloat(msp1)) + (parseFloat(msc2) - parseFloat(msp2))
+        document.getElementById("MSREADING").value = msSum
+        var hsdSum = (parseFloat(hsdc1) - parseFloat(hsdp1)) + (parseFloat(hsdc2) - parseFloat(hsdp2))
+        document.getElementById("HSDREADING").value = hsdSum
+          /*       var Total = (msSum * parseFloat(msRate)) + (hsdSum * parseFloat(hsdRate)) + (parseFloat(oil_quantity) * parseFloat(oil_rate))   */
+        var Total = (msSum * parseFloat(msRate)) + (hsdSum * parseFloat(hsdRate)) + (parseFloat(oil_quantity) * parseFloat(oil_rate))
+        document.getElementById("greenboard").innerHTML = ""
+        document.getElementById("greenboard").innerHTML = "<h5>MS today : " + msSum + " x " + parseFloat(msRate) + ' = ' + (msSum * parseFloat(msRate)) + "</br> HSD today : " + hsdSum + ' x ' + parseFloat(hsdRate) + " = " + (parseFloat(hsdRate) * hsdSum) + "<br> Oil sales :" + parseFloat(oil_quantity) + ' x ' + parseFloat(oil_rate) + " = " + (parseFloat(oil_quantity) * parseFloat(oil_rate)) + "</br>" + "Total : " + Total + "</h5>"
+        var FinalTotal = Total - expenseTotal
+        console.log("000--" + FinalTotal)
+        document.getElementById("totalexpenses").innerHTML = expenseTotal
+          //  document.getElementById("after_expense").innerHTML = FinalTotal
+        var ooo = Array.from(udha.childNodes).filter(function(el) {
+          return typeof el.tagName != 'undefined'
+        })
+        console.log(ooo)
+        var yy = document.getElementById("udhariCont")
+        console.log(yy)
+
+        //Will Create A array and preserve the datas here
+
+        var dt = Array.from(yy.childNodes).filter(function(el) {
+          return typeof(el.tagName) != "undefined"
+        })
+
+
+        var inh = 0
+        for (var i in dt) {
+          var u = Array.from(dt[i].childNodes)
+
+          var objj = {}
+          for (var j = 0; j < 2; j++) {
+
+            var p = Array.from(u[j].childNodes)
+            var g = ['name', 'amt']
+            console.log(p)
+
+            for (var x in p) {
+              var oo = Array.from(p[x].childNodes)
+              console.log(p.tagName)
+              console.log(oo[0])
+              objj[g[j]] = oo[0]
+
+
+
+
+
+            }
+            console.log(objj)
+          }
+
+          formschk.push(objj)
+
+          inh++
+        }
+        console.log('this is sugar')
+        console.log(formschk)
+
+        //This is the BreakPoint broda
+        if (ooo.length != 1) {
+          console.log("DELETE")
+          var child = udha.lastElementChild;
+          while (child) {
+            udha.removeChild(child);
+            child = udha.lastElementChild;
+          }
+        }
+
+        var udhariTotal = 0
+        var udhari_real = 0
+        var cred = 0
+        var namam = 1
+        var newform = forms
+        forms = []
+        var col = 0
+        for (var y = 4; y < sheets.length; y++) {
+          var form = document.createElement("FORM")
+          form.name = sheetname
+          var tr = document.createElement("TR")
+          tr.classList.add("udhariRowscheck")
+          var td1 = document.createElement("TD")
+          var td2 = document.createElement("TD")
+          var td3 = document.createElement("TD")
+          var td4 = document.createElement("TD")
+          var cont = document.createElement("DIV")
+          var cont2 = document.createElement("DIV")
+
+          cont.classList.add("container")
+          cont.classList.add("name")
+          cont2.classList.add("container")
+          cont2.classList.add("amnt")
+            /*           var names = document.createElement("INPUT")
+                      var am = document.createElement("INPUT")
+                      names.type = "text"
+
+                      am.type = "text"
+
+                      names.name = "Borrower_name"
+                      am.name = 'Amount' */
+
+          var khel = sheets[y]
+          var oi = udha
+
+          console.log(oi.rows[0])
+          console.log(Array.from(oi.childNodes))
+
+          var formInp = Array.from(newform[namam - 1].childNodes)
+          var names = formschk[col]['name']
+          var am = formschk[col]['amt']
+          console.log(datep.value)
+          var dy = ''
+          if (userAgent.match(/chrome|chromium|crios/i)) {
+            dy = moment(datep.value, "DDMMYYYY").format()
+          } else if (userAgent.match(/firefox|fxios/i)) {
+            dy = moment(datep.value, "DDMMYYYY").format()
+          }
+          console.log(dy)
+          formInp[2].value = dy
+          console.log(formInp[2].value)
+          var date = formInp[2]
+          var status = formInp[3]
+          var deletes = formInp[4]
+          var index = formInp[5]
+          namam++
+          col++
+
+          console.log(names.value + "-------" + am.value)
+          khel['UDHARI'] = names.value
+          khel['AMNT'] = am.value
+
+          /*           var formateddate = new Date(khel['DATE'])
+                    console.log("RawDate::" + formateddate)
+                    var mon = formateddate.getMonth() + 1
+                    var t = formateddate.getDate() + "-" + mon + "-" + formateddate.getFullYear()
+                    console.log("FormttedDate:" + moment(t, "DDMMYYYY").format())
+                    if (userAgent.match(/chrome|chromium|crios/i)) {
+                      date.value = moment(t, "DDMMYYYY").format()
+                    } else if (userAgent.match(/firefox|fxios/i)) {
+                      date.value = moment(t, "DDMMYYYY").format()
+                    }
+                    console.log("DATE:--" + date.value) */
+          status.value = khel['STATUS']
+          deletes.value = "0"
+
+          console.log("Data Len:" + ind)
+          console.log("Date obj:" + new Date(date.value).toISOString())
+          cont2.appendChild(am)
+          cont.appendChild(names)
+          td1.appendChild(cont)
+
+          td2.appendChild(cont2)
+          td3.appendChild(date)
+          td4.appendChild(status)
+          tr.appendChild(td1)
+          tr.appendChild(td2)
+          tr.appendChild(td3)
+          tr.appendChild(td4)
+            /*     UDHARiSSSs     */
+
+          if (khel['STATUS'] == 'UDHARI') {
+            FinalTotal -= parseFloat(khel['AMNT'])
+            td1.style['background'] = "Crimson"
+            td2.style['background'] = "Crimson"
+            names.style.color = "black"
+            am.style.color = "black"
+            udhariTotal += parseFloat(khel['AMNT'])
+            udhari_real += parseFloat(khel['AMNT'])
+          } else if (khel['STATUS'] == 'JAMA-KIYE') {
+            FinalTotal += parseFloat(khel['AMNT'])
+            cred += parseFloat(khel['AMNT'])
+            td1.style['background'] = "#ADFF2F"
+            td2.style['background'] = "#ADFF2F"
+          }
+
+          // form.appendChild(tr)
+          var cname = names.cloneNode(true)
+          console.log(cname)
+          var cam = am.cloneNode(true)
+          var cdate = date.cloneNode(true)
+          var cstatus = status.cloneNode(true)
+          console.log(cname)
+          form.appendChild(cname)
+          form.appendChild(cam)
+          form.appendChild(cdate)
+          form.appendChild(cstatus)
+          form.appendChild(deletes)
+          form.appendChild(index)
+          udha.appendChild(tr)
+
+          forms.push(form)
+        }
+        console.log(forms)
+
+        document.getElementById('res').click()
+        document.getElementById("soft_total").innerHTML = Total - (udhari_real + expenseTotal)
+          // document.getElementById("after_udhari").innerHTML = Total - udhariTotal
+        document.getElementById("FinalTotal").innerHTML = FinalTotal
+      }
+
+    }
+
+    async function updateUdha() {
+      const scriptURL = delNadd
+      const userAgent = navigator.userAgent
+      if (forms.length != 0) {
+        for (var i in forms) {
+          var frms = {
+            method: 'POST',
+            body: new FormData(forms[i])
+          }
+
+          var res = await fetch(delNadd, frms)
+
+          console.log('Success!', res)
+          var u = document.getElementById("udhariBody")
+          var tds = Array.from(forms[i].childNodes)
+          console.log(tds)
+          var tr = document.createElement('TR')
+          var tddel = document.createElement('TD')
+          var td1 = document.createElement('TD')
+          var td2 = document.createElement('TD')
+          var td3 = document.createElement('TD')
+          var td4 = document.createElement('TD')
+          console.log("-updated---" + tds[3].value)
+          tddel.innerHTML = "<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' value='" + tds[0].value + "'><input class='p' type='hidden' id='Amount' name='Amount' value='" + tds[1].value + "'><input class='p' type='hidden' id='Updated' name='Updated' value='" + tds[2].value + "'><input class='p' type='hidden' id='Status' name='Status' value='" + tds[3].value + "'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' value='" + tds[5].value + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>"
+            /*           console.log("<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' :value='itemy[0]'><input class='p' type='hidden' id='Amount' name='Amount' :value='itemy[1]'><input class='p' type='hidden' id='Updated' name='Updated' :value='itemy[2]'><input class='p' type='hidden' id='Status' name='Status' :value='itemy[3]'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' :value='" + indagain + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>") */
+            /*        indagain    */
+          td1.innerHTML = tds[0].value
+          td2.innerHTML = tds[1].value
+
+          if (userAgent.match(/chrome|chromium|crios/i)) {
+            td3.innerHTML = tds[2].value.split("T")[0]
+          } else if (userAgent.match(/firefox|fxios/i)) {
+            td3.innerHTML = tds[2].value.split("T")[0]
+          }
+
+          td4.innerHTML = tds[3].value
+          tr.appendChild(tddel)
+          tr.appendChild(td1)
+          tr.appendChild(td2)
+          tr.appendChild(td3)
+          tr.appendChild(td4)
+          u.appendChild(tr)
+          indagain += 2
+
+        }
+
+      } else {
+        alert("Check File first")
+      }
+
+    }
+
+    function checkledger(sheet) {
+      console.log(sheet)
+      var udhariTotal = 0
+      var cred = 0
+      for (var y = 0; y < sheet.length; y++) {
+        var udha = document.getElementById('ledg')
+        var tr = document.createElement("TR")
+        tr.classList.add("udhariRowscheck")
+        var td1 = document.createElement("TD")
+        var td2 = document.createElement("TD")
+        var td3 = document.createElement("TD")
+        var td4 = document.createElement("TD")
+        var cont = document.createElement("DIV")
+        var cont2 = document.createElement("DIV")
+        var cont3 = document.createElement("DIV")
+        var cont4 = document.createElement("DIV")
+
+        cont.classList.add("container")
+        cont.classList.add("name")
+
+        cont2.classList.add("container")
+        cont2.classList.add("amnt")
+        var names = document.createElement("H5")
+        var am = document.createElement("H5")
+        var date = document.createElement("H5")
+        var update = document.createElement("H5")
+        var khel = sheet[y]
+        names.innerHTML = khel['Name'].split("*")[0]
+
+        am.innerHTML = parseFloat(khel['AMNT'])
+
+        date.innerHTML = khel['Date'].split(" ")[0]
+        update.innerHTML = khel['Update'].split(' ')[0]
+        cont2.appendChild(am)
+        cont.appendChild(names)
+        cont3.appendChild(date)
+        cont4.appendChild(update)
+
+        td1.appendChild(cont)
+
+        td2.appendChild(cont2)
+        td3.appendChild(cont3)
+
+        td4.appendChild(cont4)
+
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+
+        tr.appendChild(td3)
+        tr.appendChild(td4)
+
+        udha.appendChild(tr)
+
+      }
+
+
+
+    }
+
+    function changes() {
+      checks('checking')
+      var conf = document.getElementById('confirmchange')
+      conf.style['pointer-events'] = 'none'
+      conf.style.opacity = '0.0'
+
+    }
+  </script>
+  <span class="gwd-span-19li gwd-span-1cpr">MS Rate</span><span class="gwd-span-19li gwd-span-eb6g">HSD&nbsp; Rate</span>
+  <p class="gwd-span-1933">MS</p>
+  <div class="reveal gwd-div-d03k" id="EndResult" data-reveal="">
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-6 cell">
+          <label style="text-align: center;">Soft Total
+            <h3 id="soft_total" type="text"></h3>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-6 cell">
+          <label style="text-align: center;"> Final Total
+            <h3 id="FinalTotal" type="text"></h3>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="close-button" data-close="" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <button class="button" id="res" style="display: none;" data-open="EndResult">Click me for a modal</button>
+  <script>
+    $(document).foundation()
+  </script>
+  <div class="gwd-div-u9uz" id="udharitext">
+    <h2 class="gwd-h2-1c5j">UDHARi</h2>
+  </div>
+  <input class="gwd-input-19en gwd-input-17cl" id="oilsale">
+  <input class="gwd-input-19en gwd-input-1cqa" id="oilrate">
+  <div class="gwd-div-1jer" id="greenboard" style="padding: 15px;"></div>
+  <button class="gwd-button-wbye" id="checkagain">Check &amp; Confirm</button>
+  <div class="gwd-div-1r6u" id="parda2"></div>
+  <div class="gwd-div-1w1u" id="confirmchange">
+    <button class="gwd-button-wbye gwd-button-10i7" id="confirmnow" onclick="changes()">Confirm Changes</button>
+  </div>
+</body>
+
+</html>
