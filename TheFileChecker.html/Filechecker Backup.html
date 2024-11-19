@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>File Checker</title>
-  <meta name="generator" content="Google Web Designer 15.0.0.0913">
+  <script src="popup.js"></script>
+  <meta name="generator" content="Google Web Designer 16.1.0.0530">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
   <script integrity="sha512-MqEDqB7me8klOYxXXQlB4LaNf9V9S0+sG1i8LtPOYmHqICuEZ9ZLbyV3qIfADg2UJcLyCm4fawNiFvnYbcBJ1w==" crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
   <script async="" src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
@@ -1180,10 +1183,10 @@
       background-image: none;
       background-color: rgba(17, 30, 25, 0.76);
       transform-origin: 50% 50% 0px;
-      height: 1602px;
       width: 1470px;
       left: -10px;
       top: 94px;
+      height: 1624px;
     }
     .gwd-div-sjbm {
       left: 0px;
@@ -1370,7 +1373,7 @@
       background-image: -webkit-linear-gradient(0deg, rgba(128, 108, 179, 0.98) 0%, rgb(0, 0, 0) 100%);
       pointer-events: none;
       opacity: 0;
-      transform: translate3d(1px, 381px, 0px) scale3d(0.979198, 5.54492, 1);
+      transform: translate3d(8px, 380px, 0px) scale3d(0.988842, 5.54492, 1);
     }
     .gwd-button-10i7 {
       left: 33.71%;
@@ -1417,8 +1420,7 @@
         <table id="udhariData">
           <thead id="udhariHead" style="opacity: 0.2;">
             <tr>
-              <th>Delete</th>
-              <th>BorrowerName</th>
+              <th>BorrowName</th>
               <th>Amount</th>
               <th>Date</th>
               <th>Status</th>
@@ -1430,16 +1432,18 @@
                 <form :name="">
                   <input class="p" type="hidden" id="Borrower_Name" name="Borrower_Name" :value="itemy[0]">
                   <input class="p" type="hidden" id="Amount" name="Amount" :value="itemy[1]">
-                  <input class="p" type="hidden" d="Updated" name="Updated" :value="itemy[2]">
+                  <input class="p" type="hidden" id="Updated" name="Updated" :value="itemy[2]">
                   <input class="p" type="hidden" id="Status" name="Status" :value="itemy[3]">
-                  <input class="p" type="hidden" id="delete" name="delete" value="1">
+                  <input class="p" type="hidden" id="delete" name="delete" :value="1">
                   <input class="p" type="hidden" id="index" name="index" :value="itemy[5]">
-                  <img class="dela" src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="28" height="28" style="transform: scale(0.8,0.8); cursor: pointer;" onclick="deleteme(this)">
+                  <!--                   <input class="p" type="hidden" id="totalam" name="totalam" :value="itemy[6]"> -->
+                  <!--                   <img class="dela" src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="28" height="28" style="transform: scale(0.8,0.8); cursor: pointer;" onclick="deleteme(this)"> -->
                 </form>
-              </td>
-              <td onclick="deleteme(this)">
                 {{itemy[0]}}
               </td>
+              <!--               <td onclick="deleteme(this)">
+                {{itemy[0]}}
+              </td> -->
               <td>
                 {{itemy[1]}}
               </td>
@@ -1487,6 +1491,8 @@
       return output;
     }
     var sheetname = ''
+    var ledgerSheet = ''
+    var ledgerURL = ''
       //DELETE N ADD URL
     var delNadd = 'https://script.google.com/macros/s/AKfycbyQk5z55C0JVSbFn2KLGCvwOkhVp7sybOGgEAm7qTY3hnRQUPZvpKPvdK9RHamoegA/exec'
 
@@ -1546,14 +1552,22 @@
     }
     let ind
     let indagain
+    var ledgerData = []
+    var readLedger = ''
+    var ledger_arr = []
+    var borrowers = []
+    var cred_borr = []
+    var deb_borr = []
     const app = Vue.createApp({
       //variable declare part
       data() {
           return {
             udariDatas: [],
+            ledgerData: [],
             jstable: null,
             branch: '',
             readurl: "",
+            readLedger: '',
             sheetname: ''
 
           }
@@ -1563,18 +1577,23 @@
             if (newQuestion == 'Machwai') {
               console.log(newQuestion)
               this.readurl = "https://script.google.com/macros/s/AKfycbwhfSen6ThRBmTv873iSnhxc3Ygy4wAYimSsuzmYjd9Bhk_joGxqTmuQgFgky4MwpzK/exec"
-              this.loop(this.readurl)
+              this.readLedger = "https://script.google.com/macros/s/AKfycbyU5-luaxgykYkVs1tF2S4dyk416RYPLt36n1s5s2sP1Ge49ZOs1T47YVFHx4V1bs4hMg/exec"
+              ledgerURL = this.readLedger
+              this.loop(this.readurl, this.readLedger)
               sheetname = "RajhansFuel_Machwai"
               this.sheetname = "RajhansFuel_Machwai"
-
+              ledgerSheet = 'machwai_ledger'
               delNadd = 'https://script.google.com/macros/s/AKfycbxYCLYYhhjHWube0HWPW1PPUJs6fG059VvUdQG6SnwQn1gW-nz7q3eEVVRsah7Sh56F/exec'
 
             } else if (newQuestion == 'Bari') {
+              this.readLedger = ''
+              ledgerURL = ''
               this.readurl = "https://script.google.com/macros/s/AKfycbz18fBnjU2GL3swdL33RfiF9WqUudWLfBqivGtA_e9RV97568ERpGSNTDx3iqh7f8KBnQ/exec"
               sheetname = "RajhansFuel_Bari"
               this.sheetname = "RajhansFuel_Bari"
+              ledgerSheet = 'bari_ledger'
               delNadd = 'https://script.google.com/macros/s/AKfycbwuKROMuxwd6_Ow1XAEsjRFWnOt24iKxEx_NIsy8iPgn_0rbGywDsFwu9Kw7dyRILHSmQ/exec'
-              this.loop(this.readurl)
+              this.loop(this.readurl, this.readLedger)
             }
             var up = document.getElementById("uploader")
             up.style.opacity = "1.0"
@@ -1589,7 +1608,7 @@
         },
         methods: {
 
-          loop(er) {
+          async loop(er, led) {
             // these will work as expected.
             //swal("Good job!", "You clicked the button!", "success");
 
@@ -1597,83 +1616,168 @@
             //otherwise 'this' keyword will work like hell
 
             let readUrl = er
+            let readledger = led
             console.log(er)
-            fetch(readUrl, {
+            await fetch(readUrl, {
+              method: 'GET'
+            }).then(response => {
+              return response.json();
+            }).then(ob => {
+              var arr = []
+              console.log("Cool")
+              console.log(ob)
+
+              for (var y in ob) {
+                var i = ob[y]
+                  /*                   i.pop()
+                                    i.pop() */
+                arr.push(i)
+
+              }
+
+              console.log(arr)
+              this.udariDatas = arr
+              if (arr.length == 0) {
+                console.log(arr.length)
+                ind = arr.length + 2
+                indagain = arr.length + 2
+                console.log("Read----Data Len:" + ind)
+                  /*var popped=this.udariDatas.pop().pop() */
+              } else if (arr.length > 0) {
+
+                ind = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                indagain = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                console.log("Length more than 0" + arr[arr.length - 1][arr[arr.length - 1].length - 1])
+              }
+              setTimeout(function() {
+                this.jstable = new JSTable("#udhariData", {
+                  perPageSelect: [6, 8, 10],
+                  perPage: 30,
+                  top: "dt-top",
+
+                  nextPrev: true,
+                  firstLast: false,
+                  prevText: "&lsaquo;",
+                  nextText: "&rsaquo;",
+                  firstText: "&laquo;",
+                  lastText: "&raquo;",
+                  ellipsisText: "&hellip;",
+                  truncatePager: true,
+                  pagerDelta: 2,
+                  labels: {
+                    placeholder: "Search Anything...",
+
+                    noRows: "No entries found",
+                    info: "Showing {start} to {end} of {rows} entries",
+                    loading: "Loading...",
+                    infoFiltered: "Showing {start} to {end} of {rows} entries (filtered from {rowsTotal} entries)"
+                  },
+                  layout: {
+                    top: "{select}{search}",
+                    bottom: "{info}{pager}"
+                  },
+                });
+                var prda2 = document.getElementById("parda2").style
+                prda2.opacity = "0.0"
+                prda2['pointer-events'] = "none"
+                var up = document.getElementById("uploader")
+                up.style.opacity = "1.0"
+                up.style['pointer-events'] = "all"
+                up.style.cursor = "pointer"
+                var hea = document.getElementById("udhariHead")
+                hea.style.opacity = "1.0"
+              }, 3000)
+
+
+            }).catch(err => {
+              console.log(err)
+            })
+
+
+            /*   Ledger Reader Method           */
+            fetch(readledger, {
                 method: 'GET'
               })
               .then(response => {
                 return response.json();
               })
               .then(ob => {
-                var arr = []
-                console.log("Cool")
+
+                console.log("Ledger Data Returned")
                 console.log(ob)
 
                 for (var y in ob) {
                   var i = ob[y]
                     /*                   i.pop()
                                       i.pop() */
-                  arr.push(i)
+                  borrowers.push(i[0])
+                  cred_borr.push(i[2])
+                  deb_borr.push(i[3])
+                  ledger_arr.push(i)
 
                 }
 
-                console.log(arr)
-                this.udariDatas = arr
-                if (arr.length == 0) {
-                  console.log(arr.length)
-                  ind = arr.length + 2
-                  indagain = arr.length + 2
-                  console.log("Read----Data Len:" + ind)
-                    /*var popped=this.udariDatas.pop().pop() */
-                } else if (arr.length > 0) {
+                console.log(ledger_arr)
+                console.log(borrowers)
+                console.log(sheet)
+                this.ledgerData = ledger_arr
 
-                  ind = arr[arr.length - 1][arr[arr.length - 1].length - 1]
-                  indagain = arr[arr.length - 1][arr[arr.length - 1].length - 1]
-                  console.log("Length more than 0" + arr[arr.length - 1][arr[arr.length - 1].length - 1])
-                }
-                setTimeout(function() {
-                  this.jstable = new JSTable("#udhariData", {
-                    perPageSelect: [6, 8, 10],
-                    perPage: 30,
-                    top: "dt-top",
+                /*                 if (arr.length == 0) {
+                                  console.log(arr.length)
+                                  ind = arr.length + 2
+                                  indagain = arr.length + 2
+                                  console.log("Read----Data Len:" + ind)
+                                    /*var popped=this.udariDatas.pop().pop() */
+                /*                 } else if (arr.length > 0) {
 
-                    nextPrev: true,
-                    firstLast: false,
-                    prevText: "&lsaquo;",
-                    nextText: "&rsaquo;",
-                    firstText: "&laquo;",
-                    lastText: "&raquo;",
-                    ellipsisText: "&hellip;",
-                    truncatePager: true,
-                    pagerDelta: 2,
-                    labels: {
-                      placeholder: "Search Anything...",
+                                  ind = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                                  indagain = arr[arr.length - 1][arr[arr.length - 1].length - 1]
+                                  console.log("Length more than 0" + arr[arr.length - 1][arr[arr.length - 1].length - 1])
+                                } */
+                /*                 setTimeout(function() {
+                                  this.jstable = new JSTable("#udhariData", {
+                                    perPageSelect: [6, 8, 10],
+                                    perPage: 30,
+                                    top: "dt-top",
 
-                      noRows: "No entries found",
-                      info: "Showing {start} to {end} of {rows} entries",
-                      loading: "Loading...",
-                      infoFiltered: "Showing {start} to {end} of {rows} entries (filtered from {rowsTotal} entries)"
-                    },
-                    layout: {
-                      top: "{select}{search}",
-                      bottom: "{info}{pager}"
-                    },
-                  });
-                  var prda2 = document.getElementById("parda2").style
-                  prda2.opacity = "0.0"
-                  prda2['pointer-events'] = "none"
-                  var up = document.getElementById("uploader")
-                  up.style.opacity = "1.0"
-                  up.style['pointer-events'] = "all"
-                  up.style.cursor = "pointer"
-                  var hea = document.getElementById("udhariHead")
-                  hea.style.opacity = "1.0"
-                }, 3000)
+                                    nextPrev: true,
+                                    firstLast: false,
+                                    prevText: "&lsaquo;",
+                                    nextText: "&rsaquo;",
+                                    firstText: "&laquo;",
+                                    lastText: "&raquo;",
+                                    ellipsisText: "&hellip;",
+                                    truncatePager: true,
+                                    pagerDelta: 2,
+                                    labels: {
+                                      placeholder: "Search Anything...",
 
+                                      noRows: "No entries found",
+                                      info: "Showing {start} to {end} of {rows} entries",
+                                      loading: "Loading...",
+                                      infoFiltered: "Showing {start} to {end} of {rows} entries (filtered from {rowsTotal} entries)"
+                                    },
+                                    layout: {
+                                      top: "{select}{search}",
+                                      bottom: "{info}{pager}"
+                                    },
+                                  });
+                                  var prda2 = document.getElementById("parda2").style
+                                  prda2.opacity = "0.0"
+                                  prda2['pointer-events'] = "none"
+                                  var up = document.getElementById("uploader")
+                                  up.style.opacity = "1.0"
+                                  up.style['pointer-events'] = "all"
+                                  up.style.cursor = "pointer"
+                                  var hea = document.getElementById("udhariHead")
+                                  hea.style.opacity = "1.0"
+                                }, 3000)
+                 */
 
               }).catch(err => {
                 console.log(err)
               })
+
 
 
           }
@@ -1866,7 +1970,9 @@
       <line x1="4" x2="5" y1="0.011" y2="360.989"></line>
     </svg>
   </button>
-  <button class="gwd-button-1w8k" id="UpdateUdha" data-gwd-name="updateUdha" onclick="updateUdha()">UPDATEFILE</button>
+  <button class="gwd-button-1w8k" id="UpdateUdha" data-gwd-name="updateUdha" onclick="confirmUpdate()">UPDATEFILE</button>
+  <div style="display: inline-block;" id="Ledg_Form_cont">
+  </div>
   <input class="gwd-input-10eh gwd-input-urya gwd-input-1clp" id="MSREADING">
   <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-19gj gwd-input-4jd0" id="prev1">
   <input class="gwd-input-10eh gwd-input-urya gwd-input-1ber gwd-input-1go6 gwd-input-1ilm" id="curr1">
@@ -2234,6 +2340,8 @@
     var sheets = ''
 
     var dateob = []
+
+
     const udhariyan = Vue.createApp({
       //variable declare part
       data() {
@@ -2372,12 +2480,30 @@
         }
     }).mount('#udhariyan')
 
+    function nameAgain(arr, el) {
+
+      duplicate = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == el) {
+          duplicate.push(i)
+        }
+      }
+      return duplicate
+    }
+
+    var yaadRakho = ''
+    var all_ledg_forms = {}
+
     function checks(sheet) {
+      /*       yaadrakho=[] */
+      /*       console.log('Global', yaadRakho) */
       var formschk = []
       var datep = document.getElementById("datepick")
       const userAgent = navigator.userAgent
-
+      console.log("i m KING")
       if (sheet != "checking") {
+        all_ledg_forms = {}
+        console.log("KING checking!!")
         sheets = sheet
         console.log(sheets)
         var atm = sheets[3]['ATM']
@@ -2460,7 +2586,8 @@
         var udhari_real = 0
         var cred = 0
         var namam = 1
-
+        var col = 0
+        yaadRakho = []
         for (var y = 4; y < sheets.length; y++) {
           var form = document.createElement("FORM")
           form.name = sheetname
@@ -2588,8 +2715,43 @@
           form.appendChild(deletes)
           form.appendChild(index)
           udha.appendChild(tr)
-            /*           udha.appendChild(form) */
+
+          /*           udha.appendChild(form) */
+
           forms.push(form)
+          var ledform = document.createElement("FORM")
+            /*           ledform.name = ledgerSheet
+                     
+                      ledform.action = ledgerURL */
+          ledform.id = cname.value
+            /*           var ledg_name = document.createElement("INPUT")
+                      ledg_form.method = "post"
+                      ledg_name.type = 'hidden'
+                      ledg_name.id = cname
+                      ledg_name.name = 'Borrower_name'
+                      ledg_name.value = cname + "=neww"
+                      var ledg_update = document.createElement("INPUT")
+                      ledg_update.type = 'hidden'
+                      ledg_update.name = 'Updated'
+                      var ledg_credit = document.createElement("INPUT")
+                      ledg_credit.type = 'hidden'
+                      ledg_credit.name = 'Credit'
+                      var ledg_debit = document.createElement("INPUT")
+                      ledg_debit.type = 'hidden'
+                      ledg_debit.name = 'Debit'
+                      var ledg_change = document.createElement("INPUT")
+                      ledg_change.type = 'hidden'
+                      ledg_change.name = 'Change'
+                      ledform.appendChild(ledg_name)
+                      ledform.appendChild(ledg_update)
+                      ledform.appendChild(ledg_credit)
+                      ledform.appendChild(ledg_debit)
+                      ledform.appendChild(deletes)
+                       */
+          document.body.appendChild(ledform)
+          console.log("New Form")
+          console.log(document.getElementById(cname.value))
+          yaadRakho.push(cname.value)
         }
         console.log(forms)
 
@@ -2601,8 +2763,10 @@
         ca.style['pointer-events'] = "all"
         ca.style['cursor'] = "pointer"
         ca.style['opacity'] = "1.0"
+        updatedudh = "yes"
       } else {
-
+        all_ledg_forms = {}
+        console.log("Changing and checking!!")
         if (document.getElementById("other_check").value == "" || document.getElementById("atm_check").value == "" || document.getElementById("atm_check").value == "") {
 
         }
@@ -2742,6 +2906,11 @@
         var cred = 0
         var namam = 1
         var newform = forms
+        var name_arr = []
+        var value_arr = []
+        var date_arr = []
+        var status_arr = []
+        var change_arr = []
         forms = []
         var col = 0
         for (var y = 4; y < sheets.length; y++) {
@@ -2772,9 +2941,13 @@
           var khel = sheets[y]
           var oi = udha
 
+
+          /*                 YAHA SE HOGA ACCOUNTING KA KHEL                */
+
           console.log(oi.rows[0])
           console.log(Array.from(oi.childNodes))
-
+          console.log(formschk)
+          console.log(col)
           var formInp = Array.from(newform[namam - 1].childNodes)
           var names = formschk[col]['name']
           var am = formschk[col]['amt']
@@ -2857,10 +3030,322 @@
           form.appendChild(deletes)
           form.appendChild(index)
           udha.appendChild(tr)
+          name_arr.push(cname.value)
+          value_arr.push(cam.value)
+          status_arr.push(cstatus.value)
+          date_arr.push(cdate.value)
+          change_arr.push(cam.value)
 
           forms.push(form)
         }
-        console.log(forms)
+
+        /*     LEDGER KHELL CONTINUE....     */
+        /*     LEDGER KA KHEL YAHA     */
+        var idkeeper = {}
+
+        console.log(name_arr)
+
+        var indexlonde = {}
+        for (var cname of name_arr) {
+          console.log(cname)
+          console.log(borrowers)
+          var ledg_form = document.createElement("FORM")
+          ledg_form.name = ledgerSheet
+          ledg_form.id = cname
+            /*           ledg_form.action = ledgerURL */
+          borrind = borrowers.indexOf(cname)
+
+          /*         If Not Present in ledger   */
+          var newlonda = 0
+
+          if (borrind == -1) {
+            console.log(borrind)
+            var newarr = nameAgain(name_arr, cname)
+            newlonda = name_arr.indexOf(cname)
+            var ledg_name = document.createElement("INPUT")
+            ledg_form.method = "post"
+            ledg_name.type = 'hidden'
+            ledg_name.id = cname
+            ledg_name.name = 'Borrower_name'
+            ledg_name.value = cname + "=neww"
+            var ledg_update = document.createElement("INPUT")
+            ledg_update.type = 'hidden'
+            ledg_update.name = 'Updated'
+            var ledg_credit = document.createElement("INPUT")
+            ledg_credit.type = 'hidden'
+            ledg_credit.name = 'Credit'
+            var ledg_debit = document.createElement("INPUT")
+            ledg_debit.type = 'hidden'
+            ledg_debit.name = 'Debit'
+            var ledg_change = document.createElement("INPUT")
+            ledg_change.type = 'hidden'
+            ledg_change.name = 'Change'
+
+            /*           if Canditate appears to more times   */
+            if (idkeeper.hasOwnProperty(cname)) {
+
+              console.log("Childs!!!")
+              indexlonde[cname] += 1
+              console.log(indexlonde[cname])
+
+              var londe = newarr[indexlonde[cname]]
+              console.log(Array.from(document.getElementById(cname).children))
+              var chils = Array.from(document.getElementById(cname).children)
+              var cre = chils[2]
+              var deb = chils[3]
+              var chn = chils[4]
+
+
+              console.log("Masla", status_arr[londe])
+
+              console.log(value_arr[londe], idkeeper[cname][1])
+              if (status_arr[londe] == 'UDHARI') {
+                console.log("Udha!!", parseInt(change_arr[londe]), parseInt(deb.value), parseInt(cre.value))
+                idkeeper[cname][1] = parseInt(value_arr[londe]) + parseInt(idkeeper[cname][1])
+                  /*              Change Measuring ---UDHARI    */
+                if ((parseInt(change_arr[londe]) + parseInt(deb.value)) > parseInt(cre.value)) {
+
+                  chn.value = "- " + ((parseInt(change_arr[londe]) + parseInt(deb.value)) - parseInt(cre.value))
+                  console.log("Change in Udha: -", ((parseInt(change_arr[londe]) + parseInt(deb.value)) - parseInt(cre.value)))
+
+                }
+                /*              Change Measuring ---JAMA    */
+                else {
+                  chn.value = "+ " + ((parseInt(cre.value)) - (parseInt(change_arr[londe]) + parseInt(deb.value)))
+                  console.log("Change in Udha: +", ((parseInt(change_arr[londe]) + parseInt(deb.value)) - parseInt(cre.value)))
+
+
+                }
+              } else {
+                console.log("jama!!", parseInt(change_arr[londe]), parseInt(deb.value), parseInt(cre.value))
+                idkeeper[cname][0] = parseInt(value_arr[londe]) + parseInt(idkeeper[cname][0])
+                if ((parseInt(change_arr[londe]) + parseInt(cre.value)) > parseInt(deb.value)) {
+
+                  chn.value = "+ " + ((parseInt(change_arr[londe]) + parseInt(cre.value)) - parseInt(deb.value))
+                  console.log("Change in Jama: +", ((parseInt(change_arr[londe]) + parseInt(cre.value)) - parseInt(deb.value)))
+
+                } else {
+                  chn.value = "- " + ((parseInt(deb.value)) - ((parseInt(change_arr[londe]) + parseInt(cre.value))))
+                  console.log("Change in Jama: -", (parseInt(deb.value)) - ((parseInt(change_arr[londe]) + parseInt(cre.value))))
+
+
+                }
+              }
+
+              cre.value = idkeeper[cname][0]
+              deb.value = idkeeper[cname][1]
+              console.log("IF APPEAR MORE THAN ONE TIME")
+              console.log(document.getElementById(cname))
+              all_ledg_forms[cname] = document.getElementById(cname)
+              console.log(all_ledg_forms[cname], all_ledg_forms)
+
+            } else {
+              console.log(yaadRakho[newlonda])
+              console.log(londe + '-------' + date_arr[newlonda])
+              ledg_update.value = date_arr[newlonda]
+                /*            udhari    */
+              if (status_arr[newarr[0]] == 'UDHARI') {
+                console.log(value_arr[newlonda])
+                ledg_debit.value = value_arr[newlonda]
+                ledg_change.value = "- " + change_arr[newlonda]
+                ledg_credit.value = 0
+              } else {
+                console.log(value_arr[newlonda])
+                ledg_credit.value = value_arr[newlonda]
+                ledg_change.value = "+ " + change_arr[newlonda]
+                ledg_debit.value = 0
+
+              }
+              ledg_debit.id = ledg_name.value + "_debit"
+              ledg_credit.id = ledg_name.value + "_credit"
+              ledg_form.appendChild(ledg_name)
+              ledg_form.appendChild(ledg_update)
+              ledg_form.appendChild(ledg_credit)
+
+              ledg_form.appendChild(ledg_debit)
+              ledg_form.appendChild(ledg_change)
+
+
+
+              /*               document.getElementById('Ledg_Form_cont').appendChild(ledg_form) */
+
+
+
+              /*           BIG PROBLLEM HERE !!!!!!!!!     */
+              console.log(cname)
+              console.log(document.getElementById(cname) == null)
+              if (document.getElementById(cname) == null) {
+                console.log("PerFect New")
+                console.log(ledg_form)
+                document.getElementById(yaadRakho[newlonda]).replaceWith(ledg_form)
+              } else {
+                console.log("Not New")
+                document.getElementById(cname).replaceWith(ledg_form)
+              }
+
+              console.log(document.getElementById(cname))
+              all_ledg_forms[ledg_name.id] = document.getElementById(cname)
+              idkeeper[ledg_name.id] = [ledg_credit.value, ledg_debit.value]
+              console.log("Appears only one time!")
+              console.log(all_ledg_forms[cname], all_ledg_forms)
+
+              indexlonde[cname] = 0
+
+            }
+          }
+          /*         If Present in ledger   */
+          else {
+            console.log("already there in ledger")
+            console.log(borrowers)
+            console.log(cred_borr)
+            console.log(deb_borr)
+            var oldarr = nameAgain(name_arr, cname)
+            var oldlonda = name_arr.indexOf(cname)
+            console.log(oldlonda)
+            console.log(name_arr)
+            var borrname = borrowers[borrind]
+            console.log("Index of Borrower", borrind, cname + "=old^" + parseInt(borrind + 2))
+            var ledg_name = document.createElement("INPUT")
+            ledg_form.method = "post"
+            ledg_name.type = 'hidden'
+            ledg_name.id = cname
+            ledg_name.name = 'Borrower_name'
+            ledg_name.value = cname + "=old^" + parseInt(borrind + 2)
+            var ledg_update = document.createElement("INPUT")
+            ledg_update.type = 'hidden'
+            ledg_update.name = 'Updated'
+
+            var ledg_credit = document.createElement("INPUT")
+            ledg_credit.type = 'hidden'
+            ledg_credit.name = 'Credit'
+            var ledg_debit = document.createElement("INPUT")
+            ledg_debit.type = 'hidden'
+            ledg_debit.name = 'Debit'
+            var ledg_change = document.createElement("INPUT")
+            ledg_change.type = 'hidden'
+            ledg_change.name = 'Change'
+
+            if (idkeeper.hasOwnProperty(cname)) {
+              console.log("OoOoOookaaaazzzz")
+              indexlonde[cname] += 1
+              console.log(indexlonde[cname])
+
+              var londe = oldarr[indexlonde[cname]]
+              console.log(Array.from(document.getElementById(cname).children))
+              var chils = Array.from(document.getElementById(cname).children)
+              var cre = chils[2]
+              var deb = chils[3]
+              var chn = chils[4]
+              console.log("MAths :" + cre.value, deb.value)
+                /*               cre = Math.abs(cre.value)
+                              deb = Math.abs(deb.value) */
+              console.log("Borrind:--", parseInt(cred_borr[borrind]), parseInt(deb_borr[borrind]))
+              var cre_up = Math.abs(chils[2].value - parseInt(cred_borr[borrind]))
+              var deb_up = Math.abs(chils[3].value - parseInt(deb_borr[borrind]))
+              console.log("Her go!", cre_up, deb_up)
+              console.log("Masla", status_arr[londe])
+
+              console.log(value_arr[londe], idkeeper[cname][1])
+              if (status_arr[londe] == 'UDHARI') {
+                console.log("Repeat udha!!", parseInt(change_arr[londe]), parseInt(deb.value), parseInt(cre.value))
+                console.log("Repeat udha after removing real!!", parseInt(change_arr[londe]), parseInt(deb_up), parseInt(cre_up))
+                idkeeper[cname][1] = parseInt(value_arr[londe]) + parseInt(idkeeper[cname][1])
+                  /*              Change Measuring ---UDHARI    */
+                if ((parseInt(change_arr[londe]) + parseInt(deb_up)) > parseInt(cre_up)) {
+
+                  chn.value = "- " + ((parseInt(change_arr[londe]) + parseInt(deb_up)) - parseInt(cre_up))
+                  console.log("Change in Udha: -", ((parseInt(change_arr[londe]) + parseInt(deb_up)) - parseInt(cre_up)))
+
+                }
+                /*              Change Measuring ---JAMA    */
+                else {
+                  chn.value = "+ " + ((parseInt(cre_up)) - (parseInt(change_arr[londe]) + parseInt(deb_up)))
+                  console.log("Change in Udha: +", ((parseInt(change_arr[londe]) + parseInt(deb_up)) - parseInt(cre_up)))
+
+
+                }
+              } else {
+                console.log("Repeat jama!!", parseInt(change_arr[londe]), parseInt(deb.value), parseInt(cre.value))
+                console.log("Repeat jama after removing real!!", parseInt(change_arr[londe]), parseInt(deb_up), parseInt(cre_up))
+                idkeeper[cname][0] = parseInt(value_arr[londe]) + parseInt(idkeeper[cname][0])
+                if ((parseInt(change_arr[londe]) + parseInt(cre_up)) > parseInt(deb_up)) {
+
+                  chn.value = "+ " + ((parseInt(change_arr[londe]) + parseInt(cre_up)) - parseInt(deb_up))
+                  console.log("Change in Jama: +", ((parseInt(change_arr[londe]) + parseInt(cre_up)) - parseInt(deb_up)))
+
+                } else {
+                  chn.value = "- " + ((parseInt(deb_up)) - ((parseInt(change_arr[londe]) + parseInt(cre_up))))
+                  console.log("Change in Jama: -", (parseInt(deb_up)) - ((parseInt(change_arr[londe]) + parseInt(cre_up))))
+
+
+                }
+              }
+
+              cre.value = idkeeper[cname][0]
+              deb.value = idkeeper[cname][1]
+              console.log("IF APPEAR MORE THAN ONE TIME")
+              console.log(document.getElementById(cname))
+              all_ledg_forms[cname] = document.getElementById(cname)
+              console.log(all_ledg_forms[cname], all_ledg_forms)
+
+            } else {
+              console.log(yaadRakho[oldlonda])
+              console.log(londe + '-------' + date_arr[oldlonda])
+              ledg_update.value = date_arr[oldlonda]
+                /*            udhari    */
+              if (status_arr[oldarr[0]] == 'UDHARI') {
+                console.log("Pol khol udha:" + (parseInt(value_arr[oldlonda]) + parseInt(deb_borr[borrind])))
+                console.log(parseInt(value_arr[oldlonda]) + parseInt(deb_borr[borrind]))
+                ledg_debit.value = parseInt(value_arr[oldlonda]) + parseInt(deb_borr[borrind])
+                ledg_change.value = "- " + change_arr[oldlonda]
+                ledg_credit.value = 0 + parseInt(cred_borr[borrind])
+              } else {
+                console.log(parseInt(value_arr[oldlonda]) + parseInt(cred_borr[borrind]))
+                console.log("Pol khol jama:" + (parseInt(value_arr[oldlonda]) + parseInt(cred_borr[borrind])))
+
+                ledg_credit.value = parseInt(value_arr[oldlonda]) + parseInt(cred_borr[borrind])
+                ledg_change.value = "+ " + change_arr[oldlonda]
+                ledg_debit.value = 0 + parseInt(deb_borr[borrind])
+
+              }
+              ledg_debit.id = ledg_name.value + "_debit"
+              ledg_credit.id = ledg_name.value + "_credit"
+              ledg_form.appendChild(ledg_name)
+              ledg_form.appendChild(ledg_update)
+              ledg_form.appendChild(ledg_credit)
+              ledg_form.appendChild(ledg_debit)
+              ledg_form.appendChild(ledg_change)
+                /*               document.getElementById('Ledg_Form_cont').appendChild(ledg_form) */
+                /*           BIG PROBLLEM HERE !!!!!!!!!     */
+              console.log(cname)
+              console.log(document.getElementById(cname) == null)
+              if (document.getElementById(cname) == null) {
+                console.log("perfect New But present in Ledger", document.getElementById(cname))
+                console.log(ledg_form)
+                document.getElementById(yaadRakho[oldlonda]).replaceWith(ledg_form)
+              } else {
+                console.log("Not New But present in Ledger", document.getElementById(cname))
+                document.getElementById(cname).replaceWith(ledg_form)
+              }
+
+              console.log(document.getElementById(cname))
+              all_ledg_forms[ledg_name.id] = document.getElementById(cname)
+              idkeeper[ledg_name.id] = [ledg_credit.value, ledg_debit.value]
+              console.log("Idkeepers:", idkeeper[ledg_name.id])
+              console.log("Appears only one time!")
+              console.log(all_ledg_forms[cname], all_ledg_forms)
+
+              indexlonde[cname] = 0
+
+
+            }
+
+          }
+
+
+        }
+        all_ledg_forms_ob = all_ledg_forms
+        updatedudh = "yes"
 
         document.getElementById('res').click()
         document.getElementById("soft_total").innerHTML = Total - (udhari_real + expenseTotal)
@@ -2870,56 +3355,108 @@
 
     }
 
+
+    /*     KHEL HOGA AB  */
+    var updatedudh = "yes"
     async function updateUdha() {
-      const scriptURL = delNadd
-      const userAgent = navigator.userAgent
-      if (forms.length != 0) {
-        for (var i in forms) {
-          var frms = {
-            method: 'POST',
-            body: new FormData(forms[i])
+      console.log(updatedudh)
+      if (updatedudh == "yes") {
+        checks('checking')
+        console.log(forms)
+        console.log(ledger_arr)
+        console.log(borrowers)
+
+        const scriptURL = delNadd
+        const ledgform = ledgerURL
+        const userAgent = navigator.userAgent
+        if (forms.length != 0) {
+          for (var i in forms) {
+            var frms = {
+              method: 'POST',
+              body: new FormData(forms[i])
+            }
+
+            /*           var res = await fetch(delNadd, frms)
+
+                    console.log('Success!', res) */
+            var u = document.getElementById("udhariBody")
+            var tds = Array.from(forms[i].childNodes)
+            console.log(tds)
+            var tr = document.createElement('TR')
+            var tddel = document.createElement('TD')
+            var td1 = document.createElement('TD')
+            var td2 = document.createElement('TD')
+            var td3 = document.createElement('TD')
+            var td4 = document.createElement('TD')
+            console.log("-updated---" + tds[3].value)
+            tddel.innerHTML = "<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' value='" + tds[0].value + "'><input class='p' type='hidden' id='Amount' name='Amount' value='" + tds[1].value + "'><input class='p' type='hidden' id='Updated' name='Updated' value='" + tds[2].value + "'><input class='p' type='hidden' id='Status' name='Status' value='" + tds[3].value + "'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' value='" + tds[5].value + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>"
+              /*           console.log("<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' :value='itemy[0]'><input class='p' type='hidden' id='Amount' name='Amount' :value='itemy[1]'><input class='p' type='hidden' id='Updated' name='Updated' :value='itemy[2]'><input class='p' type='hidden' id='Status' name='Status' :value='itemy[3]'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' :value='" + indagain + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>") */
+              /*        indagain    */
+            td1.innerHTML = tds[0].value
+            td2.innerHTML = tds[1].value
+
+            if (userAgent.match(/chrome|chromium|crios/i)) {
+              td3.innerHTML = tds[2].value.split("T")[0]
+            } else if (userAgent.match(/firefox|fxios/i)) {
+              td3.innerHTML = tds[2].value.split("T")[0]
+            }
+
+            td4.innerHTML = tds[3].value
+            tr.appendChild(tddel)
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+            tr.appendChild(td3)
+            tr.appendChild(td4)
+            u.appendChild(tr)
+            indagain += 2
+
+            /*       UDHARi LEDGEr     */
+            var borInd = borrowers.indexOf(tds[0].value)
+            let bor_name = borrowers[borInd]
+            console.log(bor_name)
+
           }
+          console.log("ITs Time For Ledger")
+          console.log(all_ledg_forms)
+          for (var j in all_ledg_forms) {
+            console.log(all_ledg_forms[j])
+            var ledgfrm = {
+              method: 'POST',
+              body: new FormData(all_ledg_forms[j])
+            }
 
-          var res = await fetch(delNadd, frms)
+            var res = await fetch(ledgerURL, ledgfrm)
 
-          console.log('Success!', res)
-          var u = document.getElementById("udhariBody")
-          var tds = Array.from(forms[i].childNodes)
-          console.log(tds)
-          var tr = document.createElement('TR')
-          var tddel = document.createElement('TD')
-          var td1 = document.createElement('TD')
-          var td2 = document.createElement('TD')
-          var td3 = document.createElement('TD')
-          var td4 = document.createElement('TD')
-          console.log("-updated---" + tds[3].value)
-          tddel.innerHTML = "<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' value='" + tds[0].value + "'><input class='p' type='hidden' id='Amount' name='Amount' value='" + tds[1].value + "'><input class='p' type='hidden' id='Updated' name='Updated' value='" + tds[2].value + "'><input class='p' type='hidden' id='Status' name='Status' value='" + tds[3].value + "'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' value='" + tds[5].value + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>"
-            /*           console.log("<form name='RajhansFuel_Machwai'><input class='p' type='hidden' id='Borrower_Name' name='Borrower_Name' :value='itemy[0]'><input class='p' type='hidden' id='Amount' name='Amount' :value='itemy[1]'><input class='p' type='hidden' id='Updated' name='Updated' :value='itemy[2]'><input class='p' type='hidden' id='Status' name='Status' :value='itemy[3]'><input class='p' type='hidden' id='delete' name='delete' value='1'><input class='p' type='hidden' id='index' name='index' :value='" + indagain + "'><img class='dela' src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' width='28' height='28' style='transform: scale(0.8,0.8); cursor: pointer;' onclick='deleteme(this)'></form>") */
-            /*        indagain    */
-          td1.innerHTML = tds[0].value
-          td2.innerHTML = tds[1].value
-
-          if (userAgent.match(/chrome|chromium|crios/i)) {
-            td3.innerHTML = tds[2].value.split("T")[0]
-          } else if (userAgent.match(/firefox|fxios/i)) {
-            td3.innerHTML = tds[2].value.split("T")[0]
+            console.log('Success!', res)
+            updatedudh = 'no'
           }
-
-          td4.innerHTML = tds[3].value
-          tr.appendChild(tddel)
-          tr.appendChild(td1)
-          tr.appendChild(td2)
-          tr.appendChild(td3)
-          tr.appendChild(td4)
-          u.appendChild(tr)
-          indagain += 2
 
         }
-
       } else {
-        alert("Check File first")
+        as.popup({
+          icon: "Already Updated.Please Reload NOW!!",
+          text: "Refresh The App For new Operationss."
+        });
       }
 
+
+    }
+
+    function confirmUpdate() {
+      as.confirm({
+        title: "Are you Sure ? Please Check One More Time.",
+        text: 'Click "OK" to yes & click "Cancel" to no.',
+        icon: true,
+        onConfirm: function() {
+          updateUdha()
+        },
+        onCancel: function() {
+          as.popup({
+            icon: "error",
+            text: "Sorry, this library is only available for web."
+          });
+        }
+      });
     }
 
     function checkledger(sheet) {
